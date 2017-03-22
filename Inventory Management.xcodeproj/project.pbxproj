@@ -19,6 +19,9 @@
 		9D6CA0081E83171800B3C939 /* CompaniesCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0071E83171800B3C939 /* CompaniesCustomCell.swift */; };
 		9D6CA00A1E83211100B3C939 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0091E83211100B3C939 /* UsersViewController.swift */; };
 		9D6CA00C1E83217700B3C939 /* UsersCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA00B1E83217700B3C939 /* UsersCustomCell.swift */; };
+		9D6CA00E1E8323FC00B3C939 /* CompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA00D1E8323FC00B3C939 /* CompanyViewController.swift */; };
+		9D6CA0101E83258900B3C939 /* CompanyItemsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA00F1E83258900B3C939 /* CompanyItemsCustomCell.swift */; };
+		9D6CA0121E832AB000B3C939 /* backButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0111E832AB000B3C939 /* backButtonDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,9 @@
 		9D6CA0071E83171800B3C939 /* CompaniesCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompaniesCustomCell.swift; sourceTree = "<group>"; };
 		9D6CA0091E83211100B3C939 /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		9D6CA00B1E83217700B3C939 /* UsersCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersCustomCell.swift; sourceTree = "<group>"; };
+		9D6CA00D1E8323FC00B3C939 /* CompanyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyViewController.swift; sourceTree = "<group>"; };
+		9D6CA00F1E83258900B3C939 /* CompanyItemsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyItemsCustomCell.swift; sourceTree = "<group>"; };
+		9D6CA0111E832AB000B3C939 /* backButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = backButtonDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,7 @@
 		9671E9681E820D820057F30A = {
 			isa = PBXGroup;
 			children = (
+				9D6CA0111E832AB000B3C939 /* backButtonDelegate.swift */,
 				9671E9731E820D830057F30A /* Inventory Management */,
 				9671E98B1E820D830057F30A /* Inventory ManagementTests */,
 				9671E9961E820D830057F30A /* Inventory ManagementUITests */,
@@ -110,6 +117,8 @@
 				9671E9741E820D830057F30A /* AppDelegate.swift */,
 				9671E9761E820D830057F30A /* ViewController.swift */,
 				9671E9781E820D830057F30A /* Main.storyboard */,
+				9D6CA00D1E8323FC00B3C939 /* CompanyViewController.swift */,
+				9D6CA00F1E83258900B3C939 /* CompanyItemsCustomCell.swift */,
 				9D6CA0071E83171800B3C939 /* CompaniesCustomCell.swift */,
 				9D6CA0051E8316B700B3C939 /* CompaniesViewController.swift */,
 				9D6CA0091E83211100B3C939 /* UsersViewController.swift */,
@@ -278,9 +287,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D6CA0081E83171800B3C939 /* CompaniesCustomCell.swift in Sources */,
+				9D6CA0101E83258900B3C939 /* CompanyItemsCustomCell.swift in Sources */,
 				9D6CA00A1E83211100B3C939 /* UsersViewController.swift in Sources */,
+				9D6CA0121E832AB000B3C939 /* backButtonDelegate.swift in Sources */,
 				9671E97D1E820D830057F30A /* Inventory_Management.xcdatamodeld in Sources */,
 				9671E9771E820D830057F30A /* ViewController.swift in Sources */,
+				9D6CA00E1E8323FC00B3C939 /* CompanyViewController.swift in Sources */,
 				9D6CA00C1E83217700B3C939 /* UsersCustomCell.swift in Sources */,
 				9D6CA0061E8316B700B3C939 /* CompaniesViewController.swift in Sources */,
 				9671E9751E820D830057F30A /* AppDelegate.swift in Sources */,

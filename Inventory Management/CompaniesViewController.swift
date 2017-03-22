@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CompaniesViewController: UIViewController {
+class CompaniesViewController: UIViewController, BackButtonDelegate {
     
 
     
@@ -24,6 +24,14 @@ class CompaniesViewController: UIViewController {
 
     var companies = [["Tropicana","Tropicana@OJ.com","(555-555-5555)","123 Tropicana lane, Tropicana City TR, 98765"]]
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let controller = segue.destination as! CompanyViewController
+        controller.backDelegate = self
+    }
+    
+    func backButtonPressed(controller: UIViewController) {
+        dismiss(animated: true, completion: nil)
+    }
     
 }
 
