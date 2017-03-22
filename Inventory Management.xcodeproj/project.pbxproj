@@ -22,6 +22,8 @@
 		9D6CA00E1E8323FC00B3C939 /* CompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA00D1E8323FC00B3C939 /* CompanyViewController.swift */; };
 		9D6CA0101E83258900B3C939 /* CompanyItemsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA00F1E83258900B3C939 /* CompanyItemsCustomCell.swift */; };
 		9D6CA0121E832AB000B3C939 /* backButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0111E832AB000B3C939 /* backButtonDelegate.swift */; };
+		9D6CA0141E832C2E00B3C939 /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0131E832C2E00B3C939 /* InventoryViewController.swift */; };
+		9D6CA0161E832C8D00B3C939 /* InventoryItemCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0151E832C8D00B3C939 /* InventoryItemCustomCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		9D6CA00D1E8323FC00B3C939 /* CompanyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyViewController.swift; sourceTree = "<group>"; };
 		9D6CA00F1E83258900B3C939 /* CompanyItemsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyItemsCustomCell.swift; sourceTree = "<group>"; };
 		9D6CA0111E832AB000B3C939 /* backButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = backButtonDelegate.swift; sourceTree = "<group>"; };
+		9D6CA0131E832C2E00B3C939 /* InventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
+		9D6CA0151E832C8D00B3C939 /* InventoryItemCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryItemCustomCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,8 @@
 				9671E9741E820D830057F30A /* AppDelegate.swift */,
 				9671E9761E820D830057F30A /* ViewController.swift */,
 				9671E9781E820D830057F30A /* Main.storyboard */,
+				9D6CA0151E832C8D00B3C939 /* InventoryItemCustomCell.swift */,
+				9D6CA0131E832C2E00B3C939 /* InventoryViewController.swift */,
 				9D6CA00D1E8323FC00B3C939 /* CompanyViewController.swift */,
 				9D6CA00F1E83258900B3C939 /* CompanyItemsCustomCell.swift */,
 				9D6CA0071E83171800B3C939 /* CompaniesCustomCell.swift */,
@@ -294,6 +300,8 @@
 				9671E9771E820D830057F30A /* ViewController.swift in Sources */,
 				9D6CA00E1E8323FC00B3C939 /* CompanyViewController.swift in Sources */,
 				9D6CA00C1E83217700B3C939 /* UsersCustomCell.swift in Sources */,
+				9D6CA0161E832C8D00B3C939 /* InventoryItemCustomCell.swift in Sources */,
+				9D6CA0141E832C2E00B3C939 /* InventoryViewController.swift in Sources */,
 				9D6CA0061E8316B700B3C939 /* CompaniesViewController.swift in Sources */,
 				9671E9751E820D830057F30A /* AppDelegate.swift in Sources */,
 			);
