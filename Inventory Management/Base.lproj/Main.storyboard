@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E183b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -366,7 +366,7 @@
         <!--Users-->
         <scene sceneID="1OW-Gn-8nJ">
             <objects>
-                <viewController id="0Em-8e-BKh" sceneMemberID="viewController">
+                <viewController id="0Em-8e-BKh" customClass="UsersViewController" customModule="Inventory_Management" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LIi-Lh-95A"/>
                         <viewControllerLayoutGuide type="bottom" id="zLB-fb-GIc"/>
@@ -389,7 +389,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="98" id="66l-ny-HII">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UsersCell" rowHeight="98" id="66l-ny-HII" customClass="UsersCustomCell" customModule="Inventory_Management" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="98"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="66l-ny-HII" id="VdG-EG-ygA">
@@ -424,6 +424,9 @@
                                                     <state key="normal" title="Admin button">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="adminButtonPressed:" destination="66l-ny-HII" eventType="touchUpInside" id="JM4-sD-poV"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kt9-Di-CPn">
                                                     <rect key="frame" x="14" y="8" width="59" height="27"/>
@@ -449,6 +452,13 @@
                                                 <constraint firstItem="wDs-6V-l5k" firstAttribute="bottom" secondItem="VdG-EG-ygA" secondAttribute="bottomMargin" id="z8k-Gk-8WU"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="adminButtonLabel" destination="H7G-Np-TKp" id="eCQ-mc-cJi"/>
+                                            <outlet property="adminLabel" destination="i8J-g2-EfU" id="4Fr-nE-1ya"/>
+                                            <outlet property="emailLabel" destination="7C4-2k-hjX" id="uR1-06-0En"/>
+                                            <outlet property="nameLabel" destination="Kt9-Di-CPn" id="dFa-Lu-Vuu"/>
+                                            <outlet property="phoneLabel" destination="wDs-6V-l5k" id="k5W-xI-mvt"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -461,6 +471,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Users" id="CsE-AY-EC1"/>
+                    <connections>
+                        <outlet property="usersTableView" destination="mV3-YI-uvr" id="gin-nH-k6I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igX-Ph-bdX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
