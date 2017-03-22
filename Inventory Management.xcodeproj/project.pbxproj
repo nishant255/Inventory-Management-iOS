@@ -518,6 +518,7 @@
 				9671E99E1E820D830057F30A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9671E99F1E820D830057F30A /* Build configuration list for PBXNativeTarget "Inventory ManagementTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +527,7 @@
 				9671E9A11E820D830057F30A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9671E9A21E820D830057F30A /* Build configuration list for PBXNativeTarget "Inventory ManagementUITests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +536,7 @@
 				9671E9A41E820D830057F30A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

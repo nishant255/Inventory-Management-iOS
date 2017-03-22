@@ -1,7 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E183b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,12 +21,55 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black_bg" translatesAutoresizingMaskIntoConstraints="NO" id="22z-bp-H0a">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="A3E-dy-AUA">
+                                <rect key="frame" x="62" y="233.5" width="250" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="JoV-Fj-zMZ"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="afD-Zx-9u6"/>
+                                    <constraint firstAttribute="height" constant="200" id="vhp-Xb-gYk"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BMN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heP-BI-YgY">
+                                <rect key="frame" x="16" y="441" width="343" height="52"/>
+                                <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="43"/>
+                                <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inventory" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vrm-K9-XL3">
+                                <rect key="frame" x="16" y="501" width="343" height="52"/>
+                                <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="43"/>
+                                <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="heP-BI-YgY" firstAttribute="top" secondItem="A3E-dy-AUA" secondAttribute="bottom" constant="8" id="5ux-LR-EvH"/>
+                            <constraint firstItem="Vrm-K9-XL3" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="JBJ-ll-6yK"/>
+                            <constraint firstItem="A3E-dy-AUA" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="KzF-Rx-iyq"/>
+                            <constraint firstItem="22z-bp-H0a" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Mmr-iR-9cf"/>
+                            <constraint firstItem="Vrm-K9-XL3" firstAttribute="top" secondItem="heP-BI-YgY" secondAttribute="bottom" constant="8" id="SIL-2c-7E1"/>
+                            <constraint firstItem="A3E-dy-AUA" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="TPP-GO-Hpm"/>
+                            <constraint firstItem="Vrm-K9-XL3" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="TdB-nL-Fco"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="22z-bp-H0a" secondAttribute="bottom" id="WBX-X1-gx9"/>
+                            <constraint firstItem="heP-BI-YgY" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="WaV-7e-CqG"/>
+                            <constraint firstItem="heP-BI-YgY" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="iuv-aM-hc1"/>
+                            <constraint firstAttribute="trailing" secondItem="22z-bp-H0a" secondAttribute="trailing" id="lod-hL-0ZS"/>
+                            <constraint firstItem="22z-bp-H0a" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="xji-So-5dr"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Logo" width="228" height="221"/>
+        <image name="black_bg" width="1600" height="2560"/>
+    </resources>
 </document>
