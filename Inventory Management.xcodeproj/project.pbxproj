@@ -24,6 +24,7 @@
 		9D6CA0121E832AB000B3C939 /* backButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0111E832AB000B3C939 /* backButtonDelegate.swift */; };
 		9D6CA0141E832C2E00B3C939 /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0131E832C2E00B3C939 /* InventoryViewController.swift */; };
 		9D6CA0161E832C8D00B3C939 /* InventoryItemCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0151E832C8D00B3C939 /* InventoryItemCustomCell.swift */; };
+		9D6CA0181E83325C00B3C939 /* InventoryHeaderCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0171E83325C00B3C939 /* InventoryHeaderCustomCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		9D6CA0111E832AB000B3C939 /* backButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = backButtonDelegate.swift; sourceTree = "<group>"; };
 		9D6CA0131E832C2E00B3C939 /* InventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		9D6CA0151E832C8D00B3C939 /* InventoryItemCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryItemCustomCell.swift; sourceTree = "<group>"; };
+		9D6CA0171E83325C00B3C939 /* InventoryHeaderCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryHeaderCustomCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		9671E9681E820D820057F30A = {
 			isa = PBXGroup;
 			children = (
+				9D6CA0171E83325C00B3C939 /* InventoryHeaderCustomCell.swift */,
 				9D6CA0111E832AB000B3C939 /* backButtonDelegate.swift */,
 				9671E9731E820D830057F30A /* Inventory Management */,
 				9671E98B1E820D830057F30A /* Inventory ManagementTests */,
@@ -304,6 +307,7 @@
 				9D6CA0141E832C2E00B3C939 /* InventoryViewController.swift in Sources */,
 				9D6CA0061E8316B700B3C939 /* CompaniesViewController.swift in Sources */,
 				9671E9751E820D830057F30A /* AppDelegate.swift in Sources */,
+				9D6CA0181E83325C00B3C939 /* InventoryHeaderCustomCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

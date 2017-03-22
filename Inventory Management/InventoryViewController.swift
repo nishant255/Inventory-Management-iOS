@@ -22,7 +22,7 @@ class InventoryViewController: UIViewController {
     
     @IBOutlet weak var inventoryTableView: UITableView!
     
-    var inventory = [["Tropicana","orange juice","$2","650"]]
+    var inventory = [["Tropicana","orange juice","650","$2"]]
 }
 
 extension InventoryViewController: UITableViewDataSource, UITableViewDelegate {
@@ -33,15 +33,18 @@ extension InventoryViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // dequeue the cell from our storyboard
-        print("making a cell")
-        let cell = tableView.dequeueReusableCell(withIdentifier: "InventoryCell")! as! InventoryItemCustomCell
-        // All UITableViewCell objects have a build in textLabel so set it to the model that is corresponding to the row in array
-        cell.companyLabel.text = inventory[indexPath.row][0]
-        cell.itemLabel.text = inventory[indexPath.row][1]
-        cell.quantityLabel.text = inventory[indexPath.row][2]
-        cell.priceLabel.text = inventory[indexPath.row][3]
-        // return cell so that Table View knows what to draw in each row
-        return cell
-    }
+         print("making a cell")
+            let cell = tableView.dequeueReusableCell(withIdentifier: "InventoryCell")! as! InventoryItemCustomCell
+            // All UITableViewCell objects have a build in textLabel so set it to the model that is corresponding to the row in array
+            print(indexPath.row)
+            cell.companyLabel.text = inventory[indexPath.row][0]
+            cell.itemLabel.text = inventory[indexPath.row][1]
+            cell.quantityLabel.text = "Qty: \(inventory[indexPath.row][2])"
+            cell.priceLabel.text = inventory[indexPath.row][3]
+            // return cell so that Table View knows what to draw in each row
+            return cell
+        }
+       
+    
     
 }

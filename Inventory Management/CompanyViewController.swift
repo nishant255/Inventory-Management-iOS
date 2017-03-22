@@ -43,7 +43,7 @@ extension CompanyViewController: UITableViewDataSource, UITableViewDelegate {
         // All UITableViewCell objects have a build in textLabel so set it to the model that is corresponding to the row in array
         cell.itemLabel.text = companyItems[indexPath.row][0]
         cell.priceLabel.text = companyItems[indexPath.row][1]
-        cell.quantityLabel.text = companyItems[indexPath.row][2]
+        cell.quantityLabel.text = "Qty: \(companyItems[indexPath.row][2])"
         
         // return cell so that Table View knows what to draw in each row
         return cell
