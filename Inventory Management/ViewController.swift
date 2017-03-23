@@ -7,11 +7,38 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController, CancelButtonDelegate {
+    
+    var currentUser: User?
+    
+    func fetchAllItems() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        do {
+            let result = try managedObjectContext.fetch(request)
+            print(result)
+            if result.count > 0 {
+                currentUser = result[0] as! User
+            }
+        } catch {
+            print(error)
+        }
+        
+    }
+    
+    @IBOutlet weak var emailLabel: UITextField!
+    
+    
+    let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchAllItems()
+        
+        if (currentUser != nil) {
+            emailLabel.text = currentUser?.email
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 
