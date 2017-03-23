@@ -55,7 +55,7 @@
                                     <color key="titleColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </state>
                                 <connections>
-                                    <segue destination="68b-38-TmP" kind="presentation" identifier="login" id="Pgf-Bo-fCJ"/>
+                                    <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rlv-eg-Rcv"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGB-cw-erI">
@@ -143,7 +143,9 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="emailLabel" destination="VJc-4P-Ebe" id="vmR-1V-Xad"/>
+                        <outlet property="passwordLabel" destination="KNG-ko-Z1E" id="bxv-sT-xm6"/>
                         <segue destination="K7a-zw-mJG" kind="presentation" identifier="register" id="Bmj-cO-sRn"/>
+                        <segue destination="68b-38-TmP" kind="show" identifier="login" id="IdO-fH-BIZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

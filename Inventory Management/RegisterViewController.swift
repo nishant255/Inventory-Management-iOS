@@ -120,6 +120,7 @@ class RegisterViewController: UIViewController {
                                 let newUser = NSEntityDescription.insertNewObject(forEntityName: "User", into: self.managedObjectContext) as! User
                                 newUser.email = email
                                 newUser.isLoggedIn = true
+                                newUser.admin = Int32(admin)
                                 do {
                                     try self.managedObjectContext.save()
                                     print("register successful")
@@ -130,6 +131,7 @@ class RegisterViewController: UIViewController {
                                 var oldUser = self.fetchUser()
                                 oldUser.email = email
                                 oldUser.isLoggedIn = true
+                                oldUser.admin = Int32(admin)
                                 do {
                                     try self.managedObjectContext.save()
                                     print("register successful")
