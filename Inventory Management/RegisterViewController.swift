@@ -57,7 +57,7 @@ class RegisterViewController: UIViewController {
             let url = NSURL(string: "\(host)user")!
             let request = NSMutableURLRequest(url: url as URL)
             request.httpMethod = "POST"
-            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpBody = jsonData
             
             let task = URLSession.shared.dataTask(with: request as URLRequest){ data,response,error in
@@ -68,7 +68,9 @@ class RegisterViewController: UIViewController {
                 
                 do {
                     let jsonData = try? JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
-                    print(jsonData)
+
+                    print(String(describing: jsonData))
+//                    print(jsonData.`)
 //                    if let parseJSON = jsonData {
 //                        let resultValue:String = parseJSON["success"] as! String;
 //                        print("result: \(resultValue)")
