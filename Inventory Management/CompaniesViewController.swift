@@ -12,7 +12,9 @@ import UIKit
 class CompaniesViewController: UIViewController, BackButtonDelegate {
     
 
-    
+    func backButtonPressed(controller:UIViewController) {
+        dismiss(animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,23 +69,27 @@ class CompaniesViewController: UIViewController, BackButtonDelegate {
         
         
     }
+    
+    
     @IBOutlet weak var companiesTableView: UITableView!
 
     var companies = [[String]]()
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let controller = segue.destination as! CompanyViewController
-        controller.backDelegate = self
-        if sender is String {
-            controller.companyId = sender as! String?
+            print("identifier is =======>",segue.identifier)
+        if segue.identifier == "logout" {
+            return
+        }
+    
+            let controller = segue.destination as! CompanyViewController
+            controller.backDelegate = self
+            if sender is String {
+                controller.companyId = sender as! String?
+        
         }
     }
     
-    
-    func backButtonPressed(controller: UIViewController) {
-        dismiss(animated: true, completion: nil)
-    }
-    
+        
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         print("indexPath is ",indexPath)
         let id = companies[indexPath.row][4]
@@ -95,6 +101,8 @@ class CompaniesViewController: UIViewController, BackButtonDelegate {
     
 }
 
+
+    
 extension CompaniesViewController: UITableViewDataSource, UITableViewDelegate {
  
     
