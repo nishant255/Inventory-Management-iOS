@@ -15,6 +15,9 @@
 		9671E9821E820D830057F30A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9671E9801E820D830057F30A /* LaunchScreen.storyboard */; };
 		9671E98D1E820D830057F30A /* Inventory_ManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9671E98C1E820D830057F30A /* Inventory_ManagementTests.swift */; };
 		9671E9981E820D830057F30A /* Inventory_ManagementUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9671E9971E820D830057F30A /* Inventory_ManagementUITests.swift */; };
+		9671E9A61E83187E0057F30A /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9671E9A51E83187E0057F30A /* DashboardViewController.swift */; };
+		96F1EC321E8360200004FF07 /* IncomingShipmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F1EC311E8360200004FF07 /* IncomingShipmentTableViewCell.swift */; };
+		96F1EC341E83603C0004FF07 /* PendingOrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F1EC331E83603C0004FF07 /* PendingOrdersTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		9671E9931E820D830057F30A /* Inventory ManagementUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Inventory ManagementUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9671E9971E820D830057F30A /* Inventory_ManagementUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory_ManagementUITests.swift; sourceTree = "<group>"; };
 		9671E9991E820D830057F30A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9671E9A51E83187E0057F30A /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		96F1EC311E8360200004FF07 /* IncomingShipmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingShipmentTableViewCell.swift; sourceTree = "<group>"; };
+		96F1EC331E83603C0004FF07 /* PendingOrdersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingOrdersTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,9 @@
 				9671E9741E820D830057F30A /* AppDelegate.swift */,
 				9671E9761E820D830057F30A /* ViewController.swift */,
 				9671E9781E820D830057F30A /* Main.storyboard */,
+				9671E9A51E83187E0057F30A /* DashboardViewController.swift */,
+				96F1EC311E8360200004FF07 /* IncomingShipmentTableViewCell.swift */,
+				96F1EC331E83603C0004FF07 /* PendingOrdersTableViewCell.swift */,
 				9671E97E1E820D830057F30A /* Assets.xcassets */,
 				9671E9801E820D830057F30A /* LaunchScreen.storyboard */,
 				9671E9831E820D830057F30A /* Info.plist */,
@@ -265,9 +274,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96F1EC321E8360200004FF07 /* IncomingShipmentTableViewCell.swift in Sources */,
 				9671E97D1E820D830057F30A /* Inventory_Management.xcdatamodeld in Sources */,
+				96F1EC341E83603C0004FF07 /* PendingOrdersTableViewCell.swift in Sources */,
 				9671E9771E820D830057F30A /* ViewController.swift in Sources */,
 				9671E9751E820D830057F30A /* AppDelegate.swift in Sources */,
+				9671E9A61E83187E0057F30A /* DashboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
