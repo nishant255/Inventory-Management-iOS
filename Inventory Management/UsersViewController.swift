@@ -19,6 +19,58 @@ class UsersViewController: UIViewController {
         usersTableView.dataSource = self
         usersTableView.delegate = self
         print("usersviewcontroller loaded")
+        
+        let host = "http://localhost:8000/"
+        
+        
+        let url = NSURL(string: host+"users")
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: url! as URL, completionHandler: {
+            data, response, error in
+            do {
+                print("in the do")
+                
+                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray {
+                    
+                    
+                    print("result is =====>",jsonResult)
+                    
+                    print(jsonResult.count)
+                    for var i in 0..<jsonResult.count {
+                        let user = jsonResult[i] as! NSDictionary
+                        var name = ""
+                        name += "\(user["first_name"]!) \(user["last_name"]!)"
+                        let email = user["email"] as! String
+                        let phone = String(describing: user["phone_number"]!)
+                        var adminNum = user["admin"] as! Int
+                        print("admin num is ",adminNum)
+                        var admin = ""
+                        if adminNum == 0 {
+                            admin = "Super Admin"
+                        } else if adminNum == 1 {
+                            admin = "Admin"
+                        } else {
+                            admin = "User"
+                        }
+                        let itemArray = [name,email,phone,admin]
+                        self.users.append(itemArray)
+                        DispatchQueue.main.async {
+                            self.usersTableView.reloadData()
+                        }
+                    }
+                }
+            } catch {
+                print("in the catch")
+                print(error)
+            }
+        })
+        task.resume()
+        print("I happen before the response!")
+        
+        
+        
+        
     }
 
     @IBOutlet weak var usersTableView: UITableView!
