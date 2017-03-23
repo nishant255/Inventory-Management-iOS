@@ -14,7 +14,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var pendingOrdersview: UITableView!
     
     let urlHost = "http://127.0.0.1:8000/"
-    var orders = [1,2,3,4]
+    var orders = [NSDictionary]()
     var products = [String]()
     
     override func viewDidLoad() {
@@ -25,31 +25,52 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         pendingOrdersview.dataSource = self
         pendingOrdersview.delegate = self
         let url = URL(string: urlHost + "products")
+        let incomingShipmentsURL = URL(string: urlHost + "orders/notReceived")
         let session = URLSession.shared
-        let task = session.dataTask(with: url!, completionHandler: {
+        let getProducts = session.dataTask(with: url!, completionHandler: {
             
             data, response, error in
             // data -> JSON data, response -> headers and other meta-information, error-> if one occurred
             // "do-try-catch" blocks execute a try statement and then use the catch statement for errors
             do {
-                print("ReQue")
                 if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray {
-                    print(jsonResult)
-//                    if let results = jsonResult["results"] as? NSArray {
-//                        print(cd .)
-//                        for product in results {
-//                            let productDict = product as! NSDictionary
-//                            print(productDict)
-////                            self.products.append(productDict["name"])
-//                        }
-//                    }
+                        for product in jsonResult {
+                            let productDict = product as! NSDictionary
+                            self.products.append(productDict.value(forKey: "name") as! String)
+                    }
+                    DispatchQueue.main.async {
+                        self.pendingOrdersview.reloadData()
+                    }
                 }
             } catch {
                 print(error)
             }
             
         })
-        task.resume()
+        getProducts.resume()
+        let getPendingOrders = session.dataTask(with: incomingShipmentsURL!, completionHandler: {
+            
+            data, response, error in
+            // data -> JSON data, response -> headers and other meta-information, error-> if one occurred
+            // "do-try-catch" blocks execute a try statement and then use the catch statement for errors
+            do {
+                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray {
+                    for shipment in jsonResult {
+                        let shipDict = shipment as! NSDictionary
+                        print(shipDict)
+                        self.orders.append(shipDict)
+                    }
+                    DispatchQueue.main.async {
+                        self.incomingShipmentsTableView.reloadData()
+                    }
+                }
+            } catch {
+                print(error)
+            }
+            
+        })
+        
+        getPendingOrders.resume()
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,12 +94,26 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if tableView == self.incomingShipmentsTableView {
-            let cell = incomingShipmentsTableView.dequeueReusableCell(withIdentifier: "shipmentCell", for: indexPath)
+            let cell = incomingShipmentsTableView.dequeueReusableCell(withIdentifier: "shipmentCell", for: indexPath) as! IncomingShipmentTableViewCell
+            let reciepient = orders[indexPath.row].value(forKey: "recipient") as! NSDictionary
+            let data_recipient = reciepient.value(forKey: "data") as! NSDictionary
+            cell.emailLabel.text = data_recipient.value(forKey: "email") as? String
+            let orderQuantity = String(describing: orders[indexPath.row].value(forKey: "numProducts")!)
+            cell.quantityLabel.text = orderQuantity 
+            let dateString = String(describing: orders[indexPath.row].value(forKey: "createdAt")!)
+            let dateFormatter = DateFormatter()
+            let splitDate = dateString.components(separatedBy: "T")
+            if splitDate.count > 0 {
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                let orderDate = dateFormatter.date(from: splitDate[0])
+                cell.dateLabel.text = dateFormatter.string(from: orderDate!)
+            }
             return cell
         }
         
         
-        let cell = pendingOrdersview.dequeueReusableCell(withIdentifier: "pendingOrderCell", for: indexPath)
+        let cell = pendingOrdersview.dequeueReusableCell(withIdentifier: "pendingOrderCell", for: indexPath) as! PendingOrdersTableViewCell
+        cell.productName.text = products[indexPath.row]
         return cell
         
     }
