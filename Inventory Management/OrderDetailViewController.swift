@@ -1,27 +1,30 @@
 //
-//  ViewController.swift
+//  OrderDetailViewController.swift
 //  Inventory Management
 //
-//  Created by Nishant Patel on 3/21/17.
+//  Created by Akash Jagannathan on 3/22/17.
 //  Copyright © 2017 Nishant Patel. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class OrderDetailViewController: UIViewController{
+    
+    weak var delegate: OrderDetailViewControllerDelegate?
+    
+    @IBAction func BackButtonPressed(_ sender: UIBarButtonItem) {
+        delegate?.orderDetailViewController(by: self, didPressBackButton: sender)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-
-
 }
-
