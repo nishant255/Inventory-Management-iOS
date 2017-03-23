@@ -8,13 +8,52 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class RegisterViewController: UIViewController {
+    
+    
+    func checkCoreDataUser() -> Bool{
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        do {
+            let result = try managedObjectContext.fetch(request)
+            print(result)
+            if result.count > 0 {
+                return true
+            }
+        } catch {
+            print(error)
+        }
+        return false
+    }
+    
+    func fetchUser() -> User{
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        var x: User?
+        do {
+            let result = try managedObjectContext.fetch(request)
+            print(result)
+            if result.count > 0 {
+                x = result[0] as! User
+            }
+        } catch {
+            print(error)
+        }
+        return x!
+    }
+
+
+    
+    var currentUser: User?
+
+    
+    let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var cancelDelegate: CancelButtonDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         firstNameInput.placeholder = "First Name"
         lastNameInput.placeholder = "Last Name"
         emailInput.placeholder = "Email"
@@ -67,16 +106,47 @@ class RegisterViewController: UIViewController {
                 }
                 
                 do {
-                    let jsonData = try? JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
+                    if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
+                        print(jsonResult)
+                        let success = jsonResult["success"] as! Bool
+                        if success == true {
+                            print("registered succesfully")
+                            let user = jsonResult["user"] as! NSDictionary
+                            let email = user["email"] as! String
+                            let admin = user["admin"] as! Int
+                            let fetchResult = self.checkCoreDataUser()
+                            
+                            if fetchResult == false {
+                                let newUser = NSEntityDescription.insertNewObject(forEntityName: "User", into: self.managedObjectContext) as! User
+                                newUser.email = email
+                                newUser.isLoggedIn = true
+                                newUser.admin = Int32(admin)
+                                do {
+                                    try self.managedObjectContext.save()
+                                    print("register successful")
+                                } catch {
+                                    print(error)
+                                }
+                            } else if fetchResult == true {
+                                var oldUser = self.fetchUser()
+                                oldUser.email = email
+                                oldUser.isLoggedIn = true
+                                oldUser.admin = Int32(admin)
+                                do {
+                                    try self.managedObjectContext.save()
+                                    print("register successful")
+                                } catch {
+                                    print(error)
+                                }
+                            
+                        } else {
+                            print("registration not successfull \(jsonResult["error_messages"])")
+                        }
+                    }
 
                     print(String(describing: jsonData))
-//                    print(jsonData.`)
-//                    if let parseJSON = jsonData {
-//                        let resultValue:String = parseJSON["success"] as! String;
-//                        print("result: \(resultValue)")
-//                        print(parseJSON)
-//                    }
-                } catch let error as NSError {
+
+                    }} catch let error as NSError {
                     print(error)
                 }        
             }          

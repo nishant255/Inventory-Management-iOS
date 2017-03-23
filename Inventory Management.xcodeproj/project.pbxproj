@@ -23,6 +23,8 @@
 		9671E9A61E83187E0057F30A /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9671E9A51E83187E0057F30A /* DashboardViewController.swift */; };
 		96F1EC321E8360200004FF07 /* IncomingShipmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F1EC311E8360200004FF07 /* IncomingShipmentTableViewCell.swift */; };
 		96F1EC341E83603C0004FF07 /* PendingOrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F1EC331E83603C0004FF07 /* PendingOrdersTableViewCell.swift */; };
+		9D06ECA11E83983A005D5CDC /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D06EC9F1E83983A005D5CDC /* User+CoreDataClass.swift */; };
+		9D06ECA21E83983A005D5CDC /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D06ECA01E83983A005D5CDC /* User+CoreDataProperties.swift */; };
 		9D1A7EFC1E83796600AA35B9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1A7EFB1E83796600AA35B9 /* RegisterViewController.swift */; };
 		9D1A7EFE1E837ACC00AA35B9 /* CancelButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1A7EFD1E837ACC00AA35B9 /* CancelButtonDelegate.swift */; };
 		9D6CA0061E8316B700B3C939 /* CompaniesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0051E8316B700B3C939 /* CompaniesViewController.swift */; };
@@ -77,6 +79,8 @@
 		9671E9A51E83187E0057F30A /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		96F1EC311E8360200004FF07 /* IncomingShipmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingShipmentTableViewCell.swift; sourceTree = "<group>"; };
 		96F1EC331E83603C0004FF07 /* PendingOrdersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingOrdersTableViewCell.swift; sourceTree = "<group>"; };
+		9D06EC9F1E83983A005D5CDC /* User+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		9D06ECA01E83983A005D5CDC /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9D1A7EFB1E83796600AA35B9 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		9D1A7EFD1E837ACC00AA35B9 /* CancelButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelButtonDelegate.swift; sourceTree = "<group>"; };
 		9D6CA0051E8316B700B3C939 /* CompaniesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompaniesViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +123,8 @@
 		9671E9681E820D820057F30A = {
 			isa = PBXGroup;
 			children = (
+				9D06EC9F1E83983A005D5CDC /* User+CoreDataClass.swift */,
+				9D06ECA01E83983A005D5CDC /* User+CoreDataProperties.swift */,
 				9D6CA0171E83325C00B3C939 /* InventoryHeaderCustomCell.swift */,
 				9671E9731E820D830057F30A /* Inventory Management */,
 				9671E98B1E820D830057F30A /* Inventory ManagementTests */,
@@ -256,7 +262,7 @@
 				TargetAttributes = {
 					9671E9701E820D830057F30A = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 3P4GJLRRTB;
+						DevelopmentTeam = 7ZCT66FZW7;
 						ProvisioningStyle = Automatic;
 					};
 					9671E9871E820D830057F30A = {
@@ -333,12 +339,14 @@
 				9D6CA0081E83171800B3C939 /* CompaniesCustomCell.swift in Sources */,
 				9D6CA0101E83258900B3C939 /* CompanyItemsCustomCell.swift in Sources */,
 				9D6CA00A1E83211100B3C939 /* UsersViewController.swift in Sources */,
+				9D06ECA21E83983A005D5CDC /* User+CoreDataProperties.swift in Sources */,
 				9D6CA0121E832AB000B3C939 /* backButtonDelegate.swift in Sources */,
 				96F1EC341E83603C0004FF07 /* PendingOrdersTableViewCell.swift in Sources */,
 				9671E9771E820D830057F30A /* ViewController.swift in Sources */,
 				9D1A7EFE1E837ACC00AA35B9 /* CancelButtonDelegate.swift in Sources */,
 				9D6CA00E1E8323FC00B3C939 /* CompanyViewController.swift in Sources */,
 				9D6CA00C1E83217700B3C939 /* UsersCustomCell.swift in Sources */,
+				9D06ECA11E83983A005D5CDC /* User+CoreDataClass.swift in Sources */,
 				9D6CA0161E832C8D00B3C939 /* InventoryItemCustomCell.swift in Sources */,
 				9D6CA0141E832C2E00B3C939 /* InventoryViewController.swift in Sources */,
 				9D6CA0061E8316B700B3C939 /* CompaniesViewController.swift in Sources */,
@@ -499,7 +507,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3P4GJLRRTB;
+				DEVELOPMENT_TEAM = 7ZCT66FZW7;
 				INFOPLIST_FILE = "Inventory Management/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nishantpatel.Inventory-Management";
@@ -512,7 +520,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3P4GJLRRTB;
+				DEVELOPMENT_TEAM = 7ZCT66FZW7;
 				INFOPLIST_FILE = "Inventory Management/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nishantpatel.Inventory-Management";
