@@ -18,11 +18,54 @@ class InventoryViewController: UIViewController {
         inventoryTableView.dataSource = self
         inventoryTableView.delegate = self
         
+        let host = "http://localhost:8000/"
+        
+        
+        let url = NSURL(string: host+"products/withSellPrice")
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: url! as URL, completionHandler: {
+            data, response, error in
+            do {
+                print("in the do")
+                
+                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray {
+                    
+                    
+                    print("result is =====>",jsonResult)
+                    
+                    print(jsonResult.count)
+                    for var i in 0..<jsonResult.count {
+                        var itemArray = [String]()
+                        let item = jsonResult[i] as! NSDictionary
+                        let company = item["_company"] as! NSDictionary
+                        let companyName = company["name"] as! String
+                        let itemName = item["name"] as! String
+                        let quantity = String(describing: item["quantity"]!)
+                        let sellPrice = String(describing: item["sellPrice"]!)
+                        itemArray.append(companyName)
+                        itemArray.append(itemName)
+                        itemArray.append(quantity)
+                        itemArray.append(sellPrice)
+                        self.inventory.append(itemArray)
+                        DispatchQueue.main.async {
+                            self.inventoryTableView.reloadData()
+                        }
+                    }
+                }
+            } catch {
+                print("in the catch")
+                print(error)
+            }
+        })
+        task.resume()
+        print("I happen before the response!")
+        
     }
     
     @IBOutlet weak var inventoryTableView: UITableView!
     
-    var inventory = [["Tropicana","orange juice","650","$2"]]
+    var inventory = [["Tropicana","orange juice","650","2"]]
 }
 
 extension InventoryViewController: UITableViewDataSource, UITableViewDelegate {
@@ -32,16 +75,11 @@ extension InventoryViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // dequeue the cell from our storyboard
-         print("making a cell")
             let cell = tableView.dequeueReusableCell(withIdentifier: "InventoryCell")! as! InventoryItemCustomCell
-            // All UITableViewCell objects have a build in textLabel so set it to the model that is corresponding to the row in array
-            print(indexPath.row)
             cell.companyLabel.text = inventory[indexPath.row][0]
             cell.itemLabel.text = inventory[indexPath.row][1]
             cell.quantityLabel.text = "Qty: \(inventory[indexPath.row][2])"
-            cell.priceLabel.text = inventory[indexPath.row][3]
-            // return cell so that Table View knows what to draw in each row
+            cell.priceLabel.text = "$\(inventory[indexPath.row][3])"
             return cell
         }
        
