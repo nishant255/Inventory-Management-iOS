@@ -19,7 +19,7 @@ class ViewController: UIViewController, CancelButtonDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+   
     @IBAction func registerButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "register", sender: Any.self)
     }
@@ -30,6 +30,7 @@ class ViewController: UIViewController, CancelButtonDelegate {
         controller.cancelDelegate = self
         }
     }
+
 
     func cancelButtonPressed(controller: UIViewController) {
         dismiss(animated: true, completion: nil)
