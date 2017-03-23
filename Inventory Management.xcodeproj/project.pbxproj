@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38688FD21E832296007558C7 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38688FD11E832296007558C7 /* OrdersViewController.swift */; };
+		38688FD41E83283A007558C7 /* PendingOrderCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38688FD31E83283A007558C7 /* PendingOrderCustomCell.swift */; };
+		38688FD81E833780007558C7 /* ReceivedOrderCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38688FD71E833780007558C7 /* ReceivedOrderCustomCell.swift */; };
+		38688FDA1E836B80007558C7 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38688FD91E836B80007558C7 /* OrderDetailViewController.swift */; };
+		38688FDC1E836D89007558C7 /* OrderDetailViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38688FDB1E836D89007558C7 /* OrderDetailViewControllerDelegate.swift */; };
 		9671E9751E820D830057F30A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9671E9741E820D830057F30A /* AppDelegate.swift */; };
 		9671E9771E820D830057F30A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9671E9761E820D830057F30A /* ViewController.swift */; };
 		9671E97A1E820D830057F30A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9671E9781E820D830057F30A /* Main.storyboard */; };
@@ -15,6 +20,23 @@
 		9671E9821E820D830057F30A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9671E9801E820D830057F30A /* LaunchScreen.storyboard */; };
 		9671E98D1E820D830057F30A /* Inventory_ManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9671E98C1E820D830057F30A /* Inventory_ManagementTests.swift */; };
 		9671E9981E820D830057F30A /* Inventory_ManagementUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9671E9971E820D830057F30A /* Inventory_ManagementUITests.swift */; };
+		9671E9A61E83187E0057F30A /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9671E9A51E83187E0057F30A /* DashboardViewController.swift */; };
+		96F1EC321E8360200004FF07 /* IncomingShipmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F1EC311E8360200004FF07 /* IncomingShipmentTableViewCell.swift */; };
+		96F1EC341E83603C0004FF07 /* PendingOrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F1EC331E83603C0004FF07 /* PendingOrdersTableViewCell.swift */; };
+		9D06ECA11E83983A005D5CDC /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D06EC9F1E83983A005D5CDC /* User+CoreDataClass.swift */; };
+		9D06ECA21E83983A005D5CDC /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D06ECA01E83983A005D5CDC /* User+CoreDataProperties.swift */; };
+		9D1A7EFC1E83796600AA35B9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1A7EFB1E83796600AA35B9 /* RegisterViewController.swift */; };
+		9D1A7EFE1E837ACC00AA35B9 /* CancelButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1A7EFD1E837ACC00AA35B9 /* CancelButtonDelegate.swift */; };
+		9D6CA0061E8316B700B3C939 /* CompaniesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0051E8316B700B3C939 /* CompaniesViewController.swift */; };
+		9D6CA0081E83171800B3C939 /* CompaniesCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0071E83171800B3C939 /* CompaniesCustomCell.swift */; };
+		9D6CA00A1E83211100B3C939 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0091E83211100B3C939 /* UsersViewController.swift */; };
+		9D6CA00C1E83217700B3C939 /* UsersCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA00B1E83217700B3C939 /* UsersCustomCell.swift */; };
+		9D6CA00E1E8323FC00B3C939 /* CompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA00D1E8323FC00B3C939 /* CompanyViewController.swift */; };
+		9D6CA0101E83258900B3C939 /* CompanyItemsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA00F1E83258900B3C939 /* CompanyItemsCustomCell.swift */; };
+		9D6CA0121E832AB000B3C939 /* backButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0111E832AB000B3C939 /* backButtonDelegate.swift */; };
+		9D6CA0141E832C2E00B3C939 /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0131E832C2E00B3C939 /* InventoryViewController.swift */; };
+		9D6CA0161E832C8D00B3C939 /* InventoryItemCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0151E832C8D00B3C939 /* InventoryItemCustomCell.swift */; };
+		9D6CA0181E83325C00B3C939 /* InventoryHeaderCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0171E83325C00B3C939 /* InventoryHeaderCustomCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +57,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		38688FD11E832296007558C7 /* OrdersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
+		38688FD31E83283A007558C7 /* PendingOrderCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingOrderCustomCell.swift; sourceTree = "<group>"; };
+		38688FD71E833780007558C7 /* ReceivedOrderCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivedOrderCustomCell.swift; sourceTree = "<group>"; };
+		38688FD91E836B80007558C7 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
+		38688FDB1E836D89007558C7 /* OrderDetailViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailViewControllerDelegate.swift; sourceTree = "<group>"; };
 		9671E9711E820D830057F30A /* Inventory Management.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Inventory Management.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9671E9741E820D830057F30A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9671E9761E820D830057F30A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +76,23 @@
 		9671E9931E820D830057F30A /* Inventory ManagementUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Inventory ManagementUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9671E9971E820D830057F30A /* Inventory_ManagementUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory_ManagementUITests.swift; sourceTree = "<group>"; };
 		9671E9991E820D830057F30A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9671E9A51E83187E0057F30A /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		96F1EC311E8360200004FF07 /* IncomingShipmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingShipmentTableViewCell.swift; sourceTree = "<group>"; };
+		96F1EC331E83603C0004FF07 /* PendingOrdersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingOrdersTableViewCell.swift; sourceTree = "<group>"; };
+		9D06EC9F1E83983A005D5CDC /* User+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		9D06ECA01E83983A005D5CDC /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9D1A7EFB1E83796600AA35B9 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		9D1A7EFD1E837ACC00AA35B9 /* CancelButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelButtonDelegate.swift; sourceTree = "<group>"; };
+		9D6CA0051E8316B700B3C939 /* CompaniesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompaniesViewController.swift; sourceTree = "<group>"; };
+		9D6CA0071E83171800B3C939 /* CompaniesCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompaniesCustomCell.swift; sourceTree = "<group>"; };
+		9D6CA0091E83211100B3C939 /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		9D6CA00B1E83217700B3C939 /* UsersCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersCustomCell.swift; sourceTree = "<group>"; };
+		9D6CA00D1E8323FC00B3C939 /* CompanyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyViewController.swift; sourceTree = "<group>"; };
+		9D6CA00F1E83258900B3C939 /* CompanyItemsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyItemsCustomCell.swift; sourceTree = "<group>"; };
+		9D6CA0111E832AB000B3C939 /* backButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = backButtonDelegate.swift; path = ../backButtonDelegate.swift; sourceTree = "<group>"; };
+		9D6CA0131E832C2E00B3C939 /* InventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
+		9D6CA0151E832C8D00B3C939 /* InventoryItemCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryItemCustomCell.swift; sourceTree = "<group>"; };
+		9D6CA0171E83325C00B3C939 /* InventoryHeaderCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryHeaderCustomCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +123,9 @@
 		9671E9681E820D820057F30A = {
 			isa = PBXGroup;
 			children = (
+				9D06EC9F1E83983A005D5CDC /* User+CoreDataClass.swift */,
+				9D06ECA01E83983A005D5CDC /* User+CoreDataProperties.swift */,
+				9D6CA0171E83325C00B3C939 /* InventoryHeaderCustomCell.swift */,
 				9671E9731E820D830057F30A /* Inventory Management */,
 				9671E98B1E820D830057F30A /* Inventory ManagementTests */,
 				9671E9961E820D830057F30A /* Inventory ManagementUITests */,
@@ -99,9 +146,28 @@
 		9671E9731E820D830057F30A /* Inventory Management */ = {
 			isa = PBXGroup;
 			children = (
+				9D6CA0111E832AB000B3C939 /* backButtonDelegate.swift */,
 				9671E9741E820D830057F30A /* AppDelegate.swift */,
 				9671E9761E820D830057F30A /* ViewController.swift */,
+				38688FD71E833780007558C7 /* ReceivedOrderCustomCell.swift */,
 				9671E9781E820D830057F30A /* Main.storyboard */,
+				9D1A7EFB1E83796600AA35B9 /* RegisterViewController.swift */,
+				9D1A7EFD1E837ACC00AA35B9 /* CancelButtonDelegate.swift */,
+				38688FDB1E836D89007558C7 /* OrderDetailViewControllerDelegate.swift */,
+				38688FD31E83283A007558C7 /* PendingOrderCustomCell.swift */,
+				38688FD11E832296007558C7 /* OrdersViewController.swift */,
+				38688FD91E836B80007558C7 /* OrderDetailViewController.swift */,
+				9671E9A51E83187E0057F30A /* DashboardViewController.swift */,
+				96F1EC311E8360200004FF07 /* IncomingShipmentTableViewCell.swift */,
+				96F1EC331E83603C0004FF07 /* PendingOrdersTableViewCell.swift */,
+				9D6CA0151E832C8D00B3C939 /* InventoryItemCustomCell.swift */,
+				9D6CA0131E832C2E00B3C939 /* InventoryViewController.swift */,
+				9D6CA00D1E8323FC00B3C939 /* CompanyViewController.swift */,
+				9D6CA00F1E83258900B3C939 /* CompanyItemsCustomCell.swift */,
+				9D6CA0071E83171800B3C939 /* CompaniesCustomCell.swift */,
+				9D6CA0051E8316B700B3C939 /* CompaniesViewController.swift */,
+				9D6CA0091E83211100B3C939 /* UsersViewController.swift */,
+				9D6CA00B1E83217700B3C939 /* UsersCustomCell.swift */,
 				9671E97E1E820D830057F30A /* Assets.xcassets */,
 				9671E9801E820D830057F30A /* LaunchScreen.storyboard */,
 				9671E9831E820D830057F30A /* Info.plist */,
@@ -265,9 +331,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38688FDA1E836B80007558C7 /* OrderDetailViewController.swift in Sources */,
+				38688FD81E833780007558C7 /* ReceivedOrderCustomCell.swift in Sources */,
 				9671E97D1E820D830057F30A /* Inventory_Management.xcdatamodeld in Sources */,
+				38688FDC1E836D89007558C7 /* OrderDetailViewControllerDelegate.swift in Sources */,
+				96F1EC321E8360200004FF07 /* IncomingShipmentTableViewCell.swift in Sources */,
+				9D6CA0081E83171800B3C939 /* CompaniesCustomCell.swift in Sources */,
+				9D6CA0101E83258900B3C939 /* CompanyItemsCustomCell.swift in Sources */,
+				9D6CA00A1E83211100B3C939 /* UsersViewController.swift in Sources */,
+				9D06ECA21E83983A005D5CDC /* User+CoreDataProperties.swift in Sources */,
+				9D6CA0121E832AB000B3C939 /* backButtonDelegate.swift in Sources */,
+				96F1EC341E83603C0004FF07 /* PendingOrdersTableViewCell.swift in Sources */,
 				9671E9771E820D830057F30A /* ViewController.swift in Sources */,
+				9D1A7EFE1E837ACC00AA35B9 /* CancelButtonDelegate.swift in Sources */,
+				9D6CA00E1E8323FC00B3C939 /* CompanyViewController.swift in Sources */,
+				9D6CA00C1E83217700B3C939 /* UsersCustomCell.swift in Sources */,
+				9D06ECA11E83983A005D5CDC /* User+CoreDataClass.swift in Sources */,
+				9D6CA0161E832C8D00B3C939 /* InventoryItemCustomCell.swift in Sources */,
+				9D6CA0141E832C2E00B3C939 /* InventoryViewController.swift in Sources */,
+				9D6CA0061E8316B700B3C939 /* CompaniesViewController.swift in Sources */,
+				9D1A7EFC1E83796600AA35B9 /* RegisterViewController.swift in Sources */,
 				9671E9751E820D830057F30A /* AppDelegate.swift in Sources */,
+				38688FD21E832296007558C7 /* OrdersViewController.swift in Sources */,
+				38688FD41E83283A007558C7 /* PendingOrderCustomCell.swift in Sources */,
+				9671E9A61E83187E0057F30A /* DashboardViewController.swift in Sources */,
+				9D6CA0181E83325C00B3C939 /* InventoryHeaderCustomCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
