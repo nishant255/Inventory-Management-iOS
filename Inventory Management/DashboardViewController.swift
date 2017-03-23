@@ -13,7 +13,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var incomingShipmentsTableView: UITableView!
     @IBOutlet weak var pendingOrdersview: UITableView!
     
-    let urlHost = "http://127.0.0.1:8000/"
+    let urlHost = "http://54.183.235.45/"
     var orders = [NSDictionary]()
     var products = [String]()
     
