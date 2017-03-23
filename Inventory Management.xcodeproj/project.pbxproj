@@ -262,7 +262,7 @@
 				TargetAttributes = {
 					9671E9701E820D830057F30A = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 7ZCT66FZW7;
+						DevelopmentTeam = 3P4GJLRRTB;
 						ProvisioningStyle = Automatic;
 					};
 					9671E9871E820D830057F30A = {
@@ -507,7 +507,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7ZCT66FZW7;
+				DEVELOPMENT_TEAM = 3P4GJLRRTB;
 				INFOPLIST_FILE = "Inventory Management/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nishantpatel.Inventory-Management";
@@ -520,7 +520,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7ZCT66FZW7;
+				DEVELOPMENT_TEAM = 3P4GJLRRTB;
 				INFOPLIST_FILE = "Inventory Management/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nishantpatel.Inventory-Management";

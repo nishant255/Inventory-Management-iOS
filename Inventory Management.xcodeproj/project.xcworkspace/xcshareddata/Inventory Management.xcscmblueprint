@@ -10,7 +10,7 @@
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "60672C8C-E976-401D-822E-184985E35B76",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "04450382916CB39610A34F5C8F34E33982AD44EB" : "..\/..",
-    "55AB5538052A472865D8232DBEC4D653F295E209" : "Inventory-Management-iOS\/"
+    "55AB5538052A472865D8232DBEC4D653F295E209" : "Inventory_Management\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "Inventory Management",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
