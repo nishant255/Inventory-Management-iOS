@@ -69,20 +69,35 @@ class CompaniesViewController: UIViewController, BackButtonDelegate {
     }
     @IBOutlet weak var companiesTableView: UITableView!
 
-    var companies = [["Tropicana","Tropicana@OJ.com","(555-555-5555)","123 Tropicana lane, Tropicana City TR, 98765"]]
+    var companies = [[String]]()
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let controller = segue.destination as! CompanyViewController
         controller.backDelegate = self
+        if sender is String {
+            controller.companyId = sender as! String?
+        }
     }
+    
     
     func backButtonPressed(controller: UIViewController) {
         dismiss(animated: true, completion: nil)
     }
     
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        print("indexPath is ",indexPath)
+        let id = companies[indexPath.row][4]
+        performSegue(withIdentifier: "viewCompanyItems", sender: id)
+    }
+    
+
+
+    
 }
 
 extension CompaniesViewController: UITableViewDataSource, UITableViewDelegate {
+ 
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return companies.count
     }
@@ -99,5 +114,6 @@ extension CompaniesViewController: UITableViewDataSource, UITableViewDelegate {
         // return cell so that Table View knows what to draw in each row
         return cell
     }
+
 
 }

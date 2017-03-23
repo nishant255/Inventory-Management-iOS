@@ -11,13 +11,62 @@ import UIKit
 
 class CompanyViewController: UIViewController {
     
-    var companyItems = [["go to the moon","$100","500"],["CheeseBurgers","$10","5000"]]
+    var companyItems = [[String]]()
     var backDelegate: BackButtonDelegate?
+    var companyId: String?
+    @IBOutlet weak var navBar: UINavigationBar!
     
+    @IBOutlet weak var titleLabel: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         companyTableView.dataSource = self
         companyTableView.delegate = self
+        
+        let host = "http://localhost:8000/"
+        
+        
+        let url = NSURL(string: host+"companies/\(companyId!)")
+        let session = URLSession.shared
+        print("got to here")
+        print(companyId!)
+        
+        let task = session.dataTask(with: url! as URL, completionHandler: {
+            data, response, error in
+            do {
+                print("in the do")
+                
+                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
+                    
+                    
+                    print("result is =====>",jsonResult)
+                    
+                    print(jsonResult.count)
+                    self.titleLabel.title = jsonResult["name"] as! String
+                    
+                    let items = jsonResult["products"] as! NSArray
+                    for var i in 0..<items.count {
+                        let item = items[i] as! NSDictionary
+                        let name = item["name"] as! String
+                        let price = String(describing: item["sellPrice"]!)
+                        let quantity = String(describing: item["quantity"]!)
+                        let itemArray = [name,price,quantity]
+                        self.companyItems.append(itemArray)
+                        DispatchQueue.main.async {
+                            self.companyTableView.reloadData()
+                        }
+                    }
+                }
+            } catch {
+                print("in the catch")
+                print(error)
+            }
+        })
+        task.resume()
+        print("I happen before the response!")
+
+        
+        
+        
     }
     
     @IBOutlet weak var companyTableView: UITableView!
