@@ -135,7 +135,6 @@ class RegisterViewController: UIViewController {
                                 do {
                                     try self.managedObjectContext.save()
                                     print("register successful")
-                                    self.performSegue(withIdentifier: "dashFromReg", sender: sender)
                                 } catch {
                                     print(error)
                                 }
