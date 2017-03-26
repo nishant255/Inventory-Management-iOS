@@ -9,25 +9,13 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController, CancelButtonDelegate {
+public let urlHost = "https://limitless-brushlands-15792.herokuapp.com/"
+
+class LoginViewController: UIViewController, CancelButtonDelegate {
     
     var currentUser: User?
     
-    func getUser() -> User? {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        var x: User?
-        do {
-            let result = try managedObjectContext.fetch(request)
-            print(result)
-            if result.count > 0 {
-                x = result[0] as! User
-            }
-        } catch {
-            print(error)
-        }
-        return x
-    }
-    
+        
     @IBOutlet weak var emailLabel: UITextField!
     @IBOutlet weak var passwordLabel: UITextField!
     
@@ -36,7 +24,6 @@ class ViewController: UIViewController, CancelButtonDelegate {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
         do {
             let result = try managedObjectContext.fetch(request)
-            print(result)
             if result.count > 0 {
                 return true
             }
@@ -50,19 +37,25 @@ class ViewController: UIViewController, CancelButtonDelegate {
         
         
         if emailLabel.text == "" || passwordLabel.text == "" {
+            
+            let messageString:String = "Email and Password Required"
+            let alertController = UIAlertController(title: "Login Error", message: messageString, preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { action in
+                // ...
+            }
+            alertController.addAction(OKAction)
+            self.present(alertController, animated: true, completion: nil)
             return
         }
         
         
         let dict = [
-            "email": emailLabel.text,
-            "password": passwordLabel.text
+            "email": emailLabel.text!,
+            "password": passwordLabel.text!
             ] as [String: Any]
         
         if let jsonData = try? JSONSerialization.data(withJSONObject: dict, options: []) {
-            
-            let host = "http://54.183.235.45/"
-            let url = NSURL(string: "\(host)user_login")!
+            let url = NSURL(string: "\(urlHost)user_login")!
             let request = NSMutableURLRequest(url: url as URL)
             print("got past request")
             request.httpMethod = "POST"
@@ -75,14 +68,13 @@ class ViewController: UIViewController, CancelButtonDelegate {
             let task = URLSession.shared.dataTask(with: request as URLRequest){ data,response,error in
                 print("got past task")
                 if error != nil{
-                    print("error is =====>",error?.localizedDescription)
+                    print("error is =====>",error?.localizedDescription as Any)
                     return
                 }
                 print("no errors at this point")
                 do {
                     if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
                         print("got past post")
-                        print(jsonResult)
                         let success = jsonResult["success"] as! Bool
                         if success == true {
                             print("login succesfully")
@@ -98,12 +90,12 @@ class ViewController: UIViewController, CancelButtonDelegate {
                                 newUser.admin = Int32(admin)
                                 do {
                                     try self.managedObjectContext.save()
-                                    print("register successful")
+                                    print("login successful")
                                 } catch {
                                     print(error)
                                 }
                             } else if fetchResult == true {
-                                var oldUser = self.getUser()!
+                                let oldUser = getUser()!
                                 oldUser.email = email
                                 oldUser.isLoggedIn = true
                                 oldUser.admin = Int32(admin)
@@ -111,7 +103,7 @@ class ViewController: UIViewController, CancelButtonDelegate {
                                     try self.managedObjectContext.save()
                                     print("login successful")
                                     
-                                    DispatchQueue.main.sync {
+                                    DispatchQueue.main.async {
                                         self.dashboardAfterLogin()
                                     }
                                 } catch {
@@ -120,7 +112,22 @@ class ViewController: UIViewController, CancelButtonDelegate {
                                 
                             }}
                         else {
-                            print("login not successfull \(jsonResult["error_messages"])")
+                            print("Alerts =====")
+                            DispatchQueue.main.async {
+                                let errormessagearray = jsonResult["error_messages"] as! NSArray
+                                var messageString:String = ""
+                                for error in errormessagearray {
+                                    
+                                    messageString += "- \(error) "
+                                }
+                                let alertController = UIAlertController(title: "Login Error", message: messageString, preferredStyle: .alert)
+                                let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { action in
+                                    // ...
+                                }
+                                alertController.addAction(OKAction)
+                                self.present(alertController, animated: true, completion: nil)
+                            }
+//                            print("login not successfull \(jsonResult["error_messages"])")
                         }
                         
                         print(String(describing: jsonData))
@@ -130,10 +137,10 @@ class ViewController: UIViewController, CancelButtonDelegate {
                 }
             }
             task.resume()
-            
         }
 
     }
+    
 
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
@@ -145,31 +152,41 @@ class ViewController: UIViewController, CancelButtonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         let fetchResult = self.checkCoreDataUser()
         if fetchResult {
-            currentUser = getUser()! as! User
+            currentUser = getUser()!
         }
         passwordLabel.isSecureTextEntry = true;
 
         
         if (currentUser != nil) {
+            if (currentUser?.isLoggedIn)! {
+                self.dashboardAfterLogin()
+            }
             emailLabel.text = currentUser?.email
         }
-        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        UIApplication.shared.statusBarStyle = .lightContent
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
     }
     
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
    
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "register", sender: sender)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "register"{
-            
+        if segue.identifier == "register"{            
         let controller = segue.destination as! RegisterViewController
         controller.cancelDelegate = self
         }
@@ -186,14 +203,24 @@ class ViewController: UIViewController, CancelButtonDelegate {
     
     @IBAction func unwindToMainMenu(sender: UIStoryboardSegue) {
         passwordLabel.text = ""
-        
-        
     }
     
     func dashboardAfterLogin(){
         performSegue(withIdentifier: "login", sender: self)
     }
-    
+            
 
 }
 
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
