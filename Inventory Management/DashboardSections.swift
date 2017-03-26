@@ -11,7 +11,7 @@ import Foundation
 
 struct DashboardSection {
     var heading: String
-    var items: [Any]
+    var items: [Any]    
     
     init(title: String, objects: [Any]) {
         heading = title

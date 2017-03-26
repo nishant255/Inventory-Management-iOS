@@ -8,9 +8,8 @@
 
 import Foundation
 
-class DashboardSectionData {
-    
-    let urlHost = "http://54.183.235.45/"
+class DashboardSectionData: DashboardViewController {
+        
     
     func getDashboardData() -> [DashboardSection] {
         var dashboardSectionArray = [DashboardSection]()
@@ -22,8 +21,7 @@ class DashboardSectionData {
         let getProducts = session.dataTask(with: url!, completionHandler: {
             
             data, response, error in
-            // data -> JSON data, response -> headers and other meta-information, error-> if one occurred
-            // "do-try-catch" blocks execute a try statement and then use the catch statement for errors
+            
             do {
                 if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray {
                     for product in jsonResult {
@@ -33,6 +31,7 @@ class DashboardSectionData {
                     DispatchQueue.main.async {
                         let currentInventory = DashboardSection(title: "Current Inventory", objects: items)
                         dashboardSectionArray.append(currentInventory)
+                        self.dashboardTableView.reloadData()
                     }
                 }
             } catch {
@@ -44,8 +43,7 @@ class DashboardSectionData {
         let getPendingOrders = session.dataTask(with: incomingShipmentsURL!, completionHandler: {
             
             data, response, error in
-            // data -> JSON data, response -> headers and other meta-information, error-> if one occurred
-            // "do-try-catch" blocks execute a try statement and then use the catch statement for errors
+            
             do {
                 if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray {
                     for shipment in jsonResult {
@@ -55,8 +53,7 @@ class DashboardSectionData {
                     DispatchQueue.main.async {
                         let incomingShipment = DashboardSection(title: "Incoming Shipments", objects: items)
                         dashboardSectionArray.append(incomingShipment)
-                        print("Adding Incoming Shipments")
-                        print(dashboardSectionArray)
+                        self.dashboardTableView.reloadData()
                     }
                 }
             } catch {

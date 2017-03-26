@@ -1,5 +1,5 @@
 //
-//  IncomingShipmentTableViewCell.swift
+//  CurrentInventoryTableViewCell.swift
 //  Inventory Management
 //
 //  Created by Nishant Patel on 3/25/17.
@@ -8,21 +8,16 @@
 
 import UIKit
 
-class IncomingShipmentTableViewCell: UITableViewCell {
+class CurrentInventoryTableViewCell: UITableViewCell {
 
-    
-    @IBOutlet weak var orderTitleLabel: UILabel!
-    @IBOutlet weak var orderDateLabel: UILabel!
+    @IBOutlet weak var productLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
