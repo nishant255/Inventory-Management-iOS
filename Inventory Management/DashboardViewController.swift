@@ -15,14 +15,11 @@ class DashboardViewController: UIViewController {
     // =================================================
     
     @IBOutlet weak var dashboardTableView: UITableView!
-    
     var dashboardSectionArray = [DashboardSection]()
-    
     let userModel = UserModel()
-    
     let refreshControl: UIRefreshControl = UIRefreshControl()
     
-    // On View Load and Memeory Warning
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         refreshControl.addTarget(self, action: #selector(DashboardViewController.refreshControlMethod), for: .valueChanged)
@@ -36,80 +33,12 @@ class DashboardViewController: UIViewController {
     
     
     
-    @IBAction func signOutButtonPressed(_ sender: UIBarButtonItem) {
-        let alertController = UIAlertController(title: nil, message: "Are you sure you want to sign out?", preferredStyle: .actionSheet)
-        let signOutAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.destructive) { action in
-            let currentUser = self.userModel.getCoreDataUser()
-            currentUser?.isLoggedIn = false
-            do{
-                try managedObjectContext.save()
-            } catch {
-                print(error)
-            }
-            self.performSegue(withIdentifier: "signOutSegue", sender: sender)
-        }
-        let cancelAction = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel) { action in }
-        
-        alertController.addAction(signOutAction)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
 
     // =================================================
     //  ALL THE METHODS FOR CONTROLLER
     // =================================================
     
     // MARK -> Fetching Initital Data from Server
-    func fetchDataFromServer (){
-        let url = URL(string: urlHost + "products")
-        let incomingShipmentsURL = URL(string: urlHost + "orders/notReceived")
-        let session = URLSession.shared
-        let getPendingOrders = session.dataTask(with: incomingShipmentsURL!, completionHandler: {
-            
-            data, response, error in
-            
-            do {
-                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray {
-                    var orders = [NSDictionary]()
-                    for shipment in jsonResult {
-                        let shipDict = shipment as! NSDictionary
-                        orders.append(shipDict)
-                    }
-                    DispatchQueue.main.async {
-                        let incomingShipment = DashboardSection(title: "Incoming Shipments", objects: orders)
-                        self.dashboardSectionArray.append(incomingShipment)
-                        self.dashboardTableView.reloadData()
-                    }
-                }
-            } catch {
-                print(error)
-            }
-        })
-        getPendingOrders.resume()
-        let getProducts = session.dataTask(with: url!, completionHandler: {
-            
-            data, response, error in
-            
-            do {
-                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray {
-                    var products = [String]()
-                    for product in jsonResult {
-                        let productDict = product as! NSDictionary
-                        products.append(productDict.value(forKey: "name") as! String)
-                    }
-                    DispatchQueue.main.async {
-                        let currentInventory = DashboardSection(title: "Current Inventory", objects: products)
-                        self.dashboardSectionArray.append(currentInventory)
-                        self.dashboardTableView.reloadData()
-                    }
-                }
-            } catch {
-                print(error)
-            }
-            
-        })
-        getProducts.resume()
-    }
     
     func refreshControlMethod() {
         dashboardSectionArray = [DashboardSection]()
