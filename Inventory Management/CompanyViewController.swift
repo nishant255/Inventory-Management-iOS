@@ -22,10 +22,7 @@ class CompanyViewController: UIViewController {
         companyTableView.dataSource = self
         companyTableView.delegate = self
         
-        let host = "http://localhost:8000/"
-        
-        
-        let url = NSURL(string: host+"companies/\(companyId!)")
+        let url = NSURL(string: urlHost+"companies/\(companyId!)")
         let session = URLSession.shared
         print("got to here")
         print(companyId!)
