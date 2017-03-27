@@ -13,6 +13,7 @@
 		38688FDA1E836B80007558C7 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38688FD91E836B80007558C7 /* OrderDetailViewController.swift */; };
 		38688FDC1E836D89007558C7 /* OrderDetailViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38688FDB1E836D89007558C7 /* OrderDetailViewControllerDelegate.swift */; };
 		9644C4D71E87825000B47AA0 /* PublicFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9644C4D61E87825000B47AA0 /* PublicFunctions.swift */; };
+		967172091E88E8E300B9234B /* DashboardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967172081E88E8E300B9234B /* DashboardTableViewController.swift */; };
 		9671E9751E820D830057F30A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9671E9741E820D830057F30A /* AppDelegate.swift */; };
 		9671E9771E820D830057F30A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9671E9761E820D830057F30A /* LoginViewController.swift */; };
 		9671E97A1E820D830057F30A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9671E9781E820D830057F30A /* Main.storyboard */; };
@@ -65,6 +66,7 @@
 		38688FD91E836B80007558C7 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
 		38688FDB1E836D89007558C7 /* OrderDetailViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailViewControllerDelegate.swift; sourceTree = "<group>"; };
 		9644C4D61E87825000B47AA0 /* PublicFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicFunctions.swift; sourceTree = "<group>"; };
+		967172081E88E8E300B9234B /* DashboardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardTableViewController.swift; sourceTree = "<group>"; };
 		9671E9711E820D830057F30A /* Inventory Management.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Inventory Management.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9671E9741E820D830057F30A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9671E9761E820D830057F30A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -152,9 +154,12 @@
 			children = (
 				9671E9741E820D830057F30A /* AppDelegate.swift */,
 				9671E9781E820D830057F30A /* Main.storyboard */,
+				9671E97E1E820D830057F30A /* Assets.xcassets */,
+				9671E9801E820D830057F30A /* LaunchScreen.storyboard */,
 				9644C4D61E87825000B47AA0 /* PublicFunctions.swift */,
 				9671E9761E820D830057F30A /* LoginViewController.swift */,
 				9D1A7EFB1E83796600AA35B9 /* RegisterViewController.swift */,
+				967172081E88E8E300B9234B /* DashboardTableViewController.swift */,
 				9671E9A51E83187E0057F30A /* DashboardViewController.swift */,
 				96EE7BB01E845D450077057D /* DashboardSections.swift */,
 				969715C41E874F1B00BD3BDE /* IncomingShipmentTableViewCell.swift */,
@@ -174,8 +179,6 @@
 				9D6CA0051E8316B700B3C939 /* CompaniesViewController.swift */,
 				9D6CA0091E83211100B3C939 /* UsersViewController.swift */,
 				9D6CA00B1E83217700B3C939 /* UsersCustomCell.swift */,
-				9671E97E1E820D830057F30A /* Assets.xcassets */,
-				9671E9801E820D830057F30A /* LaunchScreen.storyboard */,
 				9671E9831E820D830057F30A /* Info.plist */,
 				9671E97B1E820D830057F30A /* Inventory_Management.xcdatamodeld */,
 			);
@@ -337,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				967172091E88E8E300B9234B /* DashboardTableViewController.swift in Sources */,
 				38688FDA1E836B80007558C7 /* OrderDetailViewController.swift in Sources */,
 				38688FD81E833780007558C7 /* ReceivedOrderCustomCell.swift in Sources */,
 				9671E97D1E820D830057F30A /* Inventory_Management.xcdatamodeld in Sources */,
