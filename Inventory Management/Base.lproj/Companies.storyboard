@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E183b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1yq-uj-dBP">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Companies View Controller-->
+        <scene sceneID="x5V-Mx-ufG">
+            <objects>
+                <viewController id="OEp-EL-Oy1" customClass="CompaniesViewController" customModule="Inventory_Management" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="K0M-DD-pxq"/>
+                        <viewControllerLayoutGuide type="bottom" id="gza-Sg-Iez"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Szd-eq-qUP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yrr-0o-Cq7">
+                                <rect key="frame" x="0.0" y="64" width="414" height="44"/>
+                                <items>
+                                    <navigationItem id="vPQ-9R-EY1">
+                                        <barButtonItem key="leftBarButtonItem" title="Add Order" id="pI0-Bm-iKP"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="SJ3-JN-seV">
+                                            <connections>
+                                                <segue destination="YOK-aZ-ZJX" kind="show" identifier="logout" id="73Q-1a-UXj"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="107" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oVw-AR-K0j">
+                                <rect key="frame" x="0.0" y="108" width="414" height="579"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="CompanyCell" rowHeight="107" id="ot7-WG-Sfg" customClass="CompaniesCustomCell" customModule="Inventory_Management" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="107"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ot7-WG-Sfg" id="Dix-48-dXR">
+                                            <rect key="frame" x="0.0" y="0.0" width="367" height="106.66666666666667"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Company name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XrZ-y1-Vb7">
+                                                    <rect key="frame" x="8" y="8" width="142" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOj-wp-4Ly">
+                                                    <rect key="frame" x="8" y="40" width="181" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9st-uM-DBA">
+                                                    <rect key="frame" x="8" y="77" width="320" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone #" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sw4-85-ip1">
+                                                    <rect key="frame" x="203" y="42" width="125" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addressLabel" destination="9st-uM-DBA" id="aGW-bC-gU5"/>
+                                            <outlet property="companyNameLabel" destination="XrZ-y1-Vb7" id="WT6-qm-vQz"/>
+                                            <outlet property="emailLabel" destination="oOj-wp-4Ly" id="mJw-Zq-pI1"/>
+                                            <outlet property="phoneLabel" destination="sw4-85-ip1" id="PAP-cg-n0r"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oVw-AR-K0j" firstAttribute="leading" secondItem="Szd-eq-qUP" secondAttribute="leading" id="A1E-70-3ER"/>
+                            <constraint firstAttribute="trailing" secondItem="oVw-AR-K0j" secondAttribute="trailing" id="HXg-fc-3cf"/>
+                            <constraint firstItem="yrr-0o-Cq7" firstAttribute="leading" secondItem="Szd-eq-qUP" secondAttribute="leading" id="OXm-xm-YhH"/>
+                            <constraint firstItem="yrr-0o-Cq7" firstAttribute="top" secondItem="K0M-DD-pxq" secondAttribute="bottom" id="c38-kJ-v6u"/>
+                            <constraint firstItem="gza-Sg-Iez" firstAttribute="top" secondItem="oVw-AR-K0j" secondAttribute="bottom" id="cOz-zN-XbR"/>
+                            <constraint firstAttribute="trailing" secondItem="yrr-0o-Cq7" secondAttribute="trailing" id="w5g-QO-j7U"/>
+                            <constraint firstItem="oVw-AR-K0j" firstAttribute="top" secondItem="yrr-0o-Cq7" secondAttribute="bottom" id="w9L-3o-5at"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="RzI-bx-khr"/>
+                    <connections>
+                        <outlet property="companiesTableView" destination="oVw-AR-K0j" id="Uxa-cJ-gXm"/>
+                        <segue destination="erw-pw-zrT" kind="show" identifier="viewCompanyItems" id="BWK-sK-c8j"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="99H-nk-kOu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8413.6000000000004" y="902.69865067466276"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="php-xu-Gh5">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="YOK-aZ-ZJX" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xdS-HY-IoK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3432.8000000000002" y="1351.1244377811095"/>
+        </scene>
+        <!--Companies-->
+        <scene sceneID="mkE-Om-8Cy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1yq-uj-dBP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Companies" id="vDT-jp-0Tr"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sVw-Gy-ysf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="OEp-EL-Oy1" kind="relationship" relationship="rootViewController" id="Okm-aQ-DIH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dA2-Yg-yvx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7474.3999999999996" y="902.69865067466276"/>
+        </scene>
+        <!--UIViewController-FhL-te-kQL-->
+        <scene sceneID="yyl-8H-N3q">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main2" referencedIdentifier="UIViewController-FhL-te-kQL" id="erw-pw-zrT" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bn2-tV-gKS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6535.1999999999998" y="1652.9235382308848"/>
+        </scene>
+    </scenes>
+</document>

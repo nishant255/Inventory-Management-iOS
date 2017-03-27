@@ -9,12 +9,12 @@
 import UIKit
 import CoreData
 
-public let urlHost = "https://limitless-brushlands-15792.herokuapp.com/"
 
 class LoginViewController: UIViewController, CancelButtonDelegate {
     
     var currentUser: User?
     
+    let userModel = UserModel()
         
     @IBOutlet weak var emailLabel: UITextField!
     @IBOutlet weak var passwordLabel: UITextField!
@@ -95,10 +95,10 @@ class LoginViewController: UIViewController, CancelButtonDelegate {
                                     print(error)
                                 }
                             } else if fetchResult == true {
-                                let oldUser = getUser()!
-                                oldUser.email = email
-                                oldUser.isLoggedIn = true
-                                oldUser.admin = Int32(admin)
+                                let oldUser = self.userModel.getCoreDataUser()
+                                oldUser?.email = email
+                                oldUser?.isLoggedIn = true
+                                oldUser?.admin = Int32(admin)
                                 do {
                                     try self.managedObjectContext.save()
                                     print("login successful")
@@ -154,7 +154,7 @@ class LoginViewController: UIViewController, CancelButtonDelegate {
         self.hideKeyboardWhenTappedAround()
         let fetchResult = self.checkCoreDataUser()
         if fetchResult {
-            currentUser = getUser()!
+            currentUser = userModel.getCoreDataUser()
             if (currentUser?.isLoggedIn)! {
                 print("Already Logged In")
                 self.dashboardAfterLogin()
