@@ -22,10 +22,7 @@ class CompaniesViewController: UIViewController, BackButtonDelegate {
         companiesTableView.delegate = self
         print("companiesviewcontroller loaded")
         
-        let host = "http://localhost:8000/"
-        
-        
-        let url = NSURL(string: host+"companies")
+        let url = NSURL(string: urlHost+"companies")
         let session = URLSession.shared
         
         let task = session.dataTask(with: url! as URL, completionHandler: {

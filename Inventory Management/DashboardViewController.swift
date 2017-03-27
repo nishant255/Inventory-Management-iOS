@@ -108,14 +108,11 @@ class DashboardViewController: UIViewController {
 extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
     // MARK -> Number of Sections in Table
     func numberOfSections(in tableView: UITableView) -> Int {
-        print("numberOfSections: \(dashboardSectionArray.count)")
         return dashboardSectionArray.count
     }
     
     // MARK -> Number of Rows in Section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("dashboardSectionArray count:")
-        print(dashboardSectionArray[section].items.count)
         if dashboardSectionArray[section].heading == "Incoming Shipments" {
             if dashboardSectionArray[section].items.count == 0 {
                 return 1

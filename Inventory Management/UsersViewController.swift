@@ -27,22 +27,19 @@ class UsersViewController: UIViewController {
         let task = session.dataTask(with: url! as URL, completionHandler: {
             data, response, error in
             do {
-                print("in the do")
                 
                 if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray {
                     
                     
                     print("result is =====>",jsonResult)
                     
-                    print(jsonResult.count)
                     for var i in 0..<jsonResult.count {
                         let user = jsonResult[i] as! NSDictionary
                         var name = ""
                         name += "\(user["first_name"]!) \(user["last_name"]!)"
                         let email = user["email"] as! String
                         let phone = String(describing: user["phone_number"]!)
-                        var adminNum = user["admin"] as! Int
-                        print("admin num is ",adminNum)
+                        let adminNum = user["admin"] as! Int
                         var admin = ""
                         if adminNum == 0 {
                             admin = "Super Admin"
@@ -59,12 +56,10 @@ class UsersViewController: UIViewController {
                     }
                 }
             } catch {
-                print("in the catch")
                 print(error)
             }
         })
         task.resume()
-        print("I happen before the response!")
         
         
         
@@ -85,7 +80,6 @@ extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // dequeue the cell from our storyboard
-        print("this is running")
         let cell = tableView.dequeueReusableCell(withIdentifier: "UsersCell")! as! UsersCustomCell
         // All UITableViewCell objects have a build in textLabel so set it to the model that is corresponding to the row in array
         cell.nameLabel.text = users[indexPath.row][0]

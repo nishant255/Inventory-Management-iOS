@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E183b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6sL-et-NIA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6sL-et-NIA">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Users View Controller-->
         <scene sceneID="1OW-Gn-8nJ">
             <objects>
-                <viewController id="0Em-8e-BKh" customClass="UsersViewController" customModule="Inventory_Management" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="0Em-8e-BKh" customClass="UsersViewController" customModule="Inventory_Management" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LIi-Lh-95A"/>
                         <viewControllerLayoutGuide type="bottom" id="zLB-fb-GIc"/>
@@ -22,28 +22,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hI-Pl-ZyQ">
-                                <rect key="frame" x="0.0" y="64" width="414" height="44"/>
-                                <items>
-                                    <navigationItem id="yvb-NF-ygQ">
-                                        <barButtonItem key="leftBarButtonItem" title="Add Order" id="YgK-fn-O9V"/>
-                                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="2Se-an-Gyw">
-                                            <connections>
-                                                <segue destination="WiW-Dh-Fy4" kind="unwind" unwindAction="unwindToMainMenuWithSender:" id="LE7-ps-cz6"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="98" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mV3-YI-uvr">
-                                <rect key="frame" x="0.0" y="108" width="414" height="579"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UsersCell" rowHeight="98" id="66l-ny-HII" customClass="UsersCustomCell" customModule="Inventory_Management" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="UsersCell" rowHeight="98" id="66l-ny-HII" customClass="UsersCustomCell" customModule="Inventory_Management" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="98"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="66l-ny-HII" id="VdG-EG-ygA">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="97.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="97"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="phone #" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wDs-6V-l5k">
@@ -115,16 +102,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="mV3-YI-uvr" firstAttribute="leading" secondItem="j6E-xk-oBA" secondAttribute="leading" id="HsI-ZL-EZZ"/>
-                            <constraint firstAttribute="trailing" secondItem="mV3-YI-uvr" secondAttribute="trailing" id="KGi-w4-dUi"/>
-                            <constraint firstItem="3hI-Pl-ZyQ" firstAttribute="top" secondItem="LIi-Lh-95A" secondAttribute="bottom" id="MPS-dj-zXz"/>
-                            <constraint firstAttribute="trailing" secondItem="3hI-Pl-ZyQ" secondAttribute="trailing" id="Q5R-98-V3o"/>
-                            <constraint firstItem="mV3-YI-uvr" firstAttribute="top" secondItem="3hI-Pl-ZyQ" secondAttribute="bottom" id="fvW-1i-f1U"/>
-                            <constraint firstItem="zLB-fb-GIc" firstAttribute="top" secondItem="mV3-YI-uvr" secondAttribute="bottom" id="lQ8-EV-wbf"/>
-                            <constraint firstItem="3hI-Pl-ZyQ" firstAttribute="leading" secondItem="j6E-xk-oBA" secondAttribute="leading" id="oEB-xt-dxd"/>
+                            <constraint firstAttribute="trailing" secondItem="mV3-YI-uvr" secondAttribute="trailing" id="MIA-m1-3Td"/>
+                            <constraint firstItem="mV3-YI-uvr" firstAttribute="bottom" secondItem="zLB-fb-GIc" secondAttribute="top" id="ec2-Lr-74P"/>
+                            <constraint firstItem="mV3-YI-uvr" firstAttribute="top" secondItem="LIi-Lh-95A" secondAttribute="bottom" id="fOQ-Mm-Oe8"/>
+                            <constraint firstItem="mV3-YI-uvr" firstAttribute="leading" secondItem="j6E-xk-oBA" secondAttribute="leading" id="lIi-fL-8cQ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="yQo-Cp-YeR"/>
+                    <navigationItem key="navigationItem" id="yQo-Cp-YeR">
+                        <barButtonItem key="leftBarButtonItem" title="Add Order" id="YgK-fn-O9V"/>
+                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="2Se-an-Gyw">
+                            <connections>
+                                <segue destination="WiW-Dh-Fy4" kind="unwind" unwindAction="unwindToMainMenuWithSender:" id="LE7-ps-cz6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="usersTableView" destination="mV3-YI-uvr" id="gin-nH-k6I"/>
                     </connections>
@@ -132,7 +123,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igX-Ph-bdX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="WiW-Dh-Fy4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5519.1999999999998" y="926.08695652173924"/>
+            <point key="canvasLocation" x="5518.840579710145" y="926.08695652173924"/>
         </scene>
         <!--Users-->
         <scene sceneID="vVQ-Ri-NgO">

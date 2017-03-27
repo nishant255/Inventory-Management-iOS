@@ -18,17 +18,14 @@ class InventoryViewController: UIViewController {
         inventoryTableView.dataSource = self
         inventoryTableView.delegate = self
         
-        let host = "http://localhost:8000/"
         
-        
-        let url = NSURL(string: host+"products/withSellPrice")
+        let url = NSURL(string: urlHost+"products/withSellPrice")
         let session = URLSession.shared
         
         let task = session.dataTask(with: url! as URL, completionHandler: {
             data, response, error in
             do {
                 print("in the do")
-                
                 if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray {
                     
                     
