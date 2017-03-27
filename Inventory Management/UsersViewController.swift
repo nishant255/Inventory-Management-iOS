@@ -20,10 +20,8 @@ class UsersViewController: UIViewController {
         usersTableView.delegate = self
         print("usersviewcontroller loaded")
         
-        let host = "http://localhost:8000/"
         
-        
-        let url = NSURL(string: host+"users")
+        let url = NSURL(string: urlHost+"users")
         let session = URLSession.shared
         
         let task = session.dataTask(with: url! as URL, completionHandler: {

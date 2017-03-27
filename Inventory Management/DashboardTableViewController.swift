@@ -1,48 +1,74 @@
 //
-//  DashboardViewController.swift
+//  DashboardTableViewController.swift
 //  Inventory Management
 //
-//  Created by Nishant Patel on 3/22/17.
+//  Created by Nishant Patel on 3/26/17.
 //  Copyright © 2017 Nishant Patel. All rights reserved.
 //
 
 import UIKit
 
-class DashboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    // =================================================
-    // ALL THE OUTLET AND CONTROLLER VARIABLE
-    // =================================================
-    
-    @IBOutlet weak var dashboardTableView: UITableView!
+class DashboardTableViewController: UITableViewController {
     
     var dashboardSectionArray = [DashboardSection]()
     
-    let refreshControl: UIRefreshControl = UIRefreshControl()
-    
-    // On View Load and Memeory Warning
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        refreshControl.addTarget(self, action: #selector(DashboardViewController.refreshControlMethod), for: .valueChanged)
-        self.dashboardTableView.addSubview(refreshControl)
+        print("LOADIN")
+        self.refreshControl?.addTarget(self, action: #selector(self.handleRefresh(_:)), for: UIControlEvents.valueChanged)
         fetchDataFromServer()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    // =================================================
-    // TABLEVIEW METHODS OF DATASOURCE
-    // =================================================
-    
-    // MARK -> Number of Sections in Table
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func handleRefresh(_ refreshControl: UIRefreshControl) {
+        print("refreshing")
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        let incomingShipmentsURL = URL(string: urlHost + "orders/notReceived")
+        let session = URLSession.shared
+        let getPendingOrders = session.dataTask(with: incomingShipmentsURL!, completionHandler: {
+            
+            data, response, error in
+            
+            do {
+                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray {
+                    var orders = [NSDictionary]()
+                    for shipment in jsonResult {
+                        let shipDict = shipment as! NSDictionary
+                        orders.append(shipDict)
+                    }
+                    DispatchQueue.main.async {
+                        var incomingShipment: DashboardSection
+                        for section in self.dashboardSectionArray {
+                            if section.heading == "Incoming Shipments" {
+                                incomingShipment = section
+                                incomingShipment.items = orders
+                            }
+                        }
+                        self.tableView.reloadData()
+                    }
+                }
+            } catch {
+                print(error)
+            }
+            
+        })
+        getPendingOrders.resume()
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
+        
+    }
+
+    // MARK: - Table view data source
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return dashboardSectionArray.count
     }
-    
-    // MARK -> Number of Rows in Section
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if dashboardSectionArray[section].heading == "Incoming Shipments" {
             if dashboardSectionArray[section].items.count == 0 {
                 return 1
@@ -51,14 +77,11 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         return dashboardSectionArray[section].items.count
     }
     
-    // MARK -> Title for Each Section
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return dashboardSectionArray[section].heading
     }
-    
-    // MARK -> Data for Each Cell
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // MARK -> If No Incoming Shipments
         
         if dashboardSectionArray[indexPath.section].heading == "Incoming Shipments" {
@@ -100,9 +123,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
     
-    // MARK -> Selection Each Row
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // MARK -> Actionsheet for Recieving Order
         if dashboardSectionArray[indexPath.section].heading == "Incoming Shipments" {
             if dashboardSectionArray[indexPath.section].items.count > 0 {
@@ -119,10 +140,10 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                         
                         do {
                             if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
-                                let user = jsonResult.value(forKey: "data")
+                                let user = jsonResult
                                 print(jsonResult)
                                 DispatchQueue.main.async {
-                                    if let jsonData = try? JSONSerialization.data(withJSONObject: user!, options: []) {
+                                    if let jsonData = try? JSONSerialization.data(withJSONObject: user, options: []) {
                                         let updateOrderUrl = NSURL(string: "\(urlHost)orders/receive/\(orderId)")!
                                         let request = NSMutableURLRequest(url: updateOrderUrl as URL)
                                         request.httpMethod = "POST"
@@ -130,10 +151,16 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                                         request.httpBody = jsonData
                                         let task = URLSession.shared.dataTask(with: request as URLRequest){ data,response,error in
                                             do {
-                                                if let jsonResultAfterUpdatingServer = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
-                                                    print(jsonResultAfterUpdatingServer)
+                                                if (try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary) != nil {
                                                     DispatchQueue.main.async {
-                                                        print("Successfully Updated Order")
+                                                        let alertController = UIAlertController(title: "Successfully Updated Order", message: nil, preferredStyle: .alert)
+                                                        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { action in
+                                                            print("Successfully Updated Order")
+                                                            self.fetchNewDataFromServer()
+                                                            tableView.reloadData()
+                                                        }
+                                                        alertController.addAction(OKAction)
+                                                        self.present(alertController, animated: true, completion: nil)
                                                     }
                                                 }
                                             } catch {
@@ -165,31 +192,6 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     // =================================================
-    //  ALL IB-ACTION METHODS
-    // =================================================
-    
-    // MARK -> Sign out Button Pressed
-    
-    @IBAction func signOutButtonPressed(_ sender: UIBarButtonItem) {
-        let alertController = UIAlertController(title: nil, message: "Are you sure you want to sign out?", preferredStyle: .actionSheet)
-        let signOutAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.destructive) { action in
-            let currentUser = getUser()
-            currentUser?.isLoggedIn = false
-            do{
-                try managedObjectContext.save()
-            } catch {
-                print(error)
-            }
-            self.performSegue(withIdentifier: "signOutSegue", sender: sender)
-        }
-        let cancelAction = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel) { action in }
-        
-        alertController.addAction(signOutAction)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
-
-    // =================================================
     //  ALL THE METHODS FOR CONTROLLER
     // =================================================
     
@@ -212,7 +214,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                     DispatchQueue.main.async {
                         let incomingShipment = DashboardSection(title: "Incoming Shipments", objects: orders)
                         self.dashboardSectionArray.append(incomingShipment)
-                        self.dashboardTableView.reloadData()
+                        self.tableView.reloadData()
                     }
                 }
             } catch {
@@ -234,7 +236,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                     DispatchQueue.main.async {
                         let currentInventory = DashboardSection(title: "Current Inventory", objects: products)
                         self.dashboardSectionArray.append(currentInventory)
-                        self.dashboardTableView.reloadData()
+                        self.tableView.reloadData()
                     }
                 }
             } catch {
@@ -266,15 +268,10 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                         for section in self.dashboardSectionArray {
                             if section.heading == "Incoming Shipments" {
                                 incomingShipment = section
-                                var oldShipments = incomingShipment.items as! [NSDictionary]
-                                for order in orders {
-                                    if oldShipments.contains(order) == false{
-                                        oldShipments.append(order)
-                                    }
-                                }
+                                incomingShipment.items = orders
                             }
                         }
-                        self.dashboardTableView.reloadData()
+                        self.tableView.reloadData()
                     }
                 }
             } catch {
@@ -299,15 +296,10 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                         for section in self.dashboardSectionArray {
                             if section.heading == "Current Inventory" {
                                 currentInventorySection = section
-                                var oldProducts = currentInventorySection.items as! [String]
-                                for product in products {
-                                    if oldProducts.contains(product) == false{
-                                        oldProducts.append(product)
-                                    }
-                                }
+                                currentInventorySection.items = products
                             }
                         }
-                        self.dashboardTableView.reloadData()
+                        self.tableView.reloadData()
                     }
                 }
             } catch {
@@ -322,82 +314,12 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     //lazy var refreshControl: UIRefreshControl = {
     //    let refreshControl = UIRefreshControl()
     //    refreshControl.addTarget(self, action: #selector(self.handleRefresh(_:)), for: UIControlEvents.valueChanged)
-        
+    
     //    return refreshControl
     //}()
     
     // MARK -> Handle Refresh and Invoke Fetch New Data Method
-    func handleRefresh(_ refreshControl: UIRefreshControl) {
-        print("refreshing")
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        let incomingShipmentsURL = URL(string: urlHost + "orders/notReceived")
-        let session = URLSession.shared
-        let getPendingOrders = session.dataTask(with: incomingShipmentsURL!, completionHandler: {
-            
-            data, response, error in
-            
-            do {
-                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray {
-                    var orders = [NSDictionary]()
-                    for shipment in jsonResult {
-                        let shipDict = shipment as! NSDictionary
-                        orders.append(shipDict)
-                    }
-                    DispatchQueue.main.async {
-                        var incomingShipment: DashboardSection
-                        for section in self.dashboardSectionArray {
-                            if section.heading == "Incoming Shipments" {
-                                incomingShipment = section
-                                incomingShipment.items = orders
-                            }
-                        }
-                        self.dashboardTableView.reloadData()
-                    }
-                }
-            } catch {
-                print(error)
-            }
-            
-        })
-        getPendingOrders.resume()
-        self.dashboardTableView.reloadData()
-        refreshControl.endRefreshing()
-    }
     
-    func refreshControlMethod() {
-        print("refreshing RCM")
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        let incomingShipmentsURL = URL(string: urlHost + "orders/notReceived")
-        let session = URLSession.shared
-        let getPendingOrders = session.dataTask(with: incomingShipmentsURL!, completionHandler: {
-            
-            data, response, error in
-            
-            do {
-                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray {
-                    var orders = [NSDictionary]()
-                    for shipment in jsonResult {
-                        let shipDict = shipment as! NSDictionary
-                        orders.append(shipDict)
-                    }
-                    DispatchQueue.main.async {
-                        var incomingShipment: DashboardSection
-                        for section in self.dashboardSectionArray {
-                            if section.heading == "Incoming Shipments" {
-                                incomingShipment = section
-                                incomingShipment.items = orders
-                            }
-                        }
-                        self.dashboardTableView.reloadData()
-                    }
-                }
-            } catch {
-                print(error)
-            }
-            
-        })
-        getPendingOrders.resume()
-        self.dashboardTableView.reloadData()
-        refreshControl.endRefreshing()
-    }
+
+
 }

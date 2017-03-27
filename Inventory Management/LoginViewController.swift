@@ -143,8 +143,7 @@ class LoginViewController: UIViewController, CancelButtonDelegate {
     
 
     
-    @IBAction func loginButtonPressed(_ sender: UIButton) {
-        print("login button was pressed")
+    @IBAction func loginButtonPressed(_ sender: UIButton) {        
         checkLogin()
     }
     
@@ -156,6 +155,10 @@ class LoginViewController: UIViewController, CancelButtonDelegate {
         let fetchResult = self.checkCoreDataUser()
         if fetchResult {
             currentUser = getUser()!
+            if (currentUser?.isLoggedIn)! {
+                print("Already Logged In")
+                self.dashboardAfterLogin()
+            }
         }
         passwordLabel.isSecureTextEntry = true;
 
@@ -189,10 +192,6 @@ class LoginViewController: UIViewController, CancelButtonDelegate {
         if segue.identifier == "register"{            
         let controller = segue.destination as! RegisterViewController
         controller.cancelDelegate = self
-        }
-        if segue.identifier == "login"{
-
-            print("Good")
         }
     }
 
