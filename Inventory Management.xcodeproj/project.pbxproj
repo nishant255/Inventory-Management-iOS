@@ -53,6 +53,7 @@
 		9D6CA0121E832AB000B3C939 /* backButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0111E832AB000B3C939 /* backButtonDelegate.swift */; };
 		9D6CA0141E832C2E00B3C939 /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0131E832C2E00B3C939 /* InventoryViewController.swift */; };
 		9D6CA0181E83325C00B3C939 /* InventoryHeaderCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0171E83325C00B3C939 /* InventoryHeaderCustomCell.swift */; };
+		9DB7ACCF1E89CE87006F72E6 /* Company_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7ACCE1E89CE87006F72E6 /* Company_Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,7 @@
 		9D6CA0111E832AB000B3C939 /* backButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = backButtonDelegate.swift; path = ../backButtonDelegate.swift; sourceTree = "<group>"; };
 		9D6CA0131E832C2E00B3C939 /* InventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		9D6CA0171E83325C00B3C939 /* InventoryHeaderCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InventoryHeaderCustomCell.swift; path = ../InventoryHeaderCustomCell.swift; sourceTree = "<group>"; };
+		9DB7ACCE1E89CE87006F72E6 /* Company_Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Company_Model.swift; path = ../Company_Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,7 +181,7 @@
 		965546251E89B7240062157E /* Companies */ = {
 			isa = PBXGroup;
 			children = (
-				965546301E89C7AC0062157E /* CompaniesModel.swift */,
+				9DB7ACCE1E89CE87006F72E6 /* Company_Model.swift */,
 				965546221E89B7050062157E /* Companies.storyboard */,
 				9D6CA00D1E8323FC00B3C939 /* CompanyViewController.swift */,
 				9D6CA00F1E83258900B3C939 /* CompanyItemsCustomCell.swift */,
@@ -463,6 +465,7 @@
 				96EE7BB11E845D450077057D /* DashboardSections.swift in Sources */,
 				9D6CA00E1E8323FC00B3C939 /* CompanyViewController.swift in Sources */,
 				9D6CA00C1E83217700B3C939 /* UsersCustomCell.swift in Sources */,
+				9DB7ACCF1E89CE87006F72E6 /* Company_Model.swift in Sources */,
 				9D06ECA11E83983A005D5CDC /* User+CoreDataClass.swift in Sources */,
 				9D6CA0141E832C2E00B3C939 /* InventoryViewController.swift in Sources */,
 				9D6CA0061E8316B700B3C939 /* CompaniesViewController.swift in Sources */,

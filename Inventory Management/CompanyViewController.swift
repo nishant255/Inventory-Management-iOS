@@ -14,18 +14,13 @@ class CompanyViewController: UIViewController {
     var companyItems = [[String]]()
     var backDelegate: BackButtonDelegate?
     var companyId: String?
-    @IBOutlet weak var navBar: UINavigationBar!
     
-    @IBOutlet weak var titleLabel: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         companyTableView.dataSource = self
         companyTableView.delegate = self
         
-        let host = "http://localhost:8000/"
-        
-        
-        let url = NSURL(string: host+"companies/\(companyId!)")
+        let url = NSURL(string: urlHost+"companies/\(companyId!)")
         let session = URLSession.shared
         print("got to here")
         print(companyId!)
@@ -41,7 +36,6 @@ class CompanyViewController: UIViewController {
                     print("result is =====>",jsonResult)
                     
                     print(jsonResult.count)
-                    self.titleLabel.title = jsonResult["name"] as! String
                     
                     let items = jsonResult["products"] as! NSArray
                     for var i in 0..<items.count {
