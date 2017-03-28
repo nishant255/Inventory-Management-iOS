@@ -17,6 +17,11 @@
 		965546201E89B6850062157E /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9655461F1E89B6850062157E /* Users.storyboard */; };
 		965546241E89B7050062157E /* Companies.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 965546221E89B7050062157E /* Companies.storyboard */; };
 		965546271E89B81F0062157E /* User_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965546261E89B81F0062157E /* User_Model.swift */; };
+		965546291E89C4320062157E /* Login_Registration_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965546281E89C4320062157E /* Login_Registration_Model.swift */; };
+		9655462B1E89C5C30062157E /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9655462A1E89C5C30062157E /* DashboardModel.swift */; };
+		9655462D1E89C77F0062157E /* InventoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9655462C1E89C77F0062157E /* InventoryModel.swift */; };
+		9655462F1E89C78E0062157E /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9655462E1E89C78E0062157E /* OrderModel.swift */; };
+		965546311E89C7AC0062157E /* CompaniesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965546301E89C7AC0062157E /* CompaniesModel.swift */; };
 		9671720C1E89A55300B9234B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9671720A1E89A55300B9234B /* Main.storyboard */; };
 		9671720F1E89A65400B9234B /* AddOrder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9671720E1E89A65400B9234B /* AddOrder.storyboard */; };
 		967172131E89A6AD00B9234B /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 967172111E89A6AD00B9234B /* Dashboard.storyboard */; };
@@ -78,6 +83,11 @@
 		9655461F1E89B6850062157E /* Users.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
 		965546231E89B7050062157E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Companies.storyboard; sourceTree = "<group>"; };
 		965546261E89B81F0062157E /* User_Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User_Model.swift; sourceTree = "<group>"; };
+		965546281E89C4320062157E /* Login_Registration_Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login_Registration_Model.swift; sourceTree = "<group>"; };
+		9655462A1E89C5C30062157E /* DashboardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
+		9655462C1E89C77F0062157E /* InventoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryModel.swift; sourceTree = "<group>"; };
+		9655462E1E89C78E0062157E /* OrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
+		965546301E89C7AC0062157E /* CompaniesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompaniesModel.swift; sourceTree = "<group>"; };
 		9671720B1E89A55300B9234B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9671720E1E89A65400B9234B /* AddOrder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddOrder.storyboard; sourceTree = "<group>"; };
 		967172121E89A6AD00B9234B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Dashboard.storyboard; sourceTree = "<group>"; };
@@ -145,6 +155,7 @@
 		9655461E1E89B62A0062157E /* Orders */ = {
 			isa = PBXGroup;
 			children = (
+				9655462E1E89C78E0062157E /* OrderModel.swift */,
 				38688FD31E83283A007558C7 /* PendingOrderCustomCell.swift */,
 				9655461B1E89B60F0062157E /* Orders.storyboard */,
 				38688FDB1E836D89007558C7 /* OrderDetailViewControllerDelegate.swift */,
@@ -184,6 +195,7 @@
 				9671E9781E820D830057F30A /* Login.storyboard */,
 				9671E9761E820D830057F30A /* LoginViewController.swift */,
 				9D1A7EFB1E83796600AA35B9 /* RegisterViewController.swift */,
+				965546281E89C4320062157E /* Login_Registration_Model.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -203,6 +215,7 @@
 				969715C61E874F3200BD3BDE /* CurrentInventoryTableViewCell.swift */,
 				967172111E89A6AD00B9234B /* Dashboard.storyboard */,
 				9671E9A51E83187E0057F30A /* DashboardViewController.swift */,
+				9655462A1E89C5C30062157E /* DashboardModel.swift */,
 				96EE7BB01E845D450077057D /* DashboardSections.swift */,
 			);
 			name = Dashboard;
@@ -211,6 +224,7 @@
 		967172171E89A84600B9234B /* Inventory */ = {
 			isa = PBXGroup;
 			children = (
+				9655462C1E89C77F0062157E /* InventoryModel.swift */,
 				9D6CA0171E83325C00B3C939 /* InventoryHeaderCustomCell.swift */,
 				967172151E89A81400B9234B /* Inventory.storyboard */,
 				9D6CA0131E832C2E00B3C939 /* InventoryViewController.swift */,
@@ -431,11 +445,14 @@
 				38688FD81E833780007558C7 /* ReceivedOrderCustomCell.swift in Sources */,
 				9671E97D1E820D830057F30A /* Inventory_Management.xcdatamodeld in Sources */,
 				969715C51E874F1B00BD3BDE /* IncomingShipmentTableViewCell.swift in Sources */,
+				9655462D1E89C77F0062157E /* InventoryModel.swift in Sources */,
 				38688FDC1E836D89007558C7 /* OrderDetailViewControllerDelegate.swift in Sources */,
 				969715C31E874EB100BD3BDE /* InventoryItemCustomCell.swift in Sources */,
 				965546271E89B81F0062157E /* User_Model.swift in Sources */,
 				9D6CA0081E83171800B3C939 /* CompaniesCustomCell.swift in Sources */,
 				9D6CA0101E83258900B3C939 /* CompanyItemsCustomCell.swift in Sources */,
+				965546291E89C4320062157E /* Login_Registration_Model.swift in Sources */,
+				9655462B1E89C5C30062157E /* DashboardModel.swift in Sources */,
 				9D6CA00A1E83211100B3C939 /* UsersViewController.swift in Sources */,
 				9D06ECA21E83983A005D5CDC /* User+CoreDataProperties.swift in Sources */,
 				9D6CA0121E832AB000B3C939 /* backButtonDelegate.swift in Sources */,
@@ -449,6 +466,7 @@
 				9D6CA0141E832C2E00B3C939 /* InventoryViewController.swift in Sources */,
 				9D6CA0061E8316B700B3C939 /* CompaniesViewController.swift in Sources */,
 				9D1A7EFC1E83796600AA35B9 /* RegisterViewController.swift in Sources */,
+				9655462F1E89C78E0062157E /* OrderModel.swift in Sources */,
 				9671E9751E820D830057F30A /* AppDelegate.swift in Sources */,
 				38688FD21E832296007558C7 /* OrdersViewController.swift in Sources */,
 				38688FD41E83283A007558C7 /* PendingOrderCustomCell.swift in Sources */,
@@ -456,6 +474,7 @@
 				9D6CA0181E83325C00B3C939 /* InventoryHeaderCustomCell.swift in Sources */,
 				969715C71E874F3200BD3BDE /* CurrentInventoryTableViewCell.swift in Sources */,
 				9644C4D71E87825000B47AA0 /* PublicAttributes.swift in Sources */,
+				965546311E89C7AC0062157E /* CompaniesModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

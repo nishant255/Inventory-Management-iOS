@@ -37,22 +37,7 @@ class DashboardViewController: UIViewController {
     
     
     @IBAction func signOutButtonPressed(_ sender: UIBarButtonItem) {
-        let alertController = UIAlertController(title: nil, message: "Are you sure you want to sign out?", preferredStyle: .actionSheet)
-        let signOutAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.destructive) { action in
-            let currentUser = self.userModel.getCoreDataUser()
-            currentUser?.isLoggedIn = false
-            do{
-                try managedObjectContext.save()
-            } catch {
-                print(error)
-            }
-            self.performSegue(withIdentifier: "signOutSegue", sender: sender)
-        }
-        let cancelAction = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel) { action in }
         
-        alertController.addAction(signOutAction)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
     }
 
     // =================================================
