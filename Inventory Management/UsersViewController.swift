@@ -65,6 +65,16 @@ class UsersViewController: UIViewController {
         
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let indexPath = sender as! IndexPath
+        let user = users[indexPath.row]
+        let controller = segue.destination as! UserViewController;
+        controller.name = user[0]
+        controller.email = user[1]
+        controller.phone = user[2]
+        controller.admin = user[3]
+    }
 
     @IBOutlet weak var usersTableView: UITableView!
     
@@ -80,17 +90,15 @@ extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // dequeue the cell from our storyboard
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UsersCell")! as! UsersCustomCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UsersCell")!
         // All UITableViewCell objects have a build in textLabel so set it to the model that is corresponding to the row in array
-        cell.nameLabel.text = users[indexPath.row][0]
-        cell.emailLabel.text = users[indexPath.row][1]
-        cell.phoneLabel.text = users[indexPath.row][2]
-        cell.adminLabel.text = users[indexPath.row][3]
-
-        
-        
+            cell.textLabel?.text = users[indexPath.row][0]
         // return cell so that Table View knows what to draw in each row
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        performSegue(withIdentifier: "showUser", sender: indexPath)
     }
     
 }
