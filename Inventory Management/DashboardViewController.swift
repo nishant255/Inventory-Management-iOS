@@ -25,16 +25,16 @@ class DashboardViewController: UIViewController {
     let LM = LoginRegistrationModel()
     
     var dashboardSectionArray = [DashboardSection]()
-    
+        
     let refreshControl: UIRefreshControl = UIRefreshControl()
     
     // On View Load and Memeory Warning
     override func viewDidLoad() {
-        super.viewDidLoad()
-        if !LM.checkLogin() {
-            print("Not Logged In")
-            performSegue(withIdentifier: "signOutSegue", sender: nil)
-        }
+        super.viewDidLoad()        
+//        if !LM.checkLogin() {
+//            print("Not Logged In")
+//            performSegue(withIdentifier: "signOutSegue", sender: nil)
+//        }
         refreshControl.addTarget(self, action: #selector(DashboardViewController.refreshControlMethod), for: .valueChanged)
         self.dashboardTableView.addSubview(refreshControl)
         fetchDataFromServer()
@@ -50,6 +50,10 @@ class DashboardViewController: UIViewController {
             performSegue(withIdentifier: "signOutSegue", sender: sender)
         }
         
+    }
+    
+    @IBAction func addNewOrderButtonPressed(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "addNewOrderSegueFromDashboard", sender: sender)
     }
     
     func fetchDataFromServer() {

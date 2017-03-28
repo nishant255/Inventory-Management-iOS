@@ -24,7 +24,7 @@ class CompaniesViewController: UIViewController, BackButtonDelegate {
         
         let companyModel = CompanyModel()
         
-        self.companies = companyModel.getAllCompanies()
+//        self.companies = companyModel.getAllCompanies()
         self.companiesTableView.reloadData()
     }
     @IBOutlet weak var companiesTableView: UITableView!

@@ -12,6 +12,13 @@
 		38688FD81E833780007558C7 /* ReceivedOrderCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38688FD71E833780007558C7 /* ReceivedOrderCustomCell.swift */; };
 		38688FDA1E836B80007558C7 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38688FD91E836B80007558C7 /* OrderDetailViewController.swift */; };
 		38688FDC1E836D89007558C7 /* OrderDetailViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38688FDB1E836D89007558C7 /* OrderDetailViewControllerDelegate.swift */; };
+		9613A34F1E8A1A9500061DDC /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9613A34E1E8A1A9500061DDC /* DashboardViewController.swift */; };
+		9613A3511E8A1C7400061DDC /* SelectCompanyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9613A3501E8A1C7400061DDC /* SelectCompanyTableViewController.swift */; };
+		9613A3531E8A1C8700061DDC /* SelectProductsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9613A3521E8A1C8700061DDC /* SelectProductsTableViewController.swift */; };
+		9613A3551E8A1CAE00061DDC /* EnterOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9613A3541E8A1CAE00061DDC /* EnterOrderViewController.swift */; };
+		9613A3571E8A1CB800061DDC /* ConfirmOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9613A3561E8A1CB800061DDC /* ConfirmOrderViewController.swift */; };
+		9613A3591E8A21B600061DDC /* SelectCompanyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9613A3581E8A21B600061DDC /* SelectCompanyTableViewCell.swift */; };
+		9613A35B1E8A24A100061DDC /* SelectProductsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9613A35A1E8A24A100061DDC /* SelectProductsTableViewCell.swift */; };
 		9644C4D71E87825000B47AA0 /* PublicAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9644C4D61E87825000B47AA0 /* PublicAttributes.swift */; };
 		9655461D1E89B60F0062157E /* Orders.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9655461B1E89B60F0062157E /* Orders.storyboard */; };
 		965546201E89B6850062157E /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9655461F1E89B6850062157E /* Users.storyboard */; };
@@ -21,8 +28,6 @@
 		9655462B1E89C5C30062157E /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9655462A1E89C5C30062157E /* DashboardModel.swift */; };
 		9655462D1E89C77F0062157E /* InventoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9655462C1E89C77F0062157E /* InventoryModel.swift */; };
 		9655462F1E89C78E0062157E /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9655462E1E89C78E0062157E /* OrderModel.swift */; };
-		965546311E89C7AC0062157E /* CompaniesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965546301E89C7AC0062157E /* CompaniesModel.swift */; };
-		965546331E89E73C0062157E /* DashboardSectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965546321E89E73C0062157E /* DashboardSectionData.swift */; };
 		9671720C1E89A55300B9234B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9671720A1E89A55300B9234B /* Main.storyboard */; };
 		9671720F1E89A65400B9234B /* AddOrder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9671720E1E89A65400B9234B /* AddOrder.storyboard */; };
 		967172131E89A6AD00B9234B /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 967172111E89A6AD00B9234B /* Dashboard.storyboard */; };
@@ -35,7 +40,6 @@
 		9671E9821E820D830057F30A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9671E9801E820D830057F30A /* LaunchScreen.storyboard */; };
 		9671E98D1E820D830057F30A /* Inventory_ManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9671E98C1E820D830057F30A /* Inventory_ManagementTests.swift */; };
 		9671E9981E820D830057F30A /* Inventory_ManagementUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9671E9971E820D830057F30A /* Inventory_ManagementUITests.swift */; };
-		9671E9A61E83187E0057F30A /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9671E9A51E83187E0057F30A /* DashboardViewController.swift */; };
 		969715C31E874EB100BD3BDE /* InventoryItemCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969715C21E874EB100BD3BDE /* InventoryItemCustomCell.swift */; };
 		969715C51E874F1B00BD3BDE /* IncomingShipmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969715C41E874F1B00BD3BDE /* IncomingShipmentTableViewCell.swift */; };
 		969715C71E874F3200BD3BDE /* CurrentInventoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969715C61E874F3200BD3BDE /* CurrentInventoryTableViewCell.swift */; };
@@ -79,6 +83,13 @@
 		38688FD71E833780007558C7 /* ReceivedOrderCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivedOrderCustomCell.swift; sourceTree = "<group>"; };
 		38688FD91E836B80007558C7 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
 		38688FDB1E836D89007558C7 /* OrderDetailViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailViewControllerDelegate.swift; sourceTree = "<group>"; };
+		9613A34E1E8A1A9500061DDC /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		9613A3501E8A1C7400061DDC /* SelectCompanyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCompanyTableViewController.swift; sourceTree = "<group>"; };
+		9613A3521E8A1C8700061DDC /* SelectProductsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectProductsTableViewController.swift; sourceTree = "<group>"; };
+		9613A3541E8A1CAE00061DDC /* EnterOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterOrderViewController.swift; sourceTree = "<group>"; };
+		9613A3561E8A1CB800061DDC /* ConfirmOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmOrderViewController.swift; sourceTree = "<group>"; };
+		9613A3581E8A21B600061DDC /* SelectCompanyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCompanyTableViewCell.swift; sourceTree = "<group>"; };
+		9613A35A1E8A24A100061DDC /* SelectProductsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectProductsTableViewCell.swift; sourceTree = "<group>"; };
 		9644C4D61E87825000B47AA0 /* PublicAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicAttributes.swift; sourceTree = "<group>"; };
 		9655461C1E89B60F0062157E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Orders.storyboard; sourceTree = "<group>"; };
 		9655461F1E89B6850062157E /* Users.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
@@ -88,8 +99,6 @@
 		9655462A1E89C5C30062157E /* DashboardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
 		9655462C1E89C77F0062157E /* InventoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryModel.swift; sourceTree = "<group>"; };
 		9655462E1E89C78E0062157E /* OrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
-		965546301E89C7AC0062157E /* CompaniesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompaniesModel.swift; sourceTree = "<group>"; };
-		965546321E89E73C0062157E /* DashboardSectionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardSectionData.swift; sourceTree = "<group>"; };
 		9671720B1E89A55300B9234B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9671720E1E89A65400B9234B /* AddOrder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddOrder.storyboard; sourceTree = "<group>"; };
 		967172121E89A6AD00B9234B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Dashboard.storyboard; sourceTree = "<group>"; };
@@ -108,7 +117,6 @@
 		9671E9931E820D830057F30A /* Inventory ManagementUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Inventory ManagementUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9671E9971E820D830057F30A /* Inventory_ManagementUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory_ManagementUITests.swift; sourceTree = "<group>"; };
 		9671E9991E820D830057F30A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9671E9A51E83187E0057F30A /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		969715C21E874EB100BD3BDE /* InventoryItemCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryItemCustomCell.swift; sourceTree = "<group>"; };
 		969715C41E874F1B00BD3BDE /* IncomingShipmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingShipmentTableViewCell.swift; sourceTree = "<group>"; };
 		969715C61E874F3200BD3BDE /* CurrentInventoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentInventoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -206,6 +214,12 @@
 			isa = PBXGroup;
 			children = (
 				9671720E1E89A65400B9234B /* AddOrder.storyboard */,
+				9613A3501E8A1C7400061DDC /* SelectCompanyTableViewController.swift */,
+				9613A3581E8A21B600061DDC /* SelectCompanyTableViewCell.swift */,
+				9613A3521E8A1C8700061DDC /* SelectProductsTableViewController.swift */,
+				9613A35A1E8A24A100061DDC /* SelectProductsTableViewCell.swift */,
+				9613A3541E8A1CAE00061DDC /* EnterOrderViewController.swift */,
+				9613A3561E8A1CB800061DDC /* ConfirmOrderViewController.swift */,
 			);
 			name = AddOrder;
 			sourceTree = "<group>";
@@ -216,10 +230,9 @@
 				969715C41E874F1B00BD3BDE /* IncomingShipmentTableViewCell.swift */,
 				969715C61E874F3200BD3BDE /* CurrentInventoryTableViewCell.swift */,
 				967172111E89A6AD00B9234B /* Dashboard.storyboard */,
-				9671E9A51E83187E0057F30A /* DashboardViewController.swift */,
 				9655462A1E89C5C30062157E /* DashboardModel.swift */,
+				9613A34E1E8A1A9500061DDC /* DashboardViewController.swift */,
 				96EE7BB01E845D450077057D /* DashboardSections.swift */,
-				965546321E89E73C0062157E /* DashboardSectionData.swift */,
 			);
 			name = Dashboard;
 			sourceTree = "<group>";
@@ -450,9 +463,9 @@
 				969715C51E874F1B00BD3BDE /* IncomingShipmentTableViewCell.swift in Sources */,
 				9655462D1E89C77F0062157E /* InventoryModel.swift in Sources */,
 				38688FDC1E836D89007558C7 /* OrderDetailViewControllerDelegate.swift in Sources */,
+				9613A3531E8A1C8700061DDC /* SelectProductsTableViewController.swift in Sources */,
 				969715C31E874EB100BD3BDE /* InventoryItemCustomCell.swift in Sources */,
 				965546271E89B81F0062157E /* User_Model.swift in Sources */,
-				965546331E89E73C0062157E /* DashboardSectionData.swift in Sources */,
 				9D6CA0081E83171800B3C939 /* CompaniesCustomCell.swift in Sources */,
 				9D6CA0101E83258900B3C939 /* CompanyItemsCustomCell.swift in Sources */,
 				965546291E89C4320062157E /* Login_Registration_Model.swift in Sources */,
@@ -463,22 +476,26 @@
 				9671E9771E820D830057F30A /* LoginViewController.swift in Sources */,
 				9D1A7EFE1E837ACC00AA35B9 /* CancelButtonDelegate.swift in Sources */,
 				96EE7BB11E845D450077057D /* DashboardSections.swift in Sources */,
+				9613A3571E8A1CB800061DDC /* ConfirmOrderViewController.swift in Sources */,
 				9D6CA00E1E8323FC00B3C939 /* CompanyViewController.swift in Sources */,
+				9613A3511E8A1C7400061DDC /* SelectCompanyTableViewController.swift in Sources */,
+				9613A34F1E8A1A9500061DDC /* DashboardViewController.swift in Sources */,
+				9613A3551E8A1CAE00061DDC /* EnterOrderViewController.swift in Sources */,
 				9D6CA00C1E83217700B3C939 /* UsersCustomCell.swift in Sources */,
 				9DB7ACCF1E89CE87006F72E6 /* Company_Model.swift in Sources */,
 				9D06ECA11E83983A005D5CDC /* User+CoreDataClass.swift in Sources */,
+				9613A35B1E8A24A100061DDC /* SelectProductsTableViewCell.swift in Sources */,
 				9D6CA0141E832C2E00B3C939 /* InventoryViewController.swift in Sources */,
 				9D6CA0061E8316B700B3C939 /* CompaniesViewController.swift in Sources */,
 				9D1A7EFC1E83796600AA35B9 /* RegisterViewController.swift in Sources */,
 				9655462F1E89C78E0062157E /* OrderModel.swift in Sources */,
 				9671E9751E820D830057F30A /* AppDelegate.swift in Sources */,
+				9613A3591E8A21B600061DDC /* SelectCompanyTableViewCell.swift in Sources */,
 				38688FD21E832296007558C7 /* OrdersViewController.swift in Sources */,
 				38688FD41E83283A007558C7 /* PendingOrderCustomCell.swift in Sources */,
-				9671E9A61E83187E0057F30A /* DashboardViewController.swift in Sources */,
 				9D6CA0181E83325C00B3C939 /* InventoryHeaderCustomCell.swift in Sources */,
 				969715C71E874F3200BD3BDE /* CurrentInventoryTableViewCell.swift in Sources */,
 				9644C4D71E87825000B47AA0 /* PublicAttributes.swift in Sources */,
-				965546311E89C7AC0062157E /* CompaniesModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
