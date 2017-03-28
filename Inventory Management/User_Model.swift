@@ -25,20 +25,17 @@ class UserModel {
         return user
     }
     
-    func getServerUserFromEmail(email: String) -> NSDictionary {
-        var returnedUser: NSDictionary? = nil
+    func getServerUserFromEmail(email: String, completionHandler: @escaping ((NSDictionary) -> Void)) {
         let url = URL(string: urlHost + "user/getUser/email/" + (email))
         let session = URLSession.shared
-        let getServerUser = session.dataTask(with: url!, completionHandler: {
+        let task = session.dataTask(with: url!, completionHandler: {
             
             data, response, error in
             
             do {
                 if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
-                    print(jsonResult)
                     DispatchQueue.main.async {
-                        returnedUser = jsonResult
-                        
+                        completionHandler(jsonResult)                        
                     }
                 }
             } catch {
@@ -46,8 +43,8 @@ class UserModel {
             }
             
         })
-        getServerUser.resume()
-        
-        return returnedUser!
+        task.resume()
     }
+    
+    
 }

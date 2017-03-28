@@ -10,11 +10,13 @@ import Foundation
 
 class InventoryModel{
     
-    func getAllProducts() -> [String]{
+    let UM = UserModel()
+    
+    func getAllProducts(completionHandler: @escaping (([String]) -> Void)){
         let url = URL(string: urlHost + "products")
         let session = URLSession.shared
         var products = [String]()
-        let getProducts = session.dataTask(with: url!, completionHandler: {
+        let task = session.dataTask(with: url!, completionHandler: {
             
             data, response, error in
             
@@ -26,7 +28,8 @@ class InventoryModel{
                         products.append(productDict.value(forKey: "name") as! String)
                     }
                     DispatchQueue.main.async {
-                        return products
+                        
+                        completionHandler(products)
                     }
                 }
             } catch {
@@ -34,7 +37,35 @@ class InventoryModel{
             }
             
         })
-        getProducts.resume()
-        return products
+        task.resume()
+        
+    }
+    
+    func recieveOrder(order: NSDictionary, completionHandler: @escaping ((Bool) -> Void)) {
+        let cduser = UM.getCoreDataUser()
+        UM.getServerUserFromEmail(email: (cduser?.email)!) { (serverUser) in
+            
+            if let jsonData = try? JSONSerialization.data(withJSONObject: serverUser, options: []) {
+                let updateOrderUrl = NSURL(string: "\(urlHost)orders/receive/\(order.value(forKey: "_id")!)")!
+                let request = NSMutableURLRequest(url: updateOrderUrl as URL)
+                request.httpMethod = "POST"
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.httpBody = jsonData
+                let task = URLSession.shared.dataTask(with: request as URLRequest){ data,response,error in
+                    do {
+                        if (try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary) != nil {
+                            DispatchQueue.main.async {
+                                completionHandler(true)
+                            }
+                        }
+                    } catch {
+                        print(error)
+                        completionHandler(false)
+                    }
+                }
+                task.resume()
+            }
+
+        }
     }
 }

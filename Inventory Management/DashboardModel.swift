@@ -10,8 +10,10 @@ import Foundation
 
 class DashboardModel {
     
-    func fetchDataFromServer (){
-        
-    }
+    let OM = OrderModel()
+    let IM = InventoryModel()
+    let UM = UserModel()
+                
     
+        
 }

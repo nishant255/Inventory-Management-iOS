@@ -9,29 +9,28 @@
 import Foundation
 
 class OrderModel {
-    func getPendingOrders() -> [NSDictionary] {
+    func getPendingOrders(completionHandler: @escaping (([NSDictionary]) -> Void)) {
         let incomingShipmentsURL = URL(string: urlHost + "orders/notReceived")
+        let urlRequest = URLRequest(url: incomingShipmentsURL!)
         let session = URLSession.shared
-        var orders = [NSDictionary]()
-        let getPendingOrders = session.dataTask(with: incomingShipmentsURL!, completionHandler: {
+        let task = session.dataTask(with: urlRequest, completionHandler: {
             
             data, response, error in
             
             do {
                 if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray {
-                    for shipment in jsonResult {
-                        let shipDict = shipment as! NSDictionary
-                        orders.append(shipDict)
-                    }
                     DispatchQueue.main.async {
-                        return orders
+                        completionHandler(jsonResult as! [NSDictionary])
                     }
                 }
             } catch {
                 print(error)
             }
+            
         })
-        getPendingOrders.resume()
-        return orders
+        
+        task.resume()
+        
+        
     }
 }

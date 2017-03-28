@@ -10,16 +10,22 @@ import Foundation
 
 class LoginRegistrationModel {
     
-    let userModel = UserModel()
+    let UM = UserModel()
     
     func signOut() -> Bool {
-        let currentUser = userModel.getCoreDataUser()
-        currentUser?.isLoggedIn = false
+        UM.getCoreDataUser()?.isLoggedIn = false
         do{
             try managedObjectContext.save()
             return true
         } catch {
             print(error)
+        }
+        return false
+    }
+    
+    func checkLogin() -> Bool {
+        if (UM.getCoreDataUser()?.isLoggedIn)! {
+            return true
         }
         return false
     }
