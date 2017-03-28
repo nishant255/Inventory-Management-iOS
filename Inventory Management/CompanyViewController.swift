@@ -11,85 +11,63 @@ import UIKit
 
 class CompanyViewController: UIViewController {
     
-    var companyItems = [[String]]()
-    var backDelegate: BackButtonDelegate?
-    var companyId: String?
+//    ================================================
+//                OUTLETS AND VARIABLES
+//    ================================================
+    
+    var company: NSDictionary?
+    
+    @IBOutlet weak var companyTableView: UITableView!
+    @IBOutlet weak var companyLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    
+//    ================================================
+//                VIEW DID LOAD
+//    ================================================
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         companyTableView.dataSource = self
         companyTableView.delegate = self
         
-        let url = NSURL(string: urlHost+"companies/\(companyId!)")
-        let session = URLSession.shared
-        print("got to here")
-        print(companyId!)
+        let companyName = company?["name"] as! String
+        let email = company?["email"] as! String
+        let phone = company?["phone"] as! String
+        let addressDic = company?["address"] as! NSDictionary
+        let city = addressDic["city"] as! String
+        let state = addressDic["state"] as! String
+        let street = addressDic["street"] as! String
+        let zipcode = String(describing: addressDic["zipcode"]!)
+        let address = "\(street), \(city) \(state), \(zipcode)"
         
-        let task = session.dataTask(with: url! as URL, completionHandler: {
-            data, response, error in
-            do {
-                print("in the do")
-                
-                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
-                    
-                    
-                    print("result is =====>",jsonResult)
-                    
-                    print(jsonResult.count)
-                    
-                    let items = jsonResult["products"] as! NSArray
-                    for var i in 0..<items.count {
-                        let item = items[i] as! NSDictionary
-                        let name = item["name"] as! String
-                        let price = String(describing: item["sellPrice"]!)
-                        let quantity = String(describing: item["quantity"]!)
-                        let itemArray = [name,price,quantity]
-                        self.companyItems.append(itemArray)
-                        DispatchQueue.main.async {
-                            self.companyTableView.reloadData()
-                        }
-                    }
-                }
-            } catch {
-                print("in the catch")
-                print(error)
-            }
-        })
-        task.resume()
-        print("I happen before the response!")
-
-        
-        
-        
+        companyLabel.text = "Name: \(companyName)"
+        emailLabel.text = "Email: \(email)"
+        phoneLabel.text = "Phone: \(phone)"
+        addressLabel.text = "Address: \(address)"
     }
-    
-    @IBOutlet weak var companyTableView: UITableView!
-    
-    @IBAction func backButtonPressed(_ sender: Any) {
-        backDelegate?.backButtonPressed(controller: self)
-    }
-    
-    
-    
 }
+
+//    ================================================
+//                TABLEVIEW EXTENSION
+//    ================================================
+
 extension CompanyViewController: UITableViewDataSource, UITableViewDelegate {
     
-
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return companyItems.count
+        let products = company?["products"] as! NSArray
+        return products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // dequeue the cell from our storyboard
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell")! as! CompanyItemCustomCell
-        // All UITableViewCell objects have a build in textLabel so set it to the model that is corresponding to the row in array
-        cell.itemLabel.text = companyItems[indexPath.row][0]
-        cell.priceLabel.text = companyItems[indexPath.row][1]
-        cell.quantityLabel.text = "Qty: \(companyItems[indexPath.row][2])"
-        
-        // return cell so that Table View knows what to draw in each row
-        return cell
+        let cell = companyTableView.dequeueReusableCell(withIdentifier: "ItemCell")
+        let products = company?["products"] as! NSArray
+        let product = products[indexPath.row] as! NSDictionary
+
+        cell?.textLabel?.text = product["name"] as? String
+        return cell!
     }
-    
+
 }
