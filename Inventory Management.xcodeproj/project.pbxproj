@@ -58,6 +58,7 @@
 		9D6CA0141E832C2E00B3C939 /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0131E832C2E00B3C939 /* InventoryViewController.swift */; };
 		9D6CA0181E83325C00B3C939 /* InventoryHeaderCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0171E83325C00B3C939 /* InventoryHeaderCustomCell.swift */; };
 		9DB7ACCF1E89CE87006F72E6 /* Company_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7ACCE1E89CE87006F72E6 /* Company_Model.swift */; };
+		9DDE8EFD1E8ADC7500872B93 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE8EFC1E8ADC7500872B93 /* UserViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +136,7 @@
 		9D6CA0131E832C2E00B3C939 /* InventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		9D6CA0171E83325C00B3C939 /* InventoryHeaderCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InventoryHeaderCustomCell.swift; path = ../InventoryHeaderCustomCell.swift; sourceTree = "<group>"; };
 		9DB7ACCE1E89CE87006F72E6 /* Company_Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Company_Model.swift; path = ../Company_Model.swift; sourceTree = "<group>"; };
+		9DDE8EFC1E8ADC7500872B93 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserViewController.swift; path = ../UserViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 		965546211E89B6990062157E /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				9DDE8EFC1E8ADC7500872B93 /* UserViewController.swift */,
 				965546261E89B81F0062157E /* User_Model.swift */,
 				9655461F1E89B6850062157E /* Users.storyboard */,
 				9D6CA0091E83211100B3C939 /* UsersViewController.swift */,
@@ -381,7 +384,7 @@
 				TargetAttributes = {
 					9671E9701E820D830057F30A = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 3P4GJLRRTB;
+						DevelopmentTeam = 7ZCT66FZW7;
 						ProvisioningStyle = Automatic;
 					};
 					9671E9871E820D830057F30A = {
@@ -458,6 +461,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38688FDA1E836B80007558C7 /* OrderDetailViewController.swift in Sources */,
+				9DDE8EFD1E8ADC7500872B93 /* UserViewController.swift in Sources */,
 				38688FD81E833780007558C7 /* ReceivedOrderCustomCell.swift in Sources */,
 				9671E97D1E820D830057F30A /* Inventory_Management.xcdatamodeld in Sources */,
 				969715C51E874F1B00BD3BDE /* IncomingShipmentTableViewCell.swift in Sources */,
@@ -679,7 +683,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3P4GJLRRTB;
+				DEVELOPMENT_TEAM = 7ZCT66FZW7;
 				INFOPLIST_FILE = "Inventory Management/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nishantpatel.Inventory-Management";
@@ -692,7 +696,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3P4GJLRRTB;
+				DEVELOPMENT_TEAM = 7ZCT66FZW7;
 				INFOPLIST_FILE = "Inventory Management/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nishantpatel.Inventory-Management";
