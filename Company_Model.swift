@@ -11,7 +11,7 @@ import CoreData
 
 class CompanyModel {
     
-    func getAllCompanies() -> [[String]] {
+    /* func getAllCompanies() -> [[String]] {
         
         let url = NSURL(string: urlHost+"companies")
         let session = URLSession.shared
@@ -53,6 +53,32 @@ class CompanyModel {
         task.resume()
         print("I happen before the response!")
         return companies
+        
+    } */
+    
+    func getAllCompanies(completionHandler: @escaping (([NSDictionary]) -> Void)) {
+        let allCompaniesURL = URL(string: urlHost + "companies")
+        let urlRequest = URLRequest(url: allCompaniesURL!)
+        let session = URLSession.shared
+        let task = session.dataTask(with: urlRequest, completionHandler: {
+            
+            data, response, error in
+            
+            do {
+                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray {
+                    DispatchQueue.main.async {
+                        print(jsonResult)
+                        completionHandler(jsonResult as! [NSDictionary])
+                    }
+                }
+            } catch {
+                print(error)
+            }
+            
+        })
+        
+        task.resume()
+        
         
     }
 }

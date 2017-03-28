@@ -12,7 +12,7 @@
         <!--Select Company for Order-->
         <scene sceneID="WPo-Kv-g2M">
             <objects>
-                <tableViewController title="Select Company for Order" id="Q3L-DV-KkS" sceneMemberID="viewController">
+                <tableViewController title="Select Company for Order" id="Q3L-DV-KkS" customClass="SelectCompanyTableViewController" customModule="Inventory_Management" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Gu7-Ee-TsT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="beP-ID-iBP" id="Ybz-gf-GgR">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAv-4u-uEp">
@@ -33,7 +33,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="selectCompanyCell" textLabel="wry-mq-mKE" style="IBUITableViewCellStyleDefault" id="2WZ-Xu-23u">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="selectCompanyCell" textLabel="wry-mq-mKE" style="IBUITableViewCellStyleDefault" id="2WZ-Xu-23u" customClass="SelectCompanyTableViewCell" customModule="Inventory_Management" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2WZ-Xu-23u" id="Mj0-gz-hNi">
@@ -49,6 +49,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="companyNameLabel" destination="wry-mq-mKE" id="BQl-RY-juG"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -57,7 +60,7 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="eoS-eL-QrP" kind="show" id="bDp-5P-M2K"/>
+                        <segue destination="eoS-eL-QrP" kind="show" identifier="selectProductsForCompanySegue" id="bDp-5P-M2K"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lkh-vZ-EHo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -67,17 +70,17 @@
         <!--Select Products for Company_Name-->
         <scene sceneID="Cle-pu-6jg">
             <objects>
-                <tableViewController title="Select Products for Company_Name" id="eoS-eL-QrP" sceneMemberID="viewController">
+                <tableViewController title="Select Products for Company_Name" id="eoS-eL-QrP" customClass="SelectProductsTableViewController" customModule="Inventory_Management" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="lGp-6N-JiN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="C2e-8A-2Xl">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addNewOrderButton" id="C2e-8A-2Xl">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="C2e-8A-2Xl" id="BWs-3I-ioE">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X4K-KI-oPi">
@@ -88,7 +91,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="HmA-iN-UVB" style="IBUITableViewCellStyleDefault" id="dmy-4J-bo8">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="companyProductCell" textLabel="HmA-iN-UVB" style="IBUITableViewCellStyleDefault" id="dmy-4J-bo8" customClass="SelectProductsTableViewCell" customModule="Inventory_Management" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dmy-4J-bo8" id="NIi-hR-EDc">
@@ -104,6 +107,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="productName" destination="HmA-iN-UVB" id="y29-iO-6Do"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -122,7 +128,7 @@
         <!--Enter Quantity and Buy Price-->
         <scene sceneID="iqd-5v-kcO">
             <objects>
-                <viewController title="Enter Quantity and Buy Price" automaticallyAdjustsScrollViewInsets="NO" id="l92-jr-4f2" sceneMemberID="viewController">
+                <viewController title="Enter Quantity and Buy Price" automaticallyAdjustsScrollViewInsets="NO" id="l92-jr-4f2" customClass="EnterOrderViewController" customModule="Inventory_Management" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dsv-mx-p20"/>
                         <viewControllerLayoutGuide type="bottom" id="k4Y-by-Pdn"/>
@@ -140,7 +146,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="89"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WC3-G9-QIT" id="cp8-e4-WSt">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="88.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="88.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6lX-uZ-Qds">
@@ -169,6 +175,10 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="l92-jr-4f2" id="OhM-JF-O5v"/>
+                                    <outlet property="delegate" destination="l92-jr-4f2" id="Agg-ra-Z5V"/>
+                                </connections>
                             </tableView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vLI-Ps-eXQ">
                                 <rect key="frame" x="0.0" y="483" width="414" height="204"/>
@@ -239,7 +249,7 @@
         <!--Confirm Order-->
         <scene sceneID="uoa-q1-LCF">
             <objects>
-                <viewController title="Confirm Order" automaticallyAdjustsScrollViewInsets="NO" id="iVg-3w-uGI" sceneMemberID="viewController">
+                <viewController title="Confirm Order" automaticallyAdjustsScrollViewInsets="NO" id="iVg-3w-uGI" customClass="ConfirmOrderViewController" customModule="Inventory_Management" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vr4-SA-tVM"/>
                         <viewControllerLayoutGuide type="bottom" id="Ywj-A0-Wcz"/>
@@ -312,7 +322,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m8k-NY-sxf" id="6cA-LZ-y7W">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYs-dR-0V6">
@@ -343,7 +353,7 @@
                                         <rect key="frame" x="0.0" y="78" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W04-vK-b9i" id="Gfy-da-SaG">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wiw-Aq-BAb">
@@ -372,6 +382,10 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="iVg-3w-uGI" id="k5p-wo-ThD"/>
+                                    <outlet property="delegate" destination="iVg-3w-uGI" id="73B-FI-8a3"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
