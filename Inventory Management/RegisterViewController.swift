@@ -34,7 +34,7 @@ class RegisterViewController: UIViewController {
             let result = try managedObjectContext.fetch(request)
             print(result)
             if result.count > 0 {
-                x = result[0] as! User
+                x = (result[0] as! User)
             }
         } catch {
             print(error)
@@ -84,11 +84,11 @@ class RegisterViewController: UIViewController {
         
         
         let dict = [
-            "first_name": firstNameInput.text,
-            "last_name": lastNameInput.text,
-            "email": emailInput.text,
-            "password": passwordInput.text,
-            "phone_number": Int(phoneInput.text!),
+            "first_name": firstNameInput.text!,
+            "last_name": lastNameInput.text!,
+            "email": emailInput.text!,
+            "password": passwordInput.text!,
+            "phone_number": Int(phoneInput.text!)!,
             ] as [String: Any]
         if let jsonData = try? JSONSerialization.data(withJSONObject: dict, options: []) {
             
@@ -101,7 +101,7 @@ class RegisterViewController: UIViewController {
             
             let task = URLSession.shared.dataTask(with: request as URLRequest){ data,response,error in
                 if error != nil{
-                    print(error?.localizedDescription)
+                    print(error?.localizedDescription as Any)
                     return
                 }
                 
@@ -128,7 +128,7 @@ class RegisterViewController: UIViewController {
                                     print(error)
                                 }
                             } else if fetchResult == true {
-                                var oldUser = self.fetchUser()
+                                let oldUser = self.fetchUser()
                                 oldUser.email = email
                                 oldUser.isLoggedIn = true
                                 oldUser.admin = Int32(admin)
