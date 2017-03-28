@@ -14,6 +14,7 @@ class DashboardViewController: UIViewController {
     // ALL THE OUTLET AND CONTROLLER VARIABLE
     // =================================================
     
+    
     @IBOutlet weak var dashboardTableView: UITableView!
         
     
@@ -23,6 +24,8 @@ class DashboardViewController: UIViewController {
     let OM = OrderModel()
     let UM = UserModel()
     let LM = LoginRegistrationModel()
+    let CM = CompanyModel()
+    
     
     var dashboardSectionArray = [DashboardSection]()
         
@@ -49,6 +52,7 @@ class DashboardViewController: UIViewController {
             print("Logged Out")
             performSegue(withIdentifier: "signOutSegue", sender: sender)
         }
+        
         
     }
     
@@ -86,6 +90,11 @@ class DashboardViewController: UIViewController {
     }
  
 }
+
+
+    //=================================================================
+    //                    TABLEVIEW EXTENSION
+    //=================================================================
 
 extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
     // MARK -> Number of Sections in Table
