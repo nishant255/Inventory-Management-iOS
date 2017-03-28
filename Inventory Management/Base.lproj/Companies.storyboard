@@ -42,7 +42,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="107"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ot7-WG-Sfg" id="Dix-48-dXR">
-                                            <rect key="frame" x="0.0" y="0.0" width="367" height="106.66666666666667"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="367" height="106.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Company name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XrZ-y1-Vb7">
@@ -134,10 +134,10 @@
             </objects>
             <point key="canvasLocation" x="7474.3999999999996" y="902.69865067466276"/>
         </scene>
-        <!--UIViewController-FhL-te-kQL-->
+        <!--Main-->
         <scene sceneID="yyl-8H-N3q">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main2" referencedIdentifier="UIViewController-FhL-te-kQL" id="erw-pw-zrT" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Main" id="erw-pw-zrT" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bn2-tV-gKS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6535.1999999999998" y="1652.9235382308848"/>

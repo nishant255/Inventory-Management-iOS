@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E183b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="H6E-RB-6Pe">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,11 +19,11 @@
                         <viewControllerLayoutGuide type="bottom" id="8I1-1a-es5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OAu-VM-8Db">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YqL-af-LGp">
-                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="44"/>
                                 <items>
                                     <navigationItem id="Nxu-mO-DKI">
                                         <barButtonItem key="leftBarButtonItem" title="Add Order" id="L9L-iq-TV8"/>
@@ -32,14 +36,14 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uiu-hf-Vvb" userLabel="tableView">
-                                <rect key="frame" x="16" y="108" width="343" height="510"/>
+                                <rect key="frame" x="20" y="108" width="374" height="579"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PendingOrderCustomCell" rowHeight="38" id="LIp-Jz-gQV" userLabel="PendingOrderCustomCell" customClass="PendingOrderCustomCell" customModule="Inventory_Management" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="38"/>
+                                        <rect key="frame" x="0.0" y="28" width="374" height="38"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LIp-Jz-gQV" id="IZs-iD-Ayc">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="37"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="37.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Placed By:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kV-Ud-oDf">
@@ -58,13 +62,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Placed On: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZg-np-jGa">
-                                                    <rect key="frame" x="261" y="0.0" width="74" height="17"/>
+                                                    <rect key="frame" x="292" y="0.0" width="74" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZq-6V-qrh">
-                                                    <rect key="frame" x="258" y="9" width="77" height="30"/>
+                                                    <rect key="frame" x="289" y="9" width="77" height="30"/>
                                                     <state key="normal" title="View Order"/>
                                                     <connections>
                                                         <segue destination="KmN-Ae-dyp" kind="presentation" identifier="PendingOrderViewSegue" id="PPm-CJ-nWI"/>
@@ -89,10 +93,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReceivedOrderCustomCell" rowHeight="43" id="F5L-Wq-rSP" userLabel="ReceivedOrderCustomCell" customClass="ReceivedOrderCustomCell" customModule="Inventory_Management" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="66" width="343" height="43"/>
+                                        <rect key="frame" x="0.0" y="66" width="374" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F5L-Wq-rSP" id="8rc-qP-280">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="42"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="42.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Placed On:                                               " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKn-Wd-sNu">
@@ -111,7 +115,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oAI-vQ-9wb">
-                                                    <rect key="frame" x="257" y="13" width="87" height="30"/>
+                                                    <rect key="frame" x="257" y="13" width="118" height="30"/>
                                                     <state key="normal" title="View Order"/>
                                                     <connections>
                                                         <segue destination="KmN-Ae-dyp" kind="presentation" identifier="ReceivedOrderViewSegue" id="stH-1c-qka"/>
@@ -186,7 +190,6 @@
                     <tabBarItem key="tabBarItem" title="Orders" id="ovr-oD-Qhv"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4_7.fullscreen"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="X0f-X1-TH3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -200,10 +203,10 @@
             </objects>
             <point key="canvasLocation" x="1784.8" y="1138.3808095952024"/>
         </scene>
-        <!--UINavigationController-YRe-my-FoU-->
+        <!--Main-->
         <scene sceneID="nYn-W8-fEW">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main2" referencedIdentifier="UINavigationController-YRe-my-FoU" id="KmN-Ae-dyp" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Main" id="KmN-Ae-dyp" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U8Y-s0-GT7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4252" y="1638.5307346326838"/>

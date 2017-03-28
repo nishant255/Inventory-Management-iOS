@@ -15,16 +15,26 @@ class DashboardViewController: UIViewController {
     // =================================================
     
     @IBOutlet weak var dashboardTableView: UITableView!
+        
+    
+        
+    let DM = DashboardModel()
+    let IM = InventoryModel()
+    let OM = OrderModel()
+    let UM = UserModel()
+    let LM = LoginRegistrationModel()
     
     var dashboardSectionArray = [DashboardSection]()
-    
-    let userModel = UserModel()
     
     let refreshControl: UIRefreshControl = UIRefreshControl()
     
     // On View Load and Memeory Warning
     override func viewDidLoad() {
         super.viewDidLoad()
+        if !LM.checkLogin() {
+            print("Not Logged In")
+            performSegue(withIdentifier: "signOutSegue", sender: nil)
+        }
         refreshControl.addTarget(self, action: #selector(DashboardViewController.refreshControlMethod), for: .valueChanged)
         self.dashboardTableView.addSubview(refreshControl)
         fetchDataFromServer()
@@ -34,66 +44,34 @@ class DashboardViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    
-    
-    @IBAction func signOutButtonPressed(_ sender: UIBarButtonItem) {
+    @IBAction func signOutButtonPressed(_ sender: UIBarButtonItem) {        
+        if LM.signOut(){
+            print("Logged Out")
+            performSegue(withIdentifier: "signOutSegue", sender: sender)
+        }
         
     }
-
-    // =================================================
-    //  ALL THE METHODS FOR CONTROLLER
-    // =================================================
     
-    // MARK -> Fetching Initital Data from Server
-    func fetchDataFromServer (){
-        let url = URL(string: urlHost + "products")
-        let incomingShipmentsURL = URL(string: urlHost + "orders/notReceived")
-        let session = URLSession.shared
-        let getPendingOrders = session.dataTask(with: incomingShipmentsURL!, completionHandler: {
-            
-            data, response, error in
-            
-            do {
-                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray {
-                    var orders = [NSDictionary]()
-                    for shipment in jsonResult {
-                        let shipDict = shipment as! NSDictionary
-                        orders.append(shipDict)
-                    }
-                    DispatchQueue.main.async {
-                        let incomingShipment = DashboardSection(title: "Incoming Shipments", objects: orders)
-                        self.dashboardSectionArray.append(incomingShipment)
-                        self.dashboardTableView.reloadData()
-                    }
-                }
-            } catch {
-                print(error)
-            }
-        })
-        getPendingOrders.resume()
-        let getProducts = session.dataTask(with: url!, completionHandler: {
-            
-            data, response, error in
-            
-            do {
-                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray {
-                    var products = [String]()
-                    for product in jsonResult {
-                        let productDict = product as! NSDictionary
-                        products.append(productDict.value(forKey: "name") as! String)
-                    }
-                    DispatchQueue.main.async {
-                        let currentInventory = DashboardSection(title: "Current Inventory", objects: products)
-                        self.dashboardSectionArray.append(currentInventory)
-                        self.dashboardTableView.reloadData()
-                    }
-                }
-            } catch {
-                print(error)
+    func fetchDataFromServer() {
+        OM.getPendingOrders { (orders) in
+            let incomingShipment = DashboardSection(title: "Incoming Shipments", objects: orders)
+            if self.dashboardSectionArray.count == 0 {
+                self.dashboardSectionArray.append(incomingShipment)
+            } else {
+                self.dashboardSectionArray.append(incomingShipment)                
+                let temp = self.dashboardSectionArray[0]
+                self.dashboardSectionArray[0] = self.dashboardSectionArray[1]
+                self.dashboardSectionArray[1] = temp
             }
             
-        })
-        getProducts.resume()
+            
+            self.dashboardTableView.reloadData()
+        }
+        IM.getAllProducts { (products) in
+            let currentInventory = DashboardSection(title: "Current Inventory", objects: products)
+            self.dashboardSectionArray.append(currentInventory)
+            self.dashboardTableView.reloadData()
+        }
     }
     
     func refreshControlMethod() {
@@ -108,14 +86,11 @@ class DashboardViewController: UIViewController {
 extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
     // MARK -> Number of Sections in Table
     func numberOfSections(in tableView: UITableView) -> Int {
-        print("numberOfSections: \(dashboardSectionArray.count)")
         return dashboardSectionArray.count
     }
     
     // MARK -> Number of Rows in Section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("dashboardSectionArray count:")
-        print(dashboardSectionArray[section].items.count)
         if dashboardSectionArray[section].heading == "Incoming Shipments" {
             if dashboardSectionArray[section].items.count == 0 {
                 return 1
@@ -181,50 +156,27 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
             if dashboardSectionArray[indexPath.section].items.count > 0 {
                 let alertController = UIAlertController(title: "Order Recieved?", message: nil, preferredStyle: .actionSheet)
                 let recievedAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { action in
+                    print("Recieved Action Clicked")
                     let incomingShipmentSection = self.dashboardSectionArray[indexPath.section]
                     let order = incomingShipmentSection.items[indexPath.row] as! NSDictionary
-                    let orderId = order.value(forKey: "_id") as! String
-                    let currentUser = self.userModel.getCoreDataUser()
-                    let getUserURL = URL(string: urlHost + "user/getUser/email/" + (currentUser?.email)!)
-                    let session = URLSession.shared
-                    let getUserFromServer = session.dataTask(with: getUserURL!, completionHandler: {
-                        data, response, error in
-                        
-                        do {
-                            if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
-                                let user = jsonResult.value(forKey: "data")
-                                print(jsonResult)
-                                DispatchQueue.main.async {
-                                    if let jsonData = try? JSONSerialization.data(withJSONObject: user!, options: []) {
-                                        let updateOrderUrl = NSURL(string: "\(urlHost)orders/receive/\(orderId)")!
-                                        let request = NSMutableURLRequest(url: updateOrderUrl as URL)
-                                        request.httpMethod = "POST"
-                                        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-                                        request.httpBody = jsonData
-                                        let task = URLSession.shared.dataTask(with: request as URLRequest){ data,response,error in
-                                            do {
-                                                if let jsonResultAfterUpdatingServer = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
-                                                    print(jsonResultAfterUpdatingServer)
-                                                    DispatchQueue.main.async {
-                                                        print("Successfully Updated Order")
-                                                    }
-                                                }
-                                            } catch {
-                                                print(error)
-                                            }
-                                        }
-                                        task.resume()
-                                        
-                                    }
-                                }
+                    self.IM.recieveOrder(order: order, completionHandler: { (result) in
+                        print(result)
+                        if result == true {
+                            let alertForOrder = UIAlertController(title: "Successfully Updated Order", message: nil, preferredStyle: .alert)
+                            let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { action in
+                                self.refreshControlMethod()
                             }
-                        } catch {
-                            print(error)
+                            alertForOrder.addAction(OKAction)
+                            self.present(alertForOrder, animated: true, completion: nil)
+                        } else {
+                            let alertForOrder = UIAlertController(title: "Order Error", message: "There was error recieving order. Please try again later", preferredStyle: .alert)
+                            let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) { action in
+                                
+                            }
+                            alertForOrder.addAction(OKAction)
+                            self.present(alertForOrder, animated: true, completion: nil)
                         }
-                        
                     })
-                    getUserFromServer.resume()
-                    
                 }
                 
                 let cancelAction = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel) { action in

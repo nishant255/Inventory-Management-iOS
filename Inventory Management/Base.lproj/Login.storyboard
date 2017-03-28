@@ -260,10 +260,10 @@
             </objects>
             <point key="canvasLocation" x="135" y="159"/>
         </scene>
-        <!--Main2-->
+        <!--Main-->
         <scene sceneID="fuV-Di-S7S">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main2" id="2eq-gQ-QiO" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Main" id="2eq-gQ-QiO" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lw0-m0-gB4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-274" y="593"/>

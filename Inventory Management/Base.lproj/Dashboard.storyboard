@@ -124,14 +124,14 @@
                         <barButtonItem key="leftBarButtonItem" title="Add Order" id="75J-9u-DaH"/>
                         <barButtonItem key="rightBarButtonItem" title="Sign Out" id="52h-wh-k9t">
                             <connections>
-                                <action selector="signOutButtonPressed:" destination="fZZ-LD-sdo" id="aJb-TG-Rje"/>
+                                <action selector="signOutButtonPressed:" destination="fZZ-LD-sdo" id="ya5-xk-m06"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="dashboardTableView" destination="JxA-lJ-1tc" id="Lbq-u8-eKl"/>
-                        <segue destination="YOK-aZ-ZJX" kind="showDetail" identifier="signOutSegue" action="showViewController:sender:" id="jFY-iK-sik"/>
+                        <segue destination="YOK-aZ-ZJX" kind="presentation" identifier="signOutSegue" id="jFY-iK-sik"/>
                         <segue destination="aOA-hl-81u" kind="show" identifier="addNewOrderSegue" id="pzq-ub-TIk"/>
                     </connections>
                 </viewController>
