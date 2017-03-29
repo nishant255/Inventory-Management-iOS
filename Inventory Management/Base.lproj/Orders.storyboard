@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="H6E-RB-6Pe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="H6E-RB-6Pe">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -43,18 +44,18 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fnm-ik-x8B" id="Obv-8S-mKO">
-                                    <rect key="frame" x="0.0" y="0.0" width="367" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="367" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Sender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yca-0o-uqq">
-                                            <rect key="frame" x="15" y="11" width="55" height="21"/>
+                                            <rect key="frame" x="15" y="11.999999999999998" width="55" height="20.333333333333332"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LzH-OK-b7U">
-                                            <rect key="frame" x="331" y="11" width="36" height="21"/>
+                                            <rect key="frame" x="331" y="11.999999999999998" width="36" height="20.333333333333332"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -67,11 +68,11 @@
                                 <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jMU-K8-A2s" id="vPM-8y-Fzu">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="No Incoming Shipment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FkE-g9-Nkb">
-                                            <rect key="frame" x="15" y="0.0" width="384" height="43"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="No Incoming Orders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FkE-g9-Nkb">
+                                            <rect key="frame" x="15" y="0.0" width="384" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -84,18 +85,18 @@
                                 <rect key="frame" x="0.0" y="116" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NAF-O1-NEn" id="jFA-Ot-YNx">
-                                    <rect key="frame" x="0.0" y="0.0" width="367" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="367" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Sender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bnu-nV-W8R">
-                                            <rect key="frame" x="15" y="11" width="55" height="21"/>
+                                            <rect key="frame" x="15" y="11.999999999999998" width="55" height="20.333333333333332"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BFf-eJ-uLH">
-                                            <rect key="frame" x="331" y="11" width="36" height="21"/>
+                                            <rect key="frame" x="331" y="11.999999999999998" width="36" height="20.333333333333332"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -187,47 +188,56 @@
                                 <rect key="frame" x="0.0" y="282" width="414" height="405"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="jMt-Ob-FSN">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProductCell" id="jMt-Ob-FSN" customClass="ProductCell" customModule="Inventory_Management" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jMt-Ob-FSN" id="tGw-o1-iQH">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Qty" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ceh-OE-ETW">
-                                                    <rect key="frame" x="176" y="-6" width="118" height="49"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Buy Price" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ovl-fY-GNW">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buy Price" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ovl-fY-GNW">
                                                     <rect key="frame" x="302" y="-3" width="104" height="49"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="104" id="9AE-Nb-4SU"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Product" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhP-6O-OBa">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhP-6O-OBa">
                                                     <rect key="frame" x="8" y="-3" width="160" height="49"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Qty" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ceh-OE-ETW">
+                                                    <rect key="frame" x="176" y="-3" width="118" height="49"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="118" id="H6V-3X-6ll"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="dhP-6O-OBa" secondAttribute="bottom" constant="-3" id="COF-pn-Lo6"/>
-                                                <constraint firstItem="Ceh-OE-ETW" firstAttribute="leading" secondItem="dhP-6O-OBa" secondAttribute="trailing" constant="8" id="CiR-lZ-5oj"/>
-                                                <constraint firstItem="dhP-6O-OBa" firstAttribute="leading" secondItem="tGw-o1-iQH" secondAttribute="leading" constant="8" id="HoA-yE-yEd"/>
-                                                <constraint firstAttribute="trailing" secondItem="Ovl-fY-GNW" secondAttribute="trailing" constant="8" id="IDx-3q-Rc3"/>
-                                                <constraint firstItem="Ceh-OE-ETW" firstAttribute="leading" secondItem="dhP-6O-OBa" secondAttribute="trailing" constant="8" id="J9L-sZ-eAd"/>
-                                                <constraint firstAttribute="bottom" secondItem="Ovl-fY-GNW" secondAttribute="bottom" constant="-3" id="P7A-0G-EJv"/>
-                                                <constraint firstItem="Ovl-fY-GNW" firstAttribute="leading" secondItem="Ceh-OE-ETW" secondAttribute="trailing" constant="8" id="QLo-iH-uh3"/>
-                                                <constraint firstItem="Ovl-fY-GNW" firstAttribute="top" secondItem="tGw-o1-iQH" secondAttribute="top" constant="-3" id="RaC-AW-GA1"/>
-                                                <constraint firstItem="Ovl-fY-GNW" firstAttribute="leading" secondItem="Ceh-OE-ETW" secondAttribute="trailing" constant="8" id="aEg-MW-H7U"/>
-                                                <constraint firstItem="dhP-6O-OBa" firstAttribute="top" secondItem="tGw-o1-iQH" secondAttribute="top" constant="-3" id="cVn-to-xoJ"/>
-                                                <constraint firstAttribute="bottom" secondItem="Ceh-OE-ETW" secondAttribute="bottom" id="fol-2f-5zp"/>
-                                                <constraint firstItem="Ceh-OE-ETW" firstAttribute="top" secondItem="tGw-o1-iQH" secondAttribute="top" constant="-6" id="tmU-tN-s2a"/>
+                                                <constraint firstItem="dhP-6O-OBa" firstAttribute="baseline" secondItem="Ceh-OE-ETW" secondAttribute="baseline" id="59n-AQ-n3u"/>
+                                                <constraint firstItem="dhP-6O-OBa" firstAttribute="centerY" secondItem="tGw-o1-iQH" secondAttribute="centerY" id="9Wd-gg-esg"/>
+                                                <constraint firstItem="Ovl-fY-GNW" firstAttribute="trailing" secondItem="tGw-o1-iQH" secondAttribute="trailingMargin" id="MUn-GZ-5xE"/>
+                                                <constraint firstItem="dhP-6O-OBa" firstAttribute="firstBaseline" secondItem="Ceh-OE-ETW" secondAttribute="firstBaseline" id="UFw-1c-bBr"/>
+                                                <constraint firstItem="Ceh-OE-ETW" firstAttribute="leading" secondItem="dhP-6O-OBa" secondAttribute="trailing" constant="8" symbolic="YES" id="eue-LY-pLg"/>
+                                                <constraint firstItem="dhP-6O-OBa" firstAttribute="leading" secondItem="tGw-o1-iQH" secondAttribute="leadingMargin" id="g3m-IV-5fa"/>
+                                                <constraint firstItem="Ceh-OE-ETW" firstAttribute="baseline" secondItem="Ovl-fY-GNW" secondAttribute="baseline" id="hYy-jc-ySR"/>
+                                                <constraint firstItem="Ceh-OE-ETW" firstAttribute="firstBaseline" secondItem="Ovl-fY-GNW" secondAttribute="firstBaseline" id="mOX-TR-20t"/>
+                                                <constraint firstItem="dhP-6O-OBa" firstAttribute="top" secondItem="tGw-o1-iQH" secondAttribute="topMargin" constant="-11" id="pLR-9y-7eD"/>
+                                                <constraint firstItem="Ovl-fY-GNW" firstAttribute="leading" secondItem="Ceh-OE-ETW" secondAttribute="trailing" constant="8" symbolic="YES" id="yqq-wS-R5v"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="buyPriceLabel" destination="Ovl-fY-GNW" id="haz-K7-eut"/>
+                                            <outlet property="productLabel" destination="dhP-6O-OBa" id="zio-RU-1Ny"/>
+                                            <outlet property="qtyLabel" destination="Ceh-OE-ETW" id="XEh-ep-9Xa"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

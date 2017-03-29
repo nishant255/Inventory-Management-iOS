@@ -37,6 +37,28 @@ class OrdersTableViewController: UITableViewController {
         
     }
     
+    @IBAction func unwindToOrders(sender: UIStoryboardSegue) {
+        
+    }
+
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("view did appear")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("view will appear")
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        print("view dissappeared")
+//        unwindToOrders(sender: <#T##UIStoryboardSegue#>)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("view will dissapear")
+        
+    }
     //=================================================================
     //                    FETCH DATA FROM SERVER
     //=================================================================
@@ -85,7 +107,7 @@ class OrdersTableViewController: UITableViewController {
     
     // MARK -> Number of Rows in Section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if OrdersSectionArray[section].heading == "Incoming Shipments" {
+        if OrdersSectionArray[section].heading == "Pending Orders" {
             if OrdersSectionArray[section].items.count == 0 {
                 return 1
             }
@@ -102,7 +124,7 @@ class OrdersTableViewController: UITableViewController {
         
         // MARK -> If No Incoming Shipments
         
-        if OrdersSectionArray[indexPath.section].heading == "Incoming Shipments" {
+        if OrdersSectionArray[indexPath.section].heading == "Pending Orders" {
             if OrdersSectionArray[indexPath.section].items.count == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "noIncomingShipmentCell", for: indexPath)
                 return cell
@@ -140,7 +162,7 @@ class OrdersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // MARK -> Actionsheet for Recieving Order
-        if OrdersSectionArray[indexPath.section].heading == "Incoming Shipments" {
+        if OrdersSectionArray[indexPath.section].heading == "Pending Orders" {
             if OrdersSectionArray[indexPath.section].items.count > 0 {
                 let alertController = UIAlertController(title: "Order Recieved?", message: nil, preferredStyle: .actionSheet)
                 let recievedAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { action in
@@ -173,6 +195,9 @@ class OrdersTableViewController: UITableViewController {
     //=================================================================
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let id = segue.identifier {
+            print("segue identifier is :", id)
+        }
         if segue.identifier == "ViewOrder" {
             let indexPath = sender as! IndexPath
             print("clicked section: \(indexPath.section), row: \(indexPath.row)")
