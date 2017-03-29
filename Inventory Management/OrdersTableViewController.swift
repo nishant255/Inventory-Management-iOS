@@ -21,10 +21,10 @@ class OrdersTableViewController: UITableViewController {
     var OrdersSectionArray = [OrdersSection]()
     var orders = [NSDictionary]()
     
-    
     //=================================================================
     //                      VIEW DID LOAD
     //=================================================================
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +33,10 @@ class OrdersTableViewController: UITableViewController {
             self.orders = ordersFromServer
             self.tableView.reloadData()
         }
+        refreshControlMethod()
+        refreshControl?.addTarget(self, action: #selector(self.refreshControlMethod), for: .valueChanged)
+//        tableView.ad
+//        tableView.addSubview(refreshControl!)
         fetchDataFromServer()
         
     }
@@ -156,6 +160,13 @@ class OrdersTableViewController: UITableViewController {
         return cell
     }
     
+    func refreshControlMethod() {
+        OrdersSectionArray = [OrdersSection]()
+        fetchDataFromServer()
+        refreshControl?.endRefreshing()
+        
+    }
+    
     
     
     // MARK -> Selection Each Row
@@ -169,6 +180,23 @@ class OrdersTableViewController: UITableViewController {
                     print("Recieved Action Clicked")
                     let incomingShipmentSection = self.OrdersSectionArray[indexPath.section]
                     let order = incomingShipmentSection.items[indexPath.row] as! NSDictionary
+                    self.OM.recieveOrder(order: order, completionHandler: { (result, message) in
+                        if result == true {
+                            let alertForOrder = UIAlertController(title: message, message: nil, preferredStyle: .alert)
+                            let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { action in
+                                self.refreshControlMethod()
+                            }
+                            alertForOrder.addAction(OKAction)
+                            self.present(alertForOrder, animated: true, completion: nil)
+                        } else {
+                            let alertForOrder = UIAlertController(title: "Order Error", message: message, preferredStyle: .alert)
+                            let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) { action in
+                                self.refreshControlMethod()
+                            }
+                            alertForOrder.addAction(OKAction)
+                            self.present(alertForOrder, animated: true, completion: nil)
+                        }
+                    })
                 }
                 
                 let cancelAction = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel) { action in
