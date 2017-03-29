@@ -1,17 +1,19 @@
 //
-//  SelectProductsTableViewCell.swift
+//  OrderDetailsTableViewCell.swift
 //  Inventory Management
 //
-//  Created by Nishant Patel on 3/27/17.
+//  Created by Nishant Patel on 3/28/17.
 //  Copyright © 2017 Nishant Patel. All rights reserved.
 //
 
 import UIKit
 
-class SelectProductsTableViewCell: UITableViewCell {
+class OrderDetailsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var productNameLabel: UILabel!
+    @IBOutlet weak var productsBuyPrice: UITextField!
+    @IBOutlet weak var productQuantity: UITextField!
     
-    @IBOutlet weak var productName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
