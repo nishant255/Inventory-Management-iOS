@@ -12,7 +12,9 @@ import UIKit
 class UsersViewController: UIViewController {
     
     
-    
+    @IBAction func unwindToUsers(sender: UIStoryboardSegue) {
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

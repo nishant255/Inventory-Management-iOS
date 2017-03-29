@@ -63,6 +63,7 @@
 		9DDE8EFD1E8ADC7500872B93 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE8EFC1E8ADC7500872B93 /* UserViewController.swift */; };
 		9DDE8EFF1E8AFD7A00872B93 /* OrdersSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE8EFE1E8AFD7A00872B93 /* OrdersSection.swift */; };
 		9DDE8F011E8B0EA200872B93 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE8F001E8B0EA200872B93 /* OrderViewController.swift */; };
+		9DE86EE41E8C4EEC00682F2E /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE86EE31E8C4EEC00682F2E /* ProductCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +146,7 @@
 		9DDE8EFC1E8ADC7500872B93 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserViewController.swift; path = ../UserViewController.swift; sourceTree = "<group>"; };
 		9DDE8EFE1E8AFD7A00872B93 /* OrdersSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersSection.swift; sourceTree = "<group>"; };
 		9DDE8F001E8B0EA200872B93 /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		9DE86EE31E8C4EEC00682F2E /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 				38688FD11E832296007558C7 /* OrdersTableViewController.swift */,
 				38688FD91E836B80007558C7 /* OrderDetailViewController.swift */,
 				9DDE8F001E8B0EA200872B93 /* OrderViewController.swift */,
+				9DE86EE31E8C4EEC00682F2E /* ProductCell.swift */,
 			);
 			name = Orders;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				38688FD21E832296007558C7 /* OrdersTableViewController.swift in Sources */,
 				38688FD41E83283A007558C7 /* PendingOrderCustomCell.swift in Sources */,
 				9D6CA0181E83325C00B3C939 /* InventoryHeaderCustomCell.swift in Sources */,
+				9DE86EE41E8C4EEC00682F2E /* ProductCell.swift in Sources */,
 				969715C71E874F3200BD3BDE /* CurrentInventoryTableViewCell.swift in Sources */,
 				9644C4D71E87825000B47AA0 /* PublicAttributes.swift in Sources */,
 			);
