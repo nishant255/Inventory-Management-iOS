@@ -32,7 +32,7 @@ class SelectCompanyTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "selectProductsForCompanySegue" {
-            let controller = segue.destination as! SelectProductsTableViewController
+            let controller = segue.destination as! SelectProductsViewController
             let company = sender as! NSDictionary
             controller.company = company
             controller.title = "Select Product(s) for \(company["name"]!)"

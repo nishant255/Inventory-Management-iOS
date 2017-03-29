@@ -135,8 +135,7 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "incomingShipmentCell", for: indexPath) as! IncomingShipmentTableViewCell
             let order = dashboardSectionArray[indexPath.section].items[indexPath.row] as! NSDictionary
             let reciepient = order.value(forKey: "recipient") as! NSDictionary
-            let data_recipient = reciepient.value(forKey: "data") as! NSDictionary
-            cell.orderTitleLabel.text = data_recipient.value(forKey: "email") as? String
+            cell.orderTitleLabel.text = reciepient.value(forKey: "email") as? String
             let dateString = String(describing: (order).value(forKey: "createdAt")!)
             let dateFormatter = DateFormatter()
             let splitDate = dateString.components(separatedBy: "T")
@@ -172,19 +171,18 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
                     print("Recieved Action Clicked")
                     let incomingShipmentSection = self.dashboardSectionArray[indexPath.section]
                     let order = incomingShipmentSection.items[indexPath.row] as! NSDictionary
-                    self.IM.recieveOrder(order: order, completionHandler: { (result) in
-                        print(result)
+                    self.OM.recieveOrder(order: order, completionHandler: { (result, message) in
                         if result == true {
-                            let alertForOrder = UIAlertController(title: "Successfully Updated Order", message: nil, preferredStyle: .alert)
+                            let alertForOrder = UIAlertController(title: message, message: nil, preferredStyle: .alert)
                             let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { action in
                                 self.refreshControlMethod()
                             }
                             alertForOrder.addAction(OKAction)
                             self.present(alertForOrder, animated: true, completion: nil)
                         } else {
-                            let alertForOrder = UIAlertController(title: "Order Error", message: "There was error recieving order. Please try again later", preferredStyle: .alert)
+                            let alertForOrder = UIAlertController(title: "Order Error", message: message, preferredStyle: .alert)
                             let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) { action in
-                                
+                                self.refreshControlMethod()
                             }
                             alertForOrder.addAction(OKAction)
                             self.present(alertForOrder, animated: true, completion: nil)

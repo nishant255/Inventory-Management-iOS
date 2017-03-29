@@ -67,7 +67,6 @@ class CompanyModel {
             do {
                 if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray {
                     DispatchQueue.main.async {
-                        print(jsonResult)
                         completionHandler(jsonResult as! [NSDictionary])
                     }
                 }
