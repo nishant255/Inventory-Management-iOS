@@ -66,4 +66,29 @@ class OrderModel {
             
         }
     }
+    func getReceivedOrders(completionHandler: @escaping (([NSDictionary]) -> Void)) {
+        let incomingShipmentsURL = URL(string: urlHost + "orders/Received")
+        let urlRequest = URLRequest(url: incomingShipmentsURL!)
+        let session = URLSession.shared
+        let task = session.dataTask(with: urlRequest, completionHandler: {
+            
+            data, response, error in
+            
+            do {
+                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray {
+                    DispatchQueue.main.async {
+                        completionHandler(jsonResult as! [NSDictionary])
+                    }
+                }
+            } catch {
+                print(error)
+            }
+            
+        })
+        
+        task.resume()
+        
+        
+    }
+
 }

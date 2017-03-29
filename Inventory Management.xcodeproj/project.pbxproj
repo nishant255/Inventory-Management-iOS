@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		38688FD21E832296007558C7 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38688FD11E832296007558C7 /* OrdersViewController.swift */; };
+		38688FD21E832296007558C7 /* OrdersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38688FD11E832296007558C7 /* OrdersTableViewController.swift */; };
 		38688FD41E83283A007558C7 /* PendingOrderCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38688FD31E83283A007558C7 /* PendingOrderCustomCell.swift */; };
 		38688FD81E833780007558C7 /* ReceivedOrderCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38688FD71E833780007558C7 /* ReceivedOrderCustomCell.swift */; };
 		38688FDA1E836B80007558C7 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38688FD91E836B80007558C7 /* OrderDetailViewController.swift */; };
@@ -50,7 +50,7 @@
 		9D06ECA21E83983A005D5CDC /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D06ECA01E83983A005D5CDC /* User+CoreDataProperties.swift */; };
 		9D1A7EFC1E83796600AA35B9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1A7EFB1E83796600AA35B9 /* RegisterViewController.swift */; };
 		9D1A7EFE1E837ACC00AA35B9 /* CancelButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1A7EFD1E837ACC00AA35B9 /* CancelButtonDelegate.swift */; };
-		9D6CA0061E8316B700B3C939 /* CompaniesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0051E8316B700B3C939 /* CompaniesViewController.swift */; };
+		9D6CA0061E8316B700B3C939 /* CompaniesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0051E8316B700B3C939 /* CompaniesTableViewController.swift */; };
 		9D6CA0081E83171800B3C939 /* CompaniesCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0071E83171800B3C939 /* CompaniesCustomCell.swift */; };
 		9D6CA00A1E83211100B3C939 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0091E83211100B3C939 /* UsersViewController.swift */; };
 		9D6CA00C1E83217700B3C939 /* UsersCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA00B1E83217700B3C939 /* UsersCustomCell.swift */; };
@@ -60,6 +60,9 @@
 		9D6CA0141E832C2E00B3C939 /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0131E832C2E00B3C939 /* InventoryViewController.swift */; };
 		9D6CA0181E83325C00B3C939 /* InventoryHeaderCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0171E83325C00B3C939 /* InventoryHeaderCustomCell.swift */; };
 		9DB7ACCF1E89CE87006F72E6 /* Company_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7ACCE1E89CE87006F72E6 /* Company_Model.swift */; };
+		9DDE8EFD1E8ADC7500872B93 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE8EFC1E8ADC7500872B93 /* UserViewController.swift */; };
+		9DDE8EFF1E8AFD7A00872B93 /* OrdersSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE8EFE1E8AFD7A00872B93 /* OrdersSection.swift */; };
+		9DDE8F011E8B0EA200872B93 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE8F001E8B0EA200872B93 /* OrderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +83,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		38688FD11E832296007558C7 /* OrdersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
+		38688FD11E832296007558C7 /* OrdersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersTableViewController.swift; sourceTree = "<group>"; };
 		38688FD31E83283A007558C7 /* PendingOrderCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingOrderCustomCell.swift; sourceTree = "<group>"; };
 		38688FD71E833780007558C7 /* ReceivedOrderCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivedOrderCustomCell.swift; sourceTree = "<group>"; };
 		38688FD91E836B80007558C7 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
@@ -129,7 +132,7 @@
 		9D06ECA01E83983A005D5CDC /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9D1A7EFB1E83796600AA35B9 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		9D1A7EFD1E837ACC00AA35B9 /* CancelButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelButtonDelegate.swift; sourceTree = "<group>"; };
-		9D6CA0051E8316B700B3C939 /* CompaniesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompaniesViewController.swift; sourceTree = "<group>"; };
+		9D6CA0051E8316B700B3C939 /* CompaniesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompaniesTableViewController.swift; sourceTree = "<group>"; };
 		9D6CA0071E83171800B3C939 /* CompaniesCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompaniesCustomCell.swift; sourceTree = "<group>"; };
 		9D6CA0091E83211100B3C939 /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		9D6CA00B1E83217700B3C939 /* UsersCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersCustomCell.swift; sourceTree = "<group>"; };
@@ -139,6 +142,9 @@
 		9D6CA0131E832C2E00B3C939 /* InventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		9D6CA0171E83325C00B3C939 /* InventoryHeaderCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InventoryHeaderCustomCell.swift; path = ../InventoryHeaderCustomCell.swift; sourceTree = "<group>"; };
 		9DB7ACCE1E89CE87006F72E6 /* Company_Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Company_Model.swift; path = ../Company_Model.swift; sourceTree = "<group>"; };
+		9DDE8EFC1E8ADC7500872B93 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserViewController.swift; path = ../UserViewController.swift; sourceTree = "<group>"; };
+		9DDE8EFE1E8AFD7A00872B93 /* OrdersSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersSection.swift; sourceTree = "<group>"; };
+		9DDE8F001E8B0EA200872B93 /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,12 +175,14 @@
 		9655461E1E89B62A0062157E /* Orders */ = {
 			isa = PBXGroup;
 			children = (
+				9DDE8EFE1E8AFD7A00872B93 /* OrdersSection.swift */,
 				9655462E1E89C78E0062157E /* OrderModel.swift */,
 				38688FD31E83283A007558C7 /* PendingOrderCustomCell.swift */,
 				9655461B1E89B60F0062157E /* Orders.storyboard */,
 				38688FDB1E836D89007558C7 /* OrderDetailViewControllerDelegate.swift */,
-				38688FD11E832296007558C7 /* OrdersViewController.swift */,
+				38688FD11E832296007558C7 /* OrdersTableViewController.swift */,
 				38688FD91E836B80007558C7 /* OrderDetailViewController.swift */,
+				9DDE8F001E8B0EA200872B93 /* OrderViewController.swift */,
 			);
 			name = Orders;
 			sourceTree = "<group>";
@@ -182,6 +190,7 @@
 		965546211E89B6990062157E /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				9DDE8EFC1E8ADC7500872B93 /* UserViewController.swift */,
 				965546261E89B81F0062157E /* User_Model.swift */,
 				9655461F1E89B6850062157E /* Users.storyboard */,
 				9D6CA0091E83211100B3C939 /* UsersViewController.swift */,
@@ -198,7 +207,7 @@
 				9D6CA00D1E8323FC00B3C939 /* CompanyViewController.swift */,
 				9D6CA00F1E83258900B3C939 /* CompanyItemsCustomCell.swift */,
 				9D6CA0071E83171800B3C939 /* CompaniesCustomCell.swift */,
-				9D6CA0051E8316B700B3C939 /* CompaniesViewController.swift */,
+				9D6CA0051E8316B700B3C939 /* CompaniesTableViewController.swift */,
 			);
 			name = Companies;
 			sourceTree = "<group>";
@@ -387,7 +396,7 @@
 				TargetAttributes = {
 					9671E9701E820D830057F30A = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 3P4GJLRRTB;
+						DevelopmentTeam = 7ZCT66FZW7;
 						ProvisioningStyle = Automatic;
 					};
 					9671E9871E820D830057F30A = {
@@ -464,6 +473,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38688FDA1E836B80007558C7 /* OrderDetailViewController.swift in Sources */,
+				9DDE8EFD1E8ADC7500872B93 /* UserViewController.swift in Sources */,
 				38688FD81E833780007558C7 /* ReceivedOrderCustomCell.swift in Sources */,
 				9671E97D1E820D830057F30A /* Inventory_Management.xcdatamodeld in Sources */,
 				969715C51E874F1B00BD3BDE /* IncomingShipmentTableViewCell.swift in Sources */,
@@ -480,6 +490,7 @@
 				9D6CA00A1E83211100B3C939 /* UsersViewController.swift in Sources */,
 				9D06ECA21E83983A005D5CDC /* User+CoreDataProperties.swift in Sources */,
 				9D6CA0121E832AB000B3C939 /* backButtonDelegate.swift in Sources */,
+				9DDE8F011E8B0EA200872B93 /* OrderViewController.swift in Sources */,
 				9671E9771E820D830057F30A /* LoginViewController.swift in Sources */,
 				9D1A7EFE1E837ACC00AA35B9 /* CancelButtonDelegate.swift in Sources */,
 				96EE7BB11E845D450077057D /* DashboardSections.swift in Sources */,
@@ -493,13 +504,14 @@
 				9D06ECA11E83983A005D5CDC /* User+CoreDataClass.swift in Sources */,
 				9613A35B1E8A24A100061DDC /* SelectProductsTableViewCell.swift in Sources */,
 				9D6CA0141E832C2E00B3C939 /* InventoryViewController.swift in Sources */,
-				9D6CA0061E8316B700B3C939 /* CompaniesViewController.swift in Sources */,
+				9DDE8EFF1E8AFD7A00872B93 /* OrdersSection.swift in Sources */,
+				9D6CA0061E8316B700B3C939 /* CompaniesTableViewController.swift in Sources */,
 				9D1A7EFC1E83796600AA35B9 /* RegisterViewController.swift in Sources */,
 				9655462F1E89C78E0062157E /* OrderModel.swift in Sources */,
 				96CC06911E8B0274008844A3 /* SelectProductsViewController.swift in Sources */,
 				9671E9751E820D830057F30A /* AppDelegate.swift in Sources */,
 				9613A3591E8A21B600061DDC /* SelectCompanyTableViewCell.swift in Sources */,
-				38688FD21E832296007558C7 /* OrdersViewController.swift in Sources */,
+				38688FD21E832296007558C7 /* OrdersTableViewController.swift in Sources */,
 				38688FD41E83283A007558C7 /* PendingOrderCustomCell.swift in Sources */,
 				9D6CA0181E83325C00B3C939 /* InventoryHeaderCustomCell.swift in Sources */,
 				969715C71E874F3200BD3BDE /* CurrentInventoryTableViewCell.swift in Sources */,
@@ -687,7 +699,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3P4GJLRRTB;
+				DEVELOPMENT_TEAM = 7ZCT66FZW7;
 				INFOPLIST_FILE = "Inventory Management/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -701,7 +713,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3P4GJLRRTB;
+				DEVELOPMENT_TEAM = 7ZCT66FZW7;
 				INFOPLIST_FILE = "Inventory Management/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
