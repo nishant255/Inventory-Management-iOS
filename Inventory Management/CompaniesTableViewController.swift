@@ -11,7 +11,12 @@ import UIKit
 
 class CompaniesTableViewController: UITableViewController {
     
+    //=================================================================
+    //                     VARIABLES AND OUTLETS
+    //=================================================================
+    
     let CM = CompanyModel()
+    let LM = LoginRegistrationModel()
     var companies = [NSDictionary]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +26,10 @@ class CompaniesTableViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
+
+    //=================================================================
+    //                     CREATING CELLS
+    //=================================================================
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return companies.count
@@ -42,14 +51,32 @@ class CompaniesTableViewController: UITableViewController {
         performSegue(withIdentifier: "ShowCompany", sender: indexPath)
     }
     
+    //=================================================================
+    //                            SEGUE
+    //=================================================================
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let indexPath = sender as! IndexPath
-        let company = companies[indexPath.row]
+        if segue.identifier == "ShowCompany" {
+            let indexPath = sender as! IndexPath
+            let company = companies[indexPath.row]
+            
+            let controller = segue.destination as! CompanyViewController
+            
+            controller.company = company
+        }
         
-        let controller = segue.destination as! CompanyViewController
-        
-        controller.company = company
-        
+    }
+    
+    //=================================================================
+    //                           SIGN OUT
+    //=================================================================
+
+    @IBAction func signOutButtonPressed(_ sender: Any) {
+        if LM.signOut(){
+            print("Logged Out")
+            performSegue(withIdentifier: "signOutSegue", sender: sender)
+        }
+
     }
 
     

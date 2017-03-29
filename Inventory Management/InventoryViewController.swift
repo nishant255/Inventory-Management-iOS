@@ -12,6 +12,16 @@ import UIKit
 class InventoryViewController: UIViewController {
     
     
+    //=================================================================
+    //                   VARIABLES AND OUTLETS
+    //=================================================================
+    
+    let LM = LoginRegistrationModel()
+    
+    //=================================================================
+    //                        VIEW DID LOAD
+    //=================================================================
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("inventoryViewController loaded")
@@ -63,7 +73,24 @@ class InventoryViewController: UIViewController {
     @IBOutlet weak var inventoryTableView: UITableView!
     
     var inventory = [["Tropicana","orange juice","650","2"]]
+    
+    
+    //=================================================================
+    //                           SIGN OUT
+    //=================================================================
+    
+    @IBAction func signOutButtonPressed(_ sender: Any) {
+        if LM.signOut(){
+            print("Logged Out")
+            performSegue(withIdentifier: "signOutSegue", sender: sender)
+        }
+    }
+
 }
+
+//=================================================================
+//                           EXTENSION
+//=================================================================
 
 extension InventoryViewController: UITableViewDataSource, UITableViewDelegate {
     
