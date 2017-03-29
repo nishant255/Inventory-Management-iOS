@@ -20,6 +20,7 @@ class OrdersTableViewController: UITableViewController {
     let OM = OrderModel()
     var OrdersSectionArray = [OrdersSection]()
     var orders = [NSDictionary]()
+    let LM = LoginRegistrationModel()
     
     //=================================================================
     //                      VIEW DID LOAD
@@ -41,28 +42,6 @@ class OrdersTableViewController: UITableViewController {
         
     }
     
-    @IBAction func unwindToOrders(sender: UIStoryboardSegue) {
-        
-    }
-
-    
-    override func viewDidAppear(_ animated: Bool) {
-        print("view did appear")
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        print("view will appear")
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        print("view dissappeared")
-//        unwindToOrders(sender: <#T##UIStoryboardSegue#>)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        print("view will dissapear")
-        
-    }
     //=================================================================
     //                    FETCH DATA FROM SERVER
     //=================================================================
@@ -248,4 +227,19 @@ class OrdersTableViewController: UITableViewController {
             controller.products = products
         }
     }
+    
+    //=================================================================
+    //                           SIGN OUT
+    //=================================================================
+
+    @IBAction func signOutButtonPressed(_ sender: UIBarButtonItem) {
+        if LM.signOut(){
+            print("Logged Out")
+            performSegue(withIdentifier: "signOutSegue", sender: sender)
+        }
+        
+        
+    }
+    
+    
 }

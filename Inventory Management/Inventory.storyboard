@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gxJ-0j-YA2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gxJ-0j-YA2">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,7 +30,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zmf-Rv-tQk" id="uyk-ps-3ZV">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="67.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNM-5r-Df4">
@@ -99,12 +99,16 @@
                     </view>
                     <navigationItem key="navigationItem" id="isQ-ZX-BVl">
                         <barButtonItem key="leftBarButtonItem" title="Add Order" id="xxC-2c-uPN"/>
-                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="nut-3S-pz9"/>
+                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="nut-3S-pz9">
+                            <connections>
+                                <action selector="signOutButtonPressed:" destination="Kh0-ro-miJ" id="D0O-ce-WaJ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="inventoryTableView" destination="AHW-Vr-wPh" id="JbE-oo-fQJ"/>
                         <segue destination="jYZ-AT-YeL" kind="show" identifier="addOrderSegueFromInventory" id="Thp-A3-jUp"/>
-                        <segue destination="6PA-oB-pLj" kind="showDetail" id="oYi-i5-Jd8"/>
+                        <segue destination="6PA-oB-pLj" kind="showDetail" identifier="signOutSegue" id="oYi-i5-Jd8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WW0-iq-Tj1" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -58,19 +58,27 @@
                         <barButtonItem key="leftBarButtonItem" title="Add Order" id="YgK-fn-O9V"/>
                         <barButtonItem key="rightBarButtonItem" title="Sign Out" id="2Se-an-Gyw">
                             <connections>
-                                <segue destination="WiW-Dh-Fy4" kind="unwind" unwindAction="unwindToMainMenuWithSender:" id="LE7-ps-cz6"/>
+                                <action selector="signOutButtonPressed:" destination="0Em-8e-BKh" id="2nA-2n-euO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="usersTableView" destination="mV3-YI-uvr" id="gin-nH-k6I"/>
                         <segue destination="uyl-m6-uN3" kind="show" identifier="showUser" id="SUm-rm-Rak"/>
+                        <segue destination="XdB-dR-iyT" kind="presentation" identifier="signOutSegue" id="4RF-w7-mh6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igX-Ph-bdX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="WiW-Dh-Fy4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5517.3913043478269" y="926.08695652173924"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="yyg-RL-hKy">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="XdB-dR-iyT" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q4j-VQ-5SM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5518" y="1352"/>
         </scene>
         <!--User View Controller-->
         <scene sceneID="nEe-FO-xyi">
