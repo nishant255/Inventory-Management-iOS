@@ -30,11 +30,11 @@ class OrdersTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("OrdersTableViewController loaded")
-        OM.getPendingOrders { (ordersFromServer) in
-            self.orders = ordersFromServer
-            self.tableView.reloadData()
-        }
-        refreshControlMethod()
+//        OM.getPendingOrders { (ordersFromServer) in
+//            self.orders = ordersFromServer
+//            self.tableView.reloadData()
+//        }
+//        refreshControlMethod()
         refreshControl?.addTarget(self, action: #selector(self.refreshControlMethod), for: .valueChanged)
 //        tableView.ad
 //        tableView.addSubview(refreshControl!)
@@ -48,12 +48,15 @@ class OrdersTableViewController: UITableViewController {
     
     func fetchDataFromServer() {
         OM.getPendingOrders { (orders) in
+            print("orders count: ",orders.count)
             let pendingOrdersSection = OrdersSection(title: "Pending Orders", objects: orders)
             
             //this sets the order of the sections so that Pending orders is always on top
             if self.OrdersSectionArray.count == 0 {
+                print("top one is executing")
                 self.OrdersSectionArray.append(pendingOrdersSection)
             } else {
+                print("bottom one is executing")
                 self.OrdersSectionArray.append(pendingOrdersSection)
                 let temp = self.OrdersSectionArray[0]
                 self.OrdersSectionArray[0] = self.OrdersSectionArray[1]
