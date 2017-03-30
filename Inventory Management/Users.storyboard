@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6sL-et-NIA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6sL-et-NIA">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,11 +30,11 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="38"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="66l-ny-HII" id="VdG-EG-ygA">
-                                            <rect key="frame" x="0.0" y="0.0" width="367" height="37"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="367" height="37.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6xi-uM-SM5">
-                                                    <rect key="frame" x="15" y="0.0" width="352" height="37"/>
+                                                    <rect key="frame" x="15" y="0.0" width="352" height="37.666666666666664"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -55,22 +55,42 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yQo-Cp-YeR">
-                        <barButtonItem key="leftBarButtonItem" title="Add Order" id="YgK-fn-O9V"/>
+                        <barButtonItem key="leftBarButtonItem" title="Add Order" id="YgK-fn-O9V">
+                            <connections>
+                                <segue destination="biT-vF-Xj8" kind="show" id="mP7-WD-L0K"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Sign Out" id="2Se-an-Gyw">
                             <connections>
-                                <segue destination="WiW-Dh-Fy4" kind="unwind" unwindAction="unwindToMainMenuWithSender:" id="LE7-ps-cz6"/>
+                                <action selector="signOutButtonPressed:" destination="0Em-8e-BKh" id="2nA-2n-euO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="usersTableView" destination="mV3-YI-uvr" id="gin-nH-k6I"/>
                         <segue destination="uyl-m6-uN3" kind="show" identifier="showUser" id="SUm-rm-Rak"/>
+                        <segue destination="XdB-dR-iyT" kind="presentation" identifier="signOutSegue" id="4RF-w7-mh6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igX-Ph-bdX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="WiW-Dh-Fy4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5517.3913043478269" y="926.08695652173924"/>
+        </scene>
+        <!--AddOrder-->
+        <scene sceneID="jV1-ak-QJ8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddOrder" id="biT-vF-Xj8" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ye8-f5-TVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5233" y="1352"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="yyg-RL-hKy">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="XdB-dR-iyT" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q4j-VQ-5SM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5518" y="1352"/>
         </scene>
         <!--User View Controller-->
         <scene sceneID="nEe-FO-xyi">
@@ -162,6 +182,7 @@
                     </view>
                     <connections>
                         <outlet property="adminLabel" destination="Tso-r0-1xG" id="mYg-M2-Ev2"/>
+                        <outlet property="changeAdminButton" destination="Jqo-ye-zhJ" id="rws-nm-MId"/>
                         <outlet property="emailLabel" destination="6PC-Va-2dJ" id="cuK-5r-DfS"/>
                         <outlet property="nameLabel" destination="t24-Xm-WIh" id="HfH-6Z-QWd"/>
                         <outlet property="phoneLabel" destination="Jmf-Uf-orR" id="VPA-eC-5xX"/>
@@ -175,7 +196,7 @@
         <scene sceneID="vVQ-Ri-NgO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6sL-et-NIA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Users" id="CsE-AY-EC1"/>
+                    <tabBarItem key="tabBarItem" title="Users" image="User-25" id="CsE-AY-EC1"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LZP-Yx-9KE">
@@ -192,4 +213,7 @@
             <point key="canvasLocation" x="4580" y="925.18740629685169"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="User-25" width="25" height="25"/>
+    </resources>
 </document>

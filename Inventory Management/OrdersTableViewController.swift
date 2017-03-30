@@ -20,19 +20,24 @@ class OrdersTableViewController: UITableViewController {
     let OM = OrderModel()
     var OrdersSectionArray = [OrdersSection]()
     var orders = [NSDictionary]()
-    
+    let LM = LoginRegistrationModel()
     
     //=================================================================
     //                      VIEW DID LOAD
     //=================================================================
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("OrdersTableViewController loaded")
-        OM.getPendingOrders { (ordersFromServer) in
-            self.orders = ordersFromServer
-            self.tableView.reloadData()
-        }
+//        OM.getPendingOrders { (ordersFromServer) in
+//            self.orders = ordersFromServer
+//            self.tableView.reloadData()
+//        }
+//        refreshControlMethod()
+        refreshControl?.addTarget(self, action: #selector(self.refreshControlMethod), for: .valueChanged)
+//        tableView.ad
+//        tableView.addSubview(refreshControl!)
         fetchDataFromServer()
         
     }
@@ -43,12 +48,15 @@ class OrdersTableViewController: UITableViewController {
     
     func fetchDataFromServer() {
         OM.getPendingOrders { (orders) in
+            print("orders count: ",orders.count)
             let pendingOrdersSection = OrdersSection(title: "Pending Orders", objects: orders)
             
             //this sets the order of the sections so that Pending orders is always on top
             if self.OrdersSectionArray.count == 0 {
+                print("top one is executing")
                 self.OrdersSectionArray.append(pendingOrdersSection)
             } else {
+                print("bottom one is executing")
                 self.OrdersSectionArray.append(pendingOrdersSection)
                 let temp = self.OrdersSectionArray[0]
                 self.OrdersSectionArray[0] = self.OrdersSectionArray[1]
@@ -85,7 +93,7 @@ class OrdersTableViewController: UITableViewController {
     
     // MARK -> Number of Rows in Section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if OrdersSectionArray[section].heading == "Incoming Shipments" {
+        if OrdersSectionArray[section].heading == "Pending Orders" {
             if OrdersSectionArray[section].items.count == 0 {
                 return 1
             }
@@ -102,7 +110,7 @@ class OrdersTableViewController: UITableViewController {
         
         // MARK -> If No Incoming Shipments
         
-        if OrdersSectionArray[indexPath.section].heading == "Incoming Shipments" {
+        if OrdersSectionArray[indexPath.section].heading == "Pending Orders" {
             if OrdersSectionArray[indexPath.section].items.count == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "noIncomingShipmentCell", for: indexPath)
                 return cell
@@ -134,19 +142,43 @@ class OrdersTableViewController: UITableViewController {
         return cell
     }
     
+    func refreshControlMethod() {
+        OrdersSectionArray = [OrdersSection]()
+        fetchDataFromServer()
+        refreshControl?.endRefreshing()
+        
+    }
+    
     
     
     // MARK -> Selection Each Row
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // MARK -> Actionsheet for Recieving Order
-        if OrdersSectionArray[indexPath.section].heading == "Incoming Shipments" {
+        if OrdersSectionArray[indexPath.section].heading == "Pending Orders" {
             if OrdersSectionArray[indexPath.section].items.count > 0 {
                 let alertController = UIAlertController(title: "Order Recieved?", message: nil, preferredStyle: .actionSheet)
                 let recievedAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { action in
                     print("Recieved Action Clicked")
                     let incomingShipmentSection = self.OrdersSectionArray[indexPath.section]
                     let order = incomingShipmentSection.items[indexPath.row] as! NSDictionary
+                    self.OM.recieveOrder(order: order, completionHandler: { (result, message) in
+                        if result == true {
+                            let alertForOrder = UIAlertController(title: message, message: nil, preferredStyle: .alert)
+                            let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { action in
+                                self.refreshControlMethod()
+                            }
+                            alertForOrder.addAction(OKAction)
+                            self.present(alertForOrder, animated: true, completion: nil)
+                        } else {
+                            let alertForOrder = UIAlertController(title: "Order Error", message: message, preferredStyle: .alert)
+                            let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) { action in
+                                self.refreshControlMethod()
+                            }
+                            alertForOrder.addAction(OKAction)
+                            self.present(alertForOrder, animated: true, completion: nil)
+                        }
+                    })
                 }
                 
                 let cancelAction = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel) { action in
@@ -173,6 +205,9 @@ class OrdersTableViewController: UITableViewController {
     //=================================================================
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let id = segue.identifier {
+            print("segue identifier is :", id)
+        }
         if segue.identifier == "ViewOrder" {
             let indexPath = sender as! IndexPath
             print("clicked section: \(indexPath.section), row: \(indexPath.row)")
@@ -195,4 +230,19 @@ class OrdersTableViewController: UITableViewController {
             controller.products = products
         }
     }
+    
+    //=================================================================
+    //                           SIGN OUT
+    //=================================================================
+
+    @IBAction func signOutButtonPressed(_ sender: UIBarButtonItem) {
+        if LM.signOut(){
+            print("Logged Out")
+            performSegue(withIdentifier: "signOutSegue", sender: sender)
+        }
+        
+        
+    }
+    
+    
 }

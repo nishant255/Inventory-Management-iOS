@@ -63,6 +63,9 @@
 		9DDE8EFD1E8ADC7500872B93 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE8EFC1E8ADC7500872B93 /* UserViewController.swift */; };
 		9DDE8EFF1E8AFD7A00872B93 /* OrdersSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE8EFE1E8AFD7A00872B93 /* OrdersSection.swift */; };
 		9DDE8F011E8B0EA200872B93 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE8F001E8B0EA200872B93 /* OrderViewController.swift */; };
+		9DE86EE41E8C4EEC00682F2E /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE86EE31E8C4EEC00682F2E /* ProductCell.swift */; };
+		9DE86EE61E8C7EBC00682F2E /* UserInventory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DE86EE51E8C7EBC00682F2E /* UserInventory.storyboard */; };
+		9DE86EE91E8C7FDD00682F2E /* UserInventoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE86EE81E8C7FDD00682F2E /* UserInventoryTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +148,9 @@
 		9DDE8EFC1E8ADC7500872B93 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserViewController.swift; path = ../UserViewController.swift; sourceTree = "<group>"; };
 		9DDE8EFE1E8AFD7A00872B93 /* OrdersSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersSection.swift; sourceTree = "<group>"; };
 		9DDE8F001E8B0EA200872B93 /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		9DE86EE31E8C4EEC00682F2E /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		9DE86EE51E8C7EBC00682F2E /* UserInventory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserInventory.storyboard; sourceTree = "<group>"; };
+		9DE86EE81E8C7FDD00682F2E /* UserInventoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInventoryTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +189,7 @@
 				38688FD11E832296007558C7 /* OrdersTableViewController.swift */,
 				38688FD91E836B80007558C7 /* OrderDetailViewController.swift */,
 				9DDE8F001E8B0EA200872B93 /* OrderViewController.swift */,
+				9DE86EE31E8C4EEC00682F2E /* ProductCell.swift */,
 			);
 			name = Orders;
 			sourceTree = "<group>";
@@ -289,6 +296,7 @@
 		9671E9731E820D830057F30A /* Inventory Management */ = {
 			isa = PBXGroup;
 			children = (
+				9DE86EE71E8C7EED00682F2E /* UserInventory */,
 				9671E9741E820D830057F30A /* AppDelegate.swift */,
 				9671720A1E89A55300B9234B /* Main.storyboard */,
 				9671720D1E89A60000B9234B /* Login */,
@@ -326,6 +334,15 @@
 				9671E9991E820D830057F30A /* Info.plist */,
 			);
 			path = "Inventory ManagementUITests";
+			sourceTree = "<group>";
+		};
+		9DE86EE71E8C7EED00682F2E /* UserInventory */ = {
+			isa = PBXGroup;
+			children = (
+				9DE86EE51E8C7EBC00682F2E /* UserInventory.storyboard */,
+				9DE86EE81E8C7FDD00682F2E /* UserInventoryTableViewController.swift */,
+			);
+			name = UserInventory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -441,6 +458,7 @@
 				965546241E89B7050062157E /* Companies.storyboard in Resources */,
 				9671E9821E820D830057F30A /* LaunchScreen.storyboard in Resources */,
 				967172131E89A6AD00B9234B /* Dashboard.storyboard in Resources */,
+				9DE86EE61E8C7EBC00682F2E /* UserInventory.storyboard in Resources */,
 				9671E97F1E820D830057F30A /* Assets.xcassets in Resources */,
 				965546201E89B6850062157E /* Users.storyboard in Resources */,
 				9671720C1E89A55300B9234B /* Main.storyboard in Resources */,
@@ -513,7 +531,9 @@
 				9613A3591E8A21B600061DDC /* SelectCompanyTableViewCell.swift in Sources */,
 				38688FD21E832296007558C7 /* OrdersTableViewController.swift in Sources */,
 				38688FD41E83283A007558C7 /* PendingOrderCustomCell.swift in Sources */,
+				9DE86EE91E8C7FDD00682F2E /* UserInventoryTableViewController.swift in Sources */,
 				9D6CA0181E83325C00B3C939 /* InventoryHeaderCustomCell.swift in Sources */,
+				9DE86EE41E8C4EEC00682F2E /* ProductCell.swift in Sources */,
 				969715C71E874F3200BD3BDE /* CurrentInventoryTableViewCell.swift in Sources */,
 				9644C4D71E87825000B47AA0 /* PublicAttributes.swift in Sources */,
 			);
