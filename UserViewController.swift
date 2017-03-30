@@ -11,6 +11,10 @@ import UIKit
 
 class UserViewController: UIViewController {
     
+    //    ============================================================
+    //                          VARIABLES AND OUTLETS
+    //    ============================================================
+    
     var name: String?
     var email: String?
     var phone: String?
@@ -25,6 +29,11 @@ class UserViewController: UIViewController {
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var adminLabel: UILabel!
     @IBOutlet weak var changeAdminButton: UIButton!
+    
+    
+    //    ============================================================
+    //                          CHANGE ADMIN BUTTON
+    //    ============================================================
 
     @IBAction func changeAdminButtonPressed(_ sender: Any) {
         print("pressed changeAdminButton")
@@ -66,7 +75,9 @@ class UserViewController: UIViewController {
     }
 
     
-    
+//    ============================================================
+//                          VIEW DID LOAD
+//    ============================================================
     
     override func viewDidLoad() {
         super.viewDidLoad()

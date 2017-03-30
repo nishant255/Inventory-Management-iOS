@@ -59,6 +59,8 @@
 		9D6CA0121E832AB000B3C939 /* backButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0111E832AB000B3C939 /* backButtonDelegate.swift */; };
 		9D6CA0141E832C2E00B3C939 /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0131E832C2E00B3C939 /* InventoryViewController.swift */; };
 		9D6CA0181E83325C00B3C939 /* InventoryHeaderCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6CA0171E83325C00B3C939 /* InventoryHeaderCustomCell.swift */; };
+		9D72DC961E8D87F20025E97E /* UpdateSellPriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D72DC951E8D87F20025E97E /* UpdateSellPriceViewController.swift */; };
+		9D72DC981E8D88900025E97E /* UpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D72DC971E8D88900025E97E /* UpdateDelegate.swift */; };
 		9DB7ACCF1E89CE87006F72E6 /* Company_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7ACCE1E89CE87006F72E6 /* Company_Model.swift */; };
 		9DDE8EFD1E8ADC7500872B93 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE8EFC1E8ADC7500872B93 /* UserViewController.swift */; };
 		9DDE8EFF1E8AFD7A00872B93 /* OrdersSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE8EFE1E8AFD7A00872B93 /* OrdersSection.swift */; };
@@ -144,6 +146,8 @@
 		9D6CA0111E832AB000B3C939 /* backButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = backButtonDelegate.swift; path = ../backButtonDelegate.swift; sourceTree = "<group>"; };
 		9D6CA0131E832C2E00B3C939 /* InventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		9D6CA0171E83325C00B3C939 /* InventoryHeaderCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InventoryHeaderCustomCell.swift; path = ../InventoryHeaderCustomCell.swift; sourceTree = "<group>"; };
+		9D72DC951E8D87F20025E97E /* UpdateSellPriceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateSellPriceViewController.swift; sourceTree = "<group>"; };
+		9D72DC971E8D88900025E97E /* UpdateDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateDelegate.swift; sourceTree = "<group>"; };
 		9DB7ACCE1E89CE87006F72E6 /* Company_Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Company_Model.swift; path = ../Company_Model.swift; sourceTree = "<group>"; };
 		9DDE8EFC1E8ADC7500872B93 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserViewController.swift; path = ../UserViewController.swift; sourceTree = "<group>"; };
 		9DDE8EFE1E8AFD7A00872B93 /* OrdersSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersSection.swift; sourceTree = "<group>"; };
@@ -265,8 +269,10 @@
 				9655462C1E89C77F0062157E /* InventoryModel.swift */,
 				9D6CA0171E83325C00B3C939 /* InventoryHeaderCustomCell.swift */,
 				967172151E89A81400B9234B /* Inventory.storyboard */,
+				9D72DC971E8D88900025E97E /* UpdateDelegate.swift */,
 				9D6CA0131E832C2E00B3C939 /* InventoryViewController.swift */,
 				969715C21E874EB100BD3BDE /* InventoryItemCustomCell.swift */,
+				9D72DC951E8D87F20025E97E /* UpdateSellPriceViewController.swift */,
 			);
 			name = Inventory;
 			sourceTree = "<group>";
@@ -502,6 +508,7 @@
 				965546271E89B81F0062157E /* User_Model.swift in Sources */,
 				9D6CA0081E83171800B3C939 /* CompaniesCustomCell.swift in Sources */,
 				9D6CA0101E83258900B3C939 /* CompanyItemsCustomCell.swift in Sources */,
+				9D72DC961E8D87F20025E97E /* UpdateSellPriceViewController.swift in Sources */,
 				965546291E89C4320062157E /* Login_Registration_Model.swift in Sources */,
 				9655462B1E89C5C30062157E /* DashboardModel.swift in Sources */,
 				9D6CA00A1E83211100B3C939 /* UsersViewController.swift in Sources */,
@@ -534,6 +541,7 @@
 				9DE86EE91E8C7FDD00682F2E /* UserInventoryTableViewController.swift in Sources */,
 				9D6CA0181E83325C00B3C939 /* InventoryHeaderCustomCell.swift in Sources */,
 				9DE86EE41E8C4EEC00682F2E /* ProductCell.swift in Sources */,
+				9D72DC981E8D88900025E97E /* UpdateDelegate.swift in Sources */,
 				969715C71E874F3200BD3BDE /* CurrentInventoryTableViewCell.swift in Sources */,
 				9644C4D71E87825000B47AA0 /* PublicAttributes.swift in Sources */,
 			);
