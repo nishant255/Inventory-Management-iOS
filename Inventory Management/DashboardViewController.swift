@@ -75,7 +75,7 @@ class DashboardViewController: UIViewController {
             
             self.dashboardTableView.reloadData()
         }
-        IM.getAllProducts { (products) in
+        IM.getAllProductsforDashboard { (products) in
             let currentInventory = DashboardSection(title: "Current Inventory", objects: products)
             self.dashboardSectionArray.append(currentInventory)
             self.dashboardTableView.reloadData()
@@ -132,8 +132,11 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
         // MARK -> Data for Incoming Shipments Cell
         
         if dashboardSectionArray[indexPath.section].items[indexPath.row] is NSDictionary {
+            print("there should be some pending orders!")
+            print("heading is: ",dashboardSectionArray[indexPath.section].heading)
             let cell = tableView.dequeueReusableCell(withIdentifier: "incomingShipmentCell", for: indexPath) as! IncomingShipmentTableViewCell
             let order = dashboardSectionArray[indexPath.section].items[indexPath.row] as! NSDictionary
+            print("order is: ",order)
             let reciepient = order.value(forKey: "recipient") as! NSDictionary
             cell.orderTitleLabel.text = reciepient.value(forKey: "email") as? String
             let dateString = String(describing: (order).value(forKey: "createdAt")!)

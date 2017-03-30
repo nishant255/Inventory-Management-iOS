@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -146,6 +146,7 @@
                         <outlet property="passwordLabel" destination="KNG-ko-Z1E" id="bxv-sT-xm6"/>
                         <segue destination="K7a-zw-mJG" kind="presentation" identifier="register" id="Bmj-cO-sRn"/>
                         <segue destination="2eq-gQ-QiO" kind="show" identifier="login" id="IdO-fH-BIZ"/>
+                        <segue destination="xdF-WQ-xJN" kind="presentation" identifier="UserInventory" id="DKg-8N-r0r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -260,6 +261,14 @@
             </objects>
             <point key="canvasLocation" x="135" y="159"/>
         </scene>
+        <!--UserInventory-->
+        <scene sceneID="DYs-XB-8ja">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="UserInventory" storyboardName="UserInventory" id="xdF-WQ-xJN" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4oQ-Wg-orB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-691" y="593"/>
+        </scene>
         <!--Main-->
         <scene sceneID="fuV-Di-S7S">
             <objects>
@@ -273,6 +282,6 @@
         <image name="black_bg" width="1600" height="2560"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Fag-jp-UXg"/>
+        <segue reference="IdO-fH-BIZ"/>
     </inferredMetricsTieBreakers>
 </document>

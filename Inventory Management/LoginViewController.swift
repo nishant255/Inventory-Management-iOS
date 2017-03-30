@@ -57,27 +57,19 @@ class LoginViewController: UIViewController, CancelButtonDelegate {
         if let jsonData = try? JSONSerialization.data(withJSONObject: dict, options: []) {
             let url = NSURL(string: "\(urlHost)user_login")!
             let request = NSMutableURLRequest(url: url as URL)
-            print("got past request")
             request.httpMethod = "POST"
-            print("got past post")
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            print("got past addValue")
             request.httpBody = jsonData
-            print("got past httpBody")
             
             let task = URLSession.shared.dataTask(with: request as URLRequest){ data,response,error in
-                print("got past task")
                 if error != nil{
                     print("error is =====>",error?.localizedDescription as Any)
                     return
                 }
-                print("no errors at this point")
                 do {
                     if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
-                        print("got past post")
                         let success = jsonResult["success"] as! Bool
                         if success == true {
-                            print("login succesfully")
                             let user = jsonResult["user"] as! NSDictionary
                             let email = user["email"] as! String
                             let admin = user["admin"] as! Int
@@ -104,7 +96,13 @@ class LoginViewController: UIViewController, CancelButtonDelegate {
                                     print("login successful")
                                     
                                     DispatchQueue.main.async {
-                                        self.dashboardAfterLogin()
+                                        print("old user admin: ",oldUser!.admin)
+                                        if oldUser!.admin == 2 {
+                                            self.userDashboardAfterLogin()
+                                        } else {
+                                           self.dashboardAfterLogin()
+                                        }
+                                        
                                     }
                                 } catch {
                                     print(error)
@@ -206,6 +204,10 @@ class LoginViewController: UIViewController, CancelButtonDelegate {
     
     func dashboardAfterLogin(){
         performSegue(withIdentifier: "login", sender: self)
+    }
+    
+    func userDashboardAfterLogin() {
+        performSegue(withIdentifier: "UserInventory", sender: self)
     }
             
 
