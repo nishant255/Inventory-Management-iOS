@@ -9,12 +9,21 @@
 import Foundation
 import UIKit
 
-class UsersViewController: UIViewController, AddOrderDelegate {
+class UsersViewController: UIViewController, AddOrderDelegate, BackButtonDelegate {
+    
+    
+    //=================================================================
+    //                    VARIABLES AND LABELS
+    //=================================================================
     
     @IBOutlet weak var usersTableView: UITableView!
     
     var users = [NSDictionary]()
     let LM = LoginRegistrationModel()
+    
+    //=================================================================
+    //                       VIEW DID APPEAR
+    //=================================================================
     
     override func viewDidAppear(_ animated: Bool) {
         print("view did appear")
@@ -25,20 +34,31 @@ class UsersViewController: UIViewController, AddOrderDelegate {
         }
     }
     
+    //=================================================================
+    //                        VIEW DID LOAD
+    //=================================================================
+    
     override func viewDidLoad() {
         print("view did load")
         super.viewDidLoad()
         usersTableView.dataSource = self
         usersTableView.delegate = self
         print("usersviewcontroller loaded")
-        let UM = UserModel()
-        UM.getCoreDataUser()
-        self.title = "Hello"
-        
-        UM.getAllUsers { (UsersFromServer) in
-            self.users = UsersFromServer
-            self.usersTableView.reloadData()
-        }
+//        let UM = UserModel()
+////        UM.getCoreDataUser()
+//        
+//        UM.getAllUsers { (UsersFromServer) in
+//            self.users = UsersFromServer
+//            self.usersTableView.reloadData()
+//        }
+    }
+    
+    //=================================================================
+    //                           BACK BUTTON
+    //=================================================================
+    
+    func backButtonPressed(controller: UIViewController) {
+        dismiss(animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -50,6 +70,7 @@ class UsersViewController: UIViewController, AddOrderDelegate {
             let firstName = user["first_name"] as! String
             let lastName = user["last_name"] as! String
             let name = "\(firstName) \(lastName)"
+            controller.backDelegate = self
             controller.name = name
             controller.email = user["email"] as? String
             let phone = String(describing: user["phone_number"]!)
@@ -82,6 +103,10 @@ class UsersViewController: UIViewController, AddOrderDelegate {
             performSegue(withIdentifier: "signOutSegue", sender: sender)
         }
     }
+    
+    //=================================================================
+    //                        CANCEL BUTTON PRESSED
+    //=================================================================
     
     
     func cancelButtonPressed(controller: SelectCompanyTableViewController) {

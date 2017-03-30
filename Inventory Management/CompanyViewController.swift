@@ -16,12 +16,18 @@ class CompanyViewController: UIViewController {
 //    ================================================
     
     var company: NSDictionary?
-    
+    var backDelegate: BackButtonDelegate?
     @IBOutlet weak var companyTableView: UITableView!
-    @IBOutlet weak var companyLabel: UILabel!
+//    @IBOutlet weak var companyLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var navBar: UINavigationItem!
+    
+    
+    @IBAction func backButtonPressed(_ sender: Any) {
+        backDelegate?.backButtonPressed(controller: self)
+    }
     
 //    ================================================
 //                VIEW DID LOAD
@@ -43,7 +49,7 @@ class CompanyViewController: UIViewController {
         let zipcode = String(describing: addressDic["zipcode"]!)
         let address = "\(street), \(city) \(state), \(zipcode)"
         
-        companyLabel.text = "Name: \(companyName)"
+        navBar.title = companyName
         emailLabel.text = "Email: \(email)"
         phoneLabel.text = "Phone: \(phone)"
         addressLabel.text = "Address: \(address)"

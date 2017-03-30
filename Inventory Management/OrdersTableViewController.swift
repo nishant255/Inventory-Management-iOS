@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class OrdersTableViewController: UITableViewController, AddOrderDelegate {
+class OrdersTableViewController: UITableViewController, AddOrderDelegate, BackButtonDelegate {
     
     
     //=================================================================
@@ -194,6 +194,14 @@ class OrdersTableViewController: UITableViewController, AddOrderDelegate {
             }
         }
     }
+    //=================================================================
+    //                    BACK BUTTON
+    //=================================================================
+
+    
+    func backButtonPressed(controller: UIViewController) {
+        dismiss(animated: true, completion: nil)
+    }
     
     //=================================================================
     //                    ACCESSORY BUTTON TAPPED
@@ -218,6 +226,8 @@ class OrdersTableViewController: UITableViewController, AddOrderDelegate {
             
             let order = OrdersSectionArray[indexPath.section].items[indexPath.row] as! NSDictionary
             print("order is: ",order)
+            let recipient = order["recipient"] as! NSDictionary
+            let receiverName = "\(String(describing: recipient["first_name"]!)) \(String(describing: recipient["last_name"]!))"
             let orderNumber = order["_id"] as! String
             let orderSender = order["sender"] as! NSDictionary
             let company = orderSender["name"] as! String
@@ -232,6 +242,8 @@ class OrdersTableViewController: UITableViewController, AddOrderDelegate {
             controller.placedOn = placedOn
             controller.receivedOn = receivedOn
             controller.products = products
+            controller.placedBy = receiverName
+            controller.backDelegate = self
         }
         
         

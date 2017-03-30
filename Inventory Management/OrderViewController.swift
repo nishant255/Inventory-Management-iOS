@@ -11,26 +11,35 @@ import UIKit
 
 class OrderViewController: UIViewController {
     
-    @IBOutlet weak var orderNumberLabel: UILabel!
-    @IBOutlet weak var companyLabel: UILabel!
-    @IBOutlet weak var placedOnLabel: UILabel!
-    @IBOutlet weak var receivedOnLabel: UILabel!
-    @IBOutlet weak var productsTableView: UITableView!
     
+    @IBOutlet weak var navBar: UINavigationItem!
+    @IBOutlet weak var orderLabel: UILabel!
+    @IBOutlet weak var placedByLabel: UILabel!
+    @IBOutlet weak var placedOnLabel: UILabel!
+    
+    @IBOutlet weak var productsTable: UITableView!
+    @IBOutlet weak var receivedOnLabel: UILabel!
     
     
     var orderNumber: String?
+    var placedBy: String?
     var company: String?
     var placedOn: String?
     var receivedOn: String?
     var products: [NSDictionary]?
     var order: NSDictionary?
+    var backDelegate: BackButtonDelegate?
+    
+    @IBAction func backButtonPressed(_ sender: Any) {
+        backDelegate?.backButtonPressed(controller: self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("OrderViewController loaded with order Number: \(orderNumber!), company: \(company!), placedOn: \(placedOn!), receivedOn: \(receivedOn!), and products: \(products!), and order: \(String(describing: order)) ")
-        productsTableView.dataSource = self
-        productsTableView.delegate = self
+        productsTable.dataSource = self
+        productsTable.delegate = self
+        
         let dateFormatter = DateFormatter()
         let splitDate = placedOn?.components(separatedBy: "T")
         let splitDate2 = receivedOn?.components(separatedBy: "T")
@@ -52,10 +61,12 @@ class OrderViewController: UIViewController {
         
         
         
-        orderNumberLabel.text = "Or der #: \(orderNumber!)"
-        companyLabel.text = "Company: \(company!)"
+        orderLabel.text = "Order #: \(orderNumber!)"
+        navBar.title = company!
+        placedByLabel.text = "Placed By: \(placedBy!)"
         
     }
+    
     
 }
 
@@ -65,7 +76,7 @@ extension OrderViewController: UITableViewDataSource, UITableViewDelegate {
         return products!.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = productsTableView.dequeueReusableCell(withIdentifier: "ProductCell") as! ProductCell
+        let cell = productsTable.dequeueReusableCell(withIdentifier: "ProductCell") as! ProductCell
         
         let product = products![indexPath.row]
         let name = product["name"] as! String
