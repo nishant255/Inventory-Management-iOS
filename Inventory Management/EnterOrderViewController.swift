@@ -22,8 +22,23 @@ class EnterOrderViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        self.initializeNewProdData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.initializeNewProdData()
+    }
+    
+    func initializeNewProdData() {
+        newProdData = [NSMutableDictionary]()
+        for _ in newProdData.count..<productsSelected.count{
+            newProdData.append([
+                "quantity": "",
+                "buyPrice": "",
+                "product": [:]
+                ])
+        }
+    }
     
     
     override func didReceiveMemoryWarning() {
@@ -32,17 +47,12 @@ class EnterOrderViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func viewOrderButtonPressed(_ sender: UIButton) {
         
-        if newProdData.count != productsSelected.count {
-            self.errorAlert(title: "Order Error!", message: "Buy Price and Quantity Required for All Products")
-        }
-        
         for prod in newProdData {
             if String(describing: prod.value(forKey: "quantity")!) == "" || String(describing: prod.value(forKey: "buyPrice")!) == "" {
                 self.errorAlert(title: "Order Error!", message: "Buy Price and Quantity Required for All Products")
-            } else {
-                if Int(prod.value(forKey: "quantity") as! String)! <= 0 || Int(prod.value(forKey: "buyPrice") as! String)! <= 0 {
-                    self.errorAlert(title: "Order Error!", message: "Buy Price and Quantity Should be more than 0.")
-                }
+            }
+            if Int(prod.value(forKey: "quantity") as! String)! <= 0 || Int(prod.value(forKey: "buyPrice") as! String)! <= 0 {
+                self.errorAlert(title: "Order Error!", message: "Buy Price and Quantity Should be more than 0.")
             }
         }
         
@@ -136,8 +146,9 @@ extension EnterOrderViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrderDetailsTableViewCell", for: indexPath) as! OrderDetailsTableViewCell
         let product = productsSelected[indexPath.row]
         cell.productNameLabel.text = product["name"] as? String
-        cell.productsBuyPrice.text = ""
-        cell.productQuantity.text = ""
+        let newProduct = newProdData[indexPath.row]
+        cell.productsBuyPrice.text = newProduct.value(forKey: "buyPrice") as? String
+        cell.productQuantity.text = newProduct.value(forKey: "quantity") as? String
         cell.productQuantity.tag = Int("2\(indexPath.row)")!
         cell.productsBuyPrice.tag = Int("1\(indexPath.row)")!
         cell.productQuantity.delegate = self
@@ -149,21 +160,14 @@ extension EnterOrderViewController: UITableViewDataSource, UITableViewDelegate {
         let tagString = String(textField.tag)
         let row = Int(tagString.substring(with: 1..<tagString.characters.count))
         let fieldIdentifier = tagString.characters.first
-        if row! >= newProdData.count {
-            for _ in newProdData.count...row!{
-                newProdData.append([
-                    "quantity": "",
-                    "buyPrice": "",
-                    "product": [:]
-                    ])
-            }
-        }
         let indexPath = IndexPath(row: row!, section: 0)
         let newProduct = newProdData[indexPath.row]
         newProduct.setObject(productsSelected[row!], forKey: "product" as NSCopying)
-        if fieldIdentifier! == "1" {
+        if fieldIdentifier! == "2" {
+            print("Adding to Quantity")
             newProduct.setObject(textField.text!, forKey: "quantity" as NSCopying)
-        } else if fieldIdentifier! == "2" {
+        } else if fieldIdentifier! == "1" {
+            print("Adding to BuyPrice")
             newProduct.setObject(textField.text!, forKey: "buyPrice" as NSCopying)
         }
         

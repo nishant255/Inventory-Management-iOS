@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class InventoryViewController: UIViewController {
+class InventoryViewController: UIViewController, AddOrderDelegate {
     
     
     //=================================================================
@@ -42,7 +42,7 @@ class InventoryViewController: UIViewController {
                     print("result is =====>",jsonResult)
                     
                     print(jsonResult.count)
-                    for var i in 0..<jsonResult.count {
+                    for i in 0..<jsonResult.count {
                         var itemArray = [String]()
                         let item = jsonResult[i] as! NSDictionary
                         let company = item["_company"] as! NSDictionary
@@ -84,6 +84,18 @@ class InventoryViewController: UIViewController {
             print("Logged Out")
             performSegue(withIdentifier: "signOutSegue", sender: sender)
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addNewOrderSegueFromInventory" {
+            let navController = segue.destination as! UINavigationController
+            let controller = navController.topViewController as! SelectCompanyTableViewController
+            controller.delegate = self
+        }
+    }
+    
+    func cancelButtonPressed(controller: SelectCompanyTableViewController) {
+        dismiss(animated: true, completion: nil)
     }
 
 }
