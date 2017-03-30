@@ -29,7 +29,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zmf-Rv-tQk" id="uyk-ps-3ZV">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNM-5r-Df4">
@@ -103,7 +103,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="isQ-ZX-BVl">
-                        <barButtonItem key="leftBarButtonItem" title="Add Order" id="xxC-2c-uPN"/>
+                        <barButtonItem key="leftBarButtonItem" title="Add Order" id="xxC-2c-uPN">
+                            <connections>
+                                <segue destination="jYZ-AT-YeL" kind="show" id="tij-BD-vMs"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Sign Out" id="nut-3S-pz9">
                             <connections>
                                 <action selector="signOutButtonPressed:" destination="Kh0-ro-miJ" id="D0O-ce-WaJ"/>
@@ -112,7 +116,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="inventoryTableView" destination="AHW-Vr-wPh" id="JbE-oo-fQJ"/>
-                        <segue destination="jYZ-AT-YeL" kind="show" identifier="addOrderSegueFromInventory" id="Thp-A3-jUp"/>
                         <segue destination="6PA-oB-pLj" kind="showDetail" identifier="signOutSegue" id="oYi-i5-Jd8"/>
                     </connections>
                 </viewController>
@@ -140,7 +143,7 @@
         <scene sceneID="hIe-f7-kmX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gxJ-0j-YA2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Inventory" id="dKD-o9-BOJ"/>
+                    <tabBarItem key="tabBarItem" title="Inventory" image="New Product-25" id="dKD-o9-BOJ"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LAd-Je-u4S">
@@ -157,4 +160,7 @@
             <point key="canvasLocation" x="2624.8000000000002" y="902.69865067466276"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="New Product-25" width="25" height="25"/>
+    </resources>
 </document>

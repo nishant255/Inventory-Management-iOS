@@ -147,7 +147,7 @@
         <scene sceneID="VFS-mD-47D">
             <objects>
                 <navigationController storyboardIdentifier="UINavigationController-lMn-yP-fRf" automaticallyAdjustsScrollViewInsets="NO" id="lMn-yP-fRf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Dashboard" id="pg2-eJ-zdV"/>
+                    <tabBarItem key="tabBarItem" title="Dashboard" image="Home-25" id="pg2-eJ-zdV"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7rI-tb-mME">
@@ -180,4 +180,7 @@
             <point key="canvasLocation" x="2007" y="1361"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Home-25" width="25" height="25"/>
+    </resources>
 </document>

@@ -55,7 +55,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yQo-Cp-YeR">
-                        <barButtonItem key="leftBarButtonItem" title="Add Order" id="YgK-fn-O9V"/>
+                        <barButtonItem key="leftBarButtonItem" title="Add Order" id="YgK-fn-O9V">
+                            <connections>
+                                <segue destination="biT-vF-Xj8" kind="show" id="mP7-WD-L0K"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Sign Out" id="2Se-an-Gyw">
                             <connections>
                                 <action selector="signOutButtonPressed:" destination="0Em-8e-BKh" id="2nA-2n-euO"/>
@@ -71,6 +75,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igX-Ph-bdX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5517.3913043478269" y="926.08695652173924"/>
+        </scene>
+        <!--AddOrder-->
+        <scene sceneID="jV1-ak-QJ8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddOrder" id="biT-vF-Xj8" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ye8-f5-TVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5233" y="1352"/>
         </scene>
         <!--Login-->
         <scene sceneID="yyg-RL-hKy">
@@ -184,7 +196,7 @@
         <scene sceneID="vVQ-Ri-NgO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6sL-et-NIA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Users" id="CsE-AY-EC1"/>
+                    <tabBarItem key="tabBarItem" title="Users" image="User-25" id="CsE-AY-EC1"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LZP-Yx-9KE">
@@ -201,4 +213,7 @@
             <point key="canvasLocation" x="4580" y="925.18740629685169"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="User-25" width="25" height="25"/>
+    </resources>
 </document>

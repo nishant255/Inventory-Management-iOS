@@ -50,7 +50,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="7xt-3k-rFD">
-                        <barButtonItem key="leftBarButtonItem" title="Add Order" id="KDX-eu-Wch"/>
+                        <barButtonItem key="leftBarButtonItem" title="Add Order" id="KDX-eu-Wch">
+                            <connections>
+                                <segue destination="wsU-2x-JWr" kind="show" id="Ojn-hs-sSC"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Sign Out" id="gkM-OZ-XJQ">
                             <connections>
                                 <action selector="signOutButtonPressed:" destination="V80-zj-0Yi" id="Na2-nM-RLH"/>
@@ -182,6 +186,14 @@
             </objects>
             <point key="canvasLocation" x="8998.5507246376819" y="901.63043478260875"/>
         </scene>
+        <!--AddOrder-->
+        <scene sceneID="tKk-uW-OKJ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddOrder" id="wsU-2x-JWr" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1uy-fA-tZS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7996" y="1381"/>
+        </scene>
         <!--Login-->
         <scene sceneID="php-xu-Gh5">
             <objects>
@@ -194,7 +206,7 @@
         <scene sceneID="mkE-Om-8Cy">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1yq-uj-dBP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Companies" id="vDT-jp-0Tr"/>
+                    <tabBarItem key="tabBarItem" title="Companies" image="Organization-25" id="vDT-jp-0Tr"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sVw-Gy-ysf">
@@ -211,4 +223,7 @@
             <point key="canvasLocation" x="7474.3999999999996" y="902.69865067466276"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Organization-25" width="25" height="25"/>
+    </resources>
 </document>
