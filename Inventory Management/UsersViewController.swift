@@ -31,8 +31,10 @@ class UsersViewController: UIViewController, AddOrderDelegate {
         usersTableView.dataSource = self
         usersTableView.delegate = self
         print("usersviewcontroller loaded")
-        
         let UM = UserModel()
+        UM.getCoreDataUser()
+        self.title = "Hello"
+        
         UM.getAllUsers { (UsersFromServer) in
             self.users = UsersFromServer
             self.usersTableView.reloadData()

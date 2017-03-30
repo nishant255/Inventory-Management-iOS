@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class InventoryViewController: UIViewController, AddOrderDelegate {
+class InventoryViewController: UIViewController, UpdateDelegate, AddOrderDelegate {
     
     
     //=================================================================
@@ -17,6 +17,9 @@ class InventoryViewController: UIViewController, AddOrderDelegate {
     //=================================================================
     
     let LM = LoginRegistrationModel()
+    let IM = InventoryModel()
+    
+    
     
     //=================================================================
     //                        VIEW DID LOAD
@@ -27,52 +30,34 @@ class InventoryViewController: UIViewController, AddOrderDelegate {
         print("inventoryViewController loaded")
         inventoryTableView.dataSource = self
         inventoryTableView.delegate = self
+
+//        IM.getAllProductsForInventory { (inventory) in
+//            print("inventory is: ",inventory)
+//            self.inventory = inventory
+//            print(self.inventory)
+//            self.inventoryTableView.reloadData()
+//        }
         
-        
-        let url = NSURL(string: urlHost+"products/withSellPrice")
-        let session = URLSession.shared
-        
-        let task = session.dataTask(with: url! as URL, completionHandler: {
-            data, response, error in
-            do {
-                print("in the do")
-                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray {
-                    
-                    
-                    print("result is =====>",jsonResult)
-                    
-                    print(jsonResult.count)
-                    for i in 0..<jsonResult.count {
-                        var itemArray = [String]()
-                        let item = jsonResult[i] as! NSDictionary
-                        let company = item["_company"] as! NSDictionary
-                        let companyName = company["name"] as! String
-                        let itemName = item["name"] as! String
-                        let quantity = String(describing: item["quantity"]!)
-                        let sellPrice = String(describing: item["sellPrice"]!)
-                        itemArray.append(companyName)
-                        itemArray.append(itemName)
-                        itemArray.append(quantity)
-                        itemArray.append(sellPrice)
-                        self.inventory.append(itemArray)
-                        DispatchQueue.main.async {
-                            self.inventoryTableView.reloadData()
-                        }
-                    }
-                }
-            } catch {
-                print("in the catch")
-                print(error)
-            }
-        })
-        task.resume()
-        print("I happen before the response!")
-        
+    }
+    
+    //=================================================================
+    //                        VIEW DID APPEAR
+    //=================================================================
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("View did appear")
+        IM.getAllProductsForInventory { (inventory) in
+            print("inventory is: ",inventory)
+            self.inventory = inventory
+            print(self.inventory)
+            self.inventoryTableView.reloadData()
+        }
+
     }
     
     @IBOutlet weak var inventoryTableView: UITableView!
     
-    var inventory = [["Tropicana","orange juice","650","2"]]
+    var inventory = [NSDictionary]()
     
     
     //=================================================================
@@ -86,11 +71,26 @@ class InventoryViewController: UIViewController, AddOrderDelegate {
         }
     }
     
+
+    func updateButtonPressed(controller: UIViewController) {
+        dismiss(animated: true, completion: nil)
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addNewOrderSegueFromInventory" {
             let navController = segue.destination as! UINavigationController
             let controller = navController.topViewController as! SelectCompanyTableViewController
             controller.delegate = self
+        } else  {
+          let indexPath = sender as! IndexPath
+        let product = inventory[indexPath.row]
+        let controller = segue.destination as! UpdateSellPriceViewController
+        let company = product["_company"] as! NSDictionary
+        print("company is: ",company)
+        controller.company = company["name"] as! String
+        controller.product = product["name"] as! String
+        controller.id = product["_id"] as! String
+        controller.sellPrice = String(describing: product["sellPrice"]!)
+        controller.updateDelegate = self
         }
     }
     
@@ -112,13 +112,18 @@ extension InventoryViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "InventoryCell")! as! InventoryItemCustomCell
-            cell.companyLabel.text = inventory[indexPath.row][0]
-            cell.itemLabel.text = inventory[indexPath.row][1]
-            cell.quantityLabel.text = "Qty: \(inventory[indexPath.row][2])"
-            cell.priceLabel.text = "$\(inventory[indexPath.row][3])"
+            let product = inventory[indexPath.row]
+            let productCompany = product["_company"] as! NSDictionary
+            cell.companyLabel.text = productCompany["name"] as? String
+            cell.itemLabel.text = product["name"] as? String
+            cell.priceLabel.text = "$\(String(describing: product["sellPrice"]!))"
+            cell.quantityLabel.text = "Qty:\(String(describing: product["quantity"]!))"
             return cell
         }
        
-    
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        print("pressed row at: ",indexPath.row)
+        performSegue(withIdentifier: "SetSellPrice", sender: indexPath)
+    }
     
 }
