@@ -25,12 +25,11 @@ class UserViewController: UIViewController {
     var loggedInUser: User?
     var backDelegate: BackButtonDelegate?
     
-    @IBOutlet weak var nameLabel: UILabel!
+
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var adminLabel: UILabel!
     @IBOutlet weak var changeAdminButton: UIButton!
-    @IBOutlet weak var navBar: UINavigationItem!
     
     //    ============================================================
     //                          BACK BUTTON
@@ -89,7 +88,7 @@ class UserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // print("UserViewController loaded with name: \(name), email: \(email), phone: \(phone), and admin: \(admin)")
-        navBar.title = name!
+        self.title = name!
         emailLabel.text = "Email: \(email!)"
         phoneLabel.text = "Phone: \(phone!)"
         adminLabel.text = "Admin Status: \(admin!)"

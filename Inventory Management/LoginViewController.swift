@@ -187,8 +187,9 @@ class LoginViewController: UIViewController, CancelButtonDelegate {
         performSegue(withIdentifier: "register", sender: sender)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "register"{            
-        let controller = segue.destination as! RegisterViewController
+        if segue.identifier == "register"{
+        let nav = segue.destination as! UINavigationController
+        let controller = nav.topViewController as! RegisterViewController
         controller.cancelDelegate = self
         }
     }

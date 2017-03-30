@@ -61,12 +61,18 @@ class UsersViewController: UIViewController, AddOrderDelegate, BackButtonDelegat
         dismiss(animated: true, completion: nil)
     }
     
+    
+    //=================================================================
+    //                           SEGUE
+    //=================================================================
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "showUser" {
             let indexPath = sender as! IndexPath
             let user = users[indexPath.row]
-            let controller = segue.destination as! UserViewController;
+            let nav = segue.destination as! UINavigationController
+            let controller = nav.topViewController as! UserViewController;
             let firstName = user["first_name"] as! String
             let lastName = user["last_name"] as! String
             let name = "\(firstName) \(lastName)"
