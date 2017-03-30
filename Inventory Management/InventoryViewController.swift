@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class InventoryViewController: UIViewController, UpdateDelegate, AddOrderDelegate {
+class InventoryViewController: UIViewController, UpdateDelegate, AddOrderDelegate, BackButtonDelegate {
     
     
     //=================================================================
@@ -30,22 +30,15 @@ class InventoryViewController: UIViewController, UpdateDelegate, AddOrderDelegat
         print("inventoryViewController loaded")
         inventoryTableView.dataSource = self
         inventoryTableView.delegate = self
-
-//        IM.getAllProductsForInventory { (inventory) in
-//            print("inventory is: ",inventory)
-//            self.inventory = inventory
-//            print(self.inventory)
-//            self.inventoryTableView.reloadData()
-//        }
         
     }
     
     //=================================================================
-    //                        VIEW DID APPEAR
+    //                        VIEW WILL APPEAR
     //=================================================================
     
-    override func viewDidAppear(_ animated: Bool) {
-        print("View did appear")
+    override func viewWillAppear(_ animated: Bool) {
+        print("View will appear")
         IM.getAllProductsForInventory { (inventory) in
             print("inventory is: ",inventory)
             self.inventory = inventory
@@ -71,10 +64,23 @@ class InventoryViewController: UIViewController, UpdateDelegate, AddOrderDelegat
         }
     }
     
+    
+    //=================================================================
+    //                           DISMISS
+    //=================================================================
 
     func updateButtonPressed(controller: UIViewController) {
         dismiss(animated: true, completion: nil)
     }
+    
+    func backButtonPressed(controller: UIViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //=================================================================
+    //                           SEGUE
+    //=================================================================
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addNewOrderSegueFromInventory" {
             let navController = segue.destination as! UINavigationController
@@ -86,11 +92,12 @@ class InventoryViewController: UIViewController, UpdateDelegate, AddOrderDelegat
         let controller = segue.destination as! UpdateSellPriceViewController
         let company = product["_company"] as! NSDictionary
         print("company is: ",company)
-        controller.company = company["name"] as! String
-        controller.product = product["name"] as! String
-        controller.id = product["_id"] as! String
+        controller.company = company["name"] as? String
+        controller.product = product["name"] as? String
+        controller.id = product["_id"] as? String
         controller.sellPrice = String(describing: product["sellPrice"]!)
         controller.updateDelegate = self
+        controller.backDelegate = self
         }
     }
     

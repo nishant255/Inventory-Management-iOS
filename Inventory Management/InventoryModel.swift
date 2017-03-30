@@ -68,20 +68,13 @@ class InventoryModel{
     func getAllProducts(completionHandler: @escaping (([NSDictionary]) -> Void)){
         let url = URL(string: urlHost + "products/forSale")
         let session = URLSession.shared
-        // var products = [String]()
         let task = session.dataTask(with: url!, completionHandler: {
             
             data, response, error in
             
             do {
                 if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [NSDictionary] {
-                    //                    print("json result is ",jsonResult)
-                    //                    for product in jsonResult {
-                    //                        let productDict = product as! NSDictionary
-                    //                        products.append(productDict.value(forKey: "name") as! String)
-                    //                    }
                     DispatchQueue.main.async {
-                        
                         completionHandler(jsonResult)
                     }
                 }
@@ -107,18 +100,10 @@ class InventoryModel{
                         DispatchQueue.main.async {
                             completionHandler(jsonResult)
                         }
-//                        if jsonResult["success"] as! Bool {
-//                            DispatchQueue.main.async {
-//                                completionHandler(jsonResult)
-//                            }
-//                        } else {
-//                            print("error")
-//                            completionHandler(jsonResult)
-//                        }
+
                     }
                 } catch {
                     print(error)
-//                    completionHandler(jsonResult)
                 }
             }
             task.resume()

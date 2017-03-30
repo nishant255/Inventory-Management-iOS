@@ -23,12 +23,22 @@ class UserViewController: UIViewController {
     let UM = UserModel()
     var user: NSDictionary?
     var loggedInUser: User?
+    var backDelegate: BackButtonDelegate?
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var adminLabel: UILabel!
     @IBOutlet weak var changeAdminButton: UIButton!
+    @IBOutlet weak var navBar: UINavigationItem!
+    
+    //    ============================================================
+    //                          BACK BUTTON
+    //    ============================================================
+    
+    @IBAction func backButtonPressed(_ sender: Any) {
+        backDelegate?.backButtonPressed(controller: self)
+    }
     
     
     //    ============================================================
@@ -79,7 +89,7 @@ class UserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // print("UserViewController loaded with name: \(name), email: \(email), phone: \(phone), and admin: \(admin)")
-        nameLabel.text = "Name: \(name!)"
+        navBar.title = name!
         emailLabel.text = "Email: \(email!)"
         phoneLabel.text = "Phone: \(phone!)"
         adminLabel.text = "Admin Status: \(admin!)"

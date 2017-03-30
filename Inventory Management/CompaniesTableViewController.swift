@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CompaniesTableViewController: UITableViewController, AddOrderDelegate {
+class CompaniesTableViewController: UITableViewController, AddOrderDelegate, BackButtonDelegate {
     
     //=================================================================
     //                     VARIABLES AND OUTLETS
@@ -60,9 +60,13 @@ class CompaniesTableViewController: UITableViewController, AddOrderDelegate {
             let indexPath = sender as! IndexPath
             let company = companies[indexPath.row]
             
+            
             let controller = segue.destination as! CompanyViewController
+            controller.backDelegate = self
             
             controller.company = company
+//            controller.navBar.title = company["name"] as? String
+//            controller.title = company["name"] as? String
         }
         
         if segue.identifier == "addNewOrderSegueFromCompanies" {
@@ -76,6 +80,10 @@ class CompaniesTableViewController: UITableViewController, AddOrderDelegate {
     
     
     func cancelButtonPressed(controller: SelectCompanyTableViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func backButtonPressed(controller: UIViewController) {
         dismiss(animated: true, completion: nil)
     }
     

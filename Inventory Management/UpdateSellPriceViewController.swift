@@ -19,11 +19,26 @@ class UpdateSellPriceViewController: UIViewController {
     var product: String?
     var sellPrice: String?
     let IM = InventoryModel()
+    var backDelegate: BackButtonDelegate?
     
+    @IBOutlet weak var navBar: UINavigationItem!
     var updateDelegate: UpdateDelegate?
+
     @IBOutlet weak var companyLabel: UILabel!
+
     @IBOutlet weak var productLabel: UILabel!
     @IBOutlet weak var sellPriceTextField: UITextField!
+    
+    
+    //    ===============================================================
+    //                    BACK BUTTON
+    //    ===============================================================
+
+    
+    @IBAction func backButtonPressed(_ sender: Any) {
+        backDelegate?.backButtonPressed(controller: self)
+        
+    }
     
     //    ===============================================================
     //                    VIEW DID LOAD
@@ -36,6 +51,7 @@ class UpdateSellPriceViewController: UIViewController {
         productLabel.text = product!
         sellPriceTextField.text = sellPrice!
         let IM = InventoryModel()
+//        navBar.title = "Update Sell Price"
         sellPriceTextField.keyboardType = UIKeyboardType.decimalPad
     }
     
