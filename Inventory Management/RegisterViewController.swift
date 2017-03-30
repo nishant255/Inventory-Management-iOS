@@ -92,8 +92,7 @@ class RegisterViewController: UIViewController {
             ] as [String: Any]
         if let jsonData = try? JSONSerialization.data(withJSONObject: dict, options: []) {
             
-            let host = "http://localhost:8000/"
-            let url = NSURL(string: "\(host)user")!
+            let url = NSURL(string: "\(urlHost)user")!
             let request = NSMutableURLRequest(url: url as URL)
             request.httpMethod = "POST"
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
