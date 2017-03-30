@@ -12,11 +12,9 @@ import UIKit
 class OrderViewController: UIViewController {
     
     
-    @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var orderLabel: UILabel!
     @IBOutlet weak var placedByLabel: UILabel!
     @IBOutlet weak var placedOnLabel: UILabel!
-    
     @IBOutlet weak var productsTable: UITableView!
     @IBOutlet weak var receivedOnLabel: UILabel!
     
@@ -62,7 +60,7 @@ class OrderViewController: UIViewController {
         
         
         orderLabel.text = "Order #: \(orderNumber!)"
-        navBar.title = company!
+        self.title = company!
         placedByLabel.text = "Placed By: \(placedBy!)"
         
     }

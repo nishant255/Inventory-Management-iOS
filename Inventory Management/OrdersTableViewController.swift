@@ -235,7 +235,9 @@ class OrdersTableViewController: UITableViewController, AddOrderDelegate, BackBu
             let receivedOn = order["updatedAt"] as! String
             let products = order["products"] as! [NSDictionary]
             
-            let controller = segue.destination as! OrderViewController
+            let nav = segue.destination as! UINavigationController
+            
+            let controller = nav.topViewController as! OrderViewController
             controller.order = order
             controller.orderNumber = orderNumber
             controller.company = company

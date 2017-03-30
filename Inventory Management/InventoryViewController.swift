@@ -89,7 +89,8 @@ class InventoryViewController: UIViewController, UpdateDelegate, AddOrderDelegat
         } else  {
           let indexPath = sender as! IndexPath
         let product = inventory[indexPath.row]
-        let controller = segue.destination as! UpdateSellPriceViewController
+        let nav = segue.destination as! UINavigationController
+        let controller = nav.topViewController as! UpdateSellPriceViewController
         let company = product["_company"] as! NSDictionary
         print("company is: ",company)
         controller.company = company["name"] as? String

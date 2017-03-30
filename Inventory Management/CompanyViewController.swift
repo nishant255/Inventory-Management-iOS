@@ -49,7 +49,7 @@ class CompanyViewController: UIViewController {
         let zipcode = String(describing: addressDic["zipcode"]!)
         let address = "\(street), \(city) \(state), \(zipcode)"
         
-        navBar.title = companyName
+        self.title = companyName
         emailLabel.text = "Email: \(email)"
         phoneLabel.text = "Phone: \(phone)"
         addressLabel.text = "Address: \(address)"

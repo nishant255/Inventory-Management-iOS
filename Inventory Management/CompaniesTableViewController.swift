@@ -60,8 +60,8 @@ class CompaniesTableViewController: UITableViewController, AddOrderDelegate, Bac
             let indexPath = sender as! IndexPath
             let company = companies[indexPath.row]
             
-            
-            let controller = segue.destination as! CompanyViewController
+            let nav = segue.destination as! UINavigationController
+            let controller = nav.topViewController as! CompanyViewController
             controller.backDelegate = self
             
             controller.company = company
