@@ -127,8 +127,11 @@ class OrdersTableViewController: UITableViewController, AddOrderDelegate, BackBu
             let cell = tableView.dequeueReusableCell(withIdentifier: "incomingShipmentCell", for: indexPath)
             let order = OrdersSectionArray[indexPath.section].items[indexPath.row] as! NSDictionary
             let recipient = order.value(forKey: "recipient") as! NSDictionary
+            let sender = order["sender"] as! NSDictionary
+            let senderName = sender["name"] as! String
+            print("sender name is: ",senderName)
             let email = recipient["email"] as! String
-            cell.textLabel?.text = email
+            cell.textLabel?.text = senderName
 //            let data_recipient = reciepient.value(forKey: "data") as! NSDictionary
             let dateString = String(describing: (order).value(forKey: "createdAt")!)
             let dateFormatter = DateFormatter()
