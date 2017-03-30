@@ -9,159 +9,122 @@
 import UIKit
 
 class EnterOrderViewController: UIViewController, UITextFieldDelegate {
-
-    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var orderTableView: UITableView!
-    @IBOutlet weak var saName: UITextField!
-    @IBOutlet weak var saStreet: UITextField!
-    @IBOutlet weak var saCity: UITextField!
-    @IBOutlet weak var saState: UITextField!
-    @IBOutlet weak var saZipCode: UITextField!
     
     
     
     var productsSelected = [NSDictionary]()
-    //var activeField: UITextField?
-    //let scrollView = UIScrollView()
-    var frameView: UIView!
+    var shippingAddress: NSDictionary = [:]
+    var newProdData = [NSMutableDictionary]()
+    var rowBeingEdited : Int? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        self.frameView = UIView(frame: CGRect(x: 0,y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
-        
-        
-        // Keyboard stuff.
-//        let center: NotificationCenter = NotificationCenter.default
-//        center.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        center.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardUP), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardDown), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        switch textField.tag {
-        case 0...1:
-            print("Do Nothing")
-        default:
-            scrollView.setContentOffset(CGPoint(x:0,y:100), animated: true)
-        }
-    }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-            scrollView.setContentOffset(CGPoint(x:0,y:0), animated: true)
-    }
     
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        if textField.tag == 0
-//    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        self.registerForKeyboardNotifications()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-//        NotificationCenter.default.removeObserver(self)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     @IBAction func viewOrderButtonPressed(_ sender: UIButton) {
-    }
-    
-    func keyboardWillShow(notification: NSNotification) {
-//        let info:NSDictionary = notification.userInfo! as NSDictionary
-//        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-//        
-//        let keyboardHeight: CGFloat = keyboardSize.height
-//        
-//        let _: CGFloat = info[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber as! CGFloat
-//        
-//        
-//        UIView.animate(withDuration: 0.25, delay: 0.25, options: UIViewAnimationOptions.curveEaseInOut, animations: {
-//            self.frameView.frame = CGRect(x : 0,y : (self.frameView.frame.origin.y - keyboardHeight),width: self.view.bounds.width,height: self.view.bounds.height)
-//        }, completion: nil)
-        if (self.view.frame.origin.y >= 0)
-        {
-            self.setViewMovedUp(movedUp: true)
-        }
-        else if (self.view.frame.origin.y < 0)
-        {
-            self.setViewMovedUp(movedUp: false)
+        
+        if newProdData.count != productsSelected.count {
+            self.errorAlert(title: "Order Error!", message: "Buy Price and Quantity Required for All Products")
         }
         
-    }
-    
-    func keyboardWillHide(notification: NSNotification) {
-//        let info: NSDictionary = notification.userInfo! as NSDictionary
-//        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-//        
-//        let keyboardHeight: CGFloat = keyboardSize.height
-//        
-//        let _: CGFloat = info[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber as! CGFloat
-//        
-//        UIView.animate(withDuration: 0.25, delay: 0.25, options: UIViewAnimationOptions.curveEaseInOut, animations: {
-//            self.frameView.frame = CGRect(x: 0,y: (self.frameView.frame.origin.y + keyboardHeight),width: self.view.bounds.width,height: self.view.bounds.height)
-//        }, completion: nil)
-        if (self.view.frame.origin.y >= 0)
-        {
-            self.setViewMovedUp(movedUp: true)
-        }
-        else if (self.view.frame.origin.y < 0)
-        {
-            self.setViewMovedUp(movedUp: false)
+        for prod in newProdData {
+            if String(describing: prod.value(forKey: "quantity")!) == "" || String(describing: prod.value(forKey: "buyPrice")!) == "" {
+                self.errorAlert(title: "Order Error!", message: "Buy Price and Quantity Required for All Products")
+            } else {
+                if Int(prod.value(forKey: "quantity") as! String)! <= 0 || Int(prod.value(forKey: "buyPrice") as! String)! <= 0 {
+                    self.errorAlert(title: "Order Error!", message: "Buy Price and Quantity Should be more than 0.")
+                }
+            }
         }
         
+        let alertController = UIAlertController(title: "Add Shipping Address", message: nil, preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        
+        let saveAction = UIAlertAction(title: "Save", style: .destructive, handler: {
+            alert -> Void in
+            let name = alertController.textFields![0] as UITextField
+            let street = alertController.textFields![1] as UITextField
+            let city = alertController.textFields![2] as UITextField
+            let state = alertController.textFields![3] as UITextField
+            let zipcode = alertController.textFields![4] as UITextField
+            
+            if name.text! == "" || street.text! == "" || city.text! == "" || state.text! == "" || zipcode.text! == "" {
+                self.errorAlert(title: "Shipping Address Error!", message: "All the fields are required")
+            } else {
+                self.shippingAddress = [
+                    "city": city.text!,
+                    "name": name.text!,
+                    "state": state.text!,
+                    "street": street.text!,
+                    "zipcode": zipcode.text!,
+                ]
+                self.performSegue(withIdentifier: "confirmOrderSegue", sender: (Any).self)
+            }
+        })
+        
+        alertController.addTextField { (textField : UITextField!) in
+            
+            textField.placeholder = "Enter Name"
+            textField.tag = 1
+        }
+        alertController.addTextField { (textField : UITextField!) in
+            textField.placeholder = "Enter Street"
+            textField.tag = 2
+        }
+        alertController.addTextField { (textField : UITextField!) in
+            textField.placeholder = "Enter City"
+            textField.tag = 3
+        }
+        alertController.addTextField { (textField : UITextField!) in
+            textField.placeholder = "Enter State"
+            textField.tag = 4
+        }
+        alertController.addTextField { (textField : UITextField!) in
+            textField.placeholder = "Enter Zip Code"
+            textField.tag = 5
+            textField.keyboardType = .numberPad
+            
+        }
+        
+        alertController.addAction(saveAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func errorAlert(title: String, message: String) {
+        let alertForOrder = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive) { action in
+        }
+        alertForOrder.addAction(OKAction)
+        self.present(alertForOrder, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("Preparing Segue")
+        if segue.identifier == "confirmOrderSegue" {
+            print("Prepared Segue")
+            let controller = segue.destination as! ConfirmOrderViewController
+            controller.productWithBuyPrice = newProdData
+            controller.shippingAddress = shippingAddress
+        }
+    }
 
-        
-    }
     
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        if textField.isEqual((saName != nil) || (saCity != nil) || (saState != nil) || (saStreet != nil) || (saZipCode != nil)) {
-//            if  (self.view.frame.origin.y >= 0)
-//            {
-//                self.setViewMovedUp(movedUp: true)
-//            }
-//        }
-//    }
-//    
-    func setViewMovedUp(movedUp: Bool){
-        UIView.beginAnimations(nil, context: nil)
-        UIView.setAnimationDuration(0.3)
-        
-        var rect = self.view.frame
-        if movedUp {
-            rect.origin.y -= 80.0
-            rect.size.height += 80.0
-        } else {
-            rect.origin.y += 80.0
-            rect.size.height -= 80.0
-        }
-        self.view.frame = rect
-        
-        UIView.commitAnimations()
-        
-    }
     
-    func keyboardUP(notification: NSNotification) {
-        if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
-            self.view.frame.origin.y = 0
-            self.view.frame.origin.y -= 253
-        }
-    }
-    func keyboardDown(notification: NSNotification) {
-        if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
-            self.view.frame.origin.y = 0
-        }
-    }
-
 }
+
+
 
 extension EnterOrderViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -172,65 +135,71 @@ extension EnterOrderViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrderDetailsTableViewCell", for: indexPath) as! OrderDetailsTableViewCell
         let product = productsSelected[indexPath.row]
         cell.productNameLabel.text = product["name"] as? String
+        cell.productsBuyPrice.text = ""
+        cell.productQuantity.text = ""
+        cell.productQuantity.tag = Int("2\(indexPath.row)")!
+        cell.productsBuyPrice.tag = Int("1\(indexPath.row)")!
+        cell.productQuantity.delegate = self
+        cell.productsBuyPrice.delegate = self
         return cell
     }
-
-}
-
-//MARK: - Keyboard Management Methods
-/*
-extension EnterOrderViewController {
     
-    // Call this method somewhere in your view controller setup code.
-    func registerForKeyboardNotifications() {
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self,
-                                       selector: #selector(EnterOrderViewController.keyboardWillBeShown(sender:)),
-                                       name: NSNotification.Name.UIKeyboardWillShow,
-                                       object: nil)
-        notificationCenter.addObserver(self,
-                                       selector: #selector(EnterOrderViewController.keyboardWillBeHidden(sender:)),
-                                       name: NSNotification.Name.UIKeyboardWillHide,
-                                       object: nil)
-    }
-    
-    // Called when the UIKeyboardDidShowNotification is sent.
-    func keyboardWillBeShown(sender: NSNotification) {
-        let info: NSDictionary = sender.userInfo! as NSDictionary
-        let value: NSValue = info.value(forKey: UIKeyboardFrameBeginUserInfoKey) as! NSValue
-        let keyboardSize: CGSize = value.cgRectValue.size
-        let contentInsets: UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0)
-        scrollView.contentInset = contentInsets
-        scrollView.scrollIndicatorInsets = contentInsets
-        
-        // If active text field is hidden by keyboard, scroll it so it's visible
-        // Your app might not need or want this behavior.
-        var aRect: CGRect = self.view.frame
-        aRect.size.height -= keyboardSize.height
-        let activeTextFieldRect: CGRect? = activeField?.frame
-        let activeTextFieldOrigin: CGPoint? = activeTextFieldRect?.origin
-        if (!aRect.contains(activeTextFieldOrigin!)) {
-            scrollView.scrollRectToVisible(activeTextFieldRect!, animated:true)
+    func textFieldDidEndEditing(_ textField: UITextField) {        
+        let tagString = String(textField.tag)
+        let row = Int(tagString.substring(with: 1..<tagString.characters.count))
+        let fieldIdentifier = tagString.characters.first
+        if row! >= newProdData.count {
+            for _ in newProdData.count...row!{
+                newProdData.append([
+                    "quantity": "",
+                    "buyPrice": "",
+                    "product": [:]
+                    ])
+            }
         }
+        let indexPath = IndexPath(row: row!, section: 0)
+        let newProduct = newProdData[indexPath.row]
+        newProduct.setObject(productsSelected[row!], forKey: "product" as NSCopying)
+        if fieldIdentifier! == "1" {
+            newProduct.setObject(textField.text!, forKey: "quantity" as NSCopying)
+        } else if fieldIdentifier! == "2" {
+            newProduct.setObject(textField.text!, forKey: "buyPrice" as NSCopying)
+        }
+        
     }
     
-    // Called when the UIKeyboardWillHideNotification is sent
-    func keyboardWillBeHidden(sender: NSNotification) {
-        let contentInsets: UIEdgeInsets = UIEdgeInsets.zero
-        scrollView.contentInset = contentInsets
-        scrollView.scrollIndicatorInsets = contentInsets
-    }
-    
-    //MARK: - UITextField Delegate Methods
-    
-    func textFieldDidBeginEditing(textField: UITextField!) {
-        activeField = textField
-        scrollView.isScrollEnabled = true
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField!) {
-        activeField = nil
-        scrollView.isScrollEnabled = false
-    }
 }
- */
+
+extension String {
+    subscript (i: Int) -> Character {
+
+        return self[self.index(startIndex, offsetBy: i)]
+    }
+    
+    subscript (i: Int) -> String {
+        return String(self[i] as Character)
+    }
+    
+    func index(from: Int) -> Index {
+        return self.index(startIndex, offsetBy: from)
+    }
+    
+    func substring(from: Int) -> String {
+        let fromIndex = index(from: from)
+        return substring(from: fromIndex)
+    }
+    
+    func substring(to: Int) -> String {
+        let toIndex = index(from: to)
+        return substring(to: toIndex)
+    }
+    
+    func substring(with r: Range<Int>) -> String {
+        let startIndex = index(from: r.lowerBound)
+        let endIndex = index(from: r.upperBound)
+        return substring(with: startIndex..<endIndex)
+    }
+
+
+
+}

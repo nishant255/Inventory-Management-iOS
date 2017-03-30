@@ -31,9 +31,18 @@ class SelectProductsViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "addToOrderSegue" {
-            let controller = segue.destination as! EnterOrderViewController
-            controller.productsSelected = self.productsSelected            
+        if productsSelected.count == 0 {
+            let alertForOrder = UIAlertController(title: nil, message: "Please Select at least 1 Product", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { action in
+            }
+            alertForOrder.addAction(OKAction)
+            self.present(alertForOrder, animated: true, completion: nil)
+        } else {
+            if segue.identifier == "addToOrderSegue" {
+                print(segue.destination)
+                let controller = segue.destination as! EnterOrderViewController
+                controller.productsSelected = self.productsSelected
+            }
         }
     }
 }
