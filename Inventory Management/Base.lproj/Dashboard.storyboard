@@ -136,7 +136,7 @@
                     <connections>
                         <outlet property="dashboardTableView" destination="JxA-lJ-1tc" id="Lbq-u8-eKl"/>
                         <segue destination="YOK-aZ-ZJX" kind="presentation" identifier="signOutSegue" id="jFY-iK-sik"/>
-                        <segue destination="aOA-hl-81u" kind="show" identifier="addNewOrderSegueFromDashboard" id="pzq-ub-TIk"/>
+                        <segue destination="aOA-hl-81u" kind="presentation" identifier="addNewOrderSegueFromDashboard" id="pzq-ub-TIk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hXB-Z8-ITL" userLabel="First Responder" sceneMemberID="firstResponder"/>

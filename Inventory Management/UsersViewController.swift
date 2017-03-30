@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class UsersViewController: UIViewController {
+class UsersViewController: UIViewController, AddOrderDelegate {
     
     @IBOutlet weak var usersTableView: UITableView!
     
@@ -65,6 +65,11 @@ class UsersViewController: UIViewController {
             }
             controller.id = user["_id"] as? String
         }
+        if segue.identifier == "addNewOrderSegueFromUsers" {
+            let navController = segue.destination as! UINavigationController
+            let controller = navController.topViewController as! SelectCompanyTableViewController
+            controller.delegate = self
+        }
     }
     
     //=================================================================
@@ -76,6 +81,11 @@ class UsersViewController: UIViewController {
             print("Logged Out")
             performSegue(withIdentifier: "signOutSegue", sender: sender)
         }
+    }
+    
+    
+    func cancelButtonPressed(controller: SelectCompanyTableViewController) {
+        dismiss(animated: true, completion: nil)
     }
 }
 extension UsersViewController: UITableViewDataSource, UITableViewDelegate {

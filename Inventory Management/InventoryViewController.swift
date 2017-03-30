@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class InventoryViewController: UIViewController, UpdateDelegate {
+class InventoryViewController: UIViewController, UpdateDelegate, AddOrderDelegate {
     
     
     //=================================================================
@@ -71,16 +71,17 @@ class InventoryViewController: UIViewController, UpdateDelegate {
         }
     }
     
+
     func updateButtonPressed(controller: UIViewController) {
         dismiss(animated: true, completion: nil)
     }
-    
-    //=================================================================
-    //                           SEGUE
-    //=================================================================
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let indexPath = sender as! IndexPath
+        if segue.identifier == "addNewOrderSegueFromInventory" {
+            let navController = segue.destination as! UINavigationController
+            let controller = navController.topViewController as! SelectCompanyTableViewController
+            controller.delegate = self
+        } else  {
+          let indexPath = sender as! IndexPath
         let product = inventory[indexPath.row]
         let controller = segue.destination as! UpdateSellPriceViewController
         let company = product["_company"] as! NSDictionary
@@ -90,6 +91,11 @@ class InventoryViewController: UIViewController, UpdateDelegate {
         controller.id = product["_id"] as! String
         controller.sellPrice = String(describing: product["sellPrice"]!)
         controller.updateDelegate = self
+        }
+    }
+    
+    func cancelButtonPressed(controller: SelectCompanyTableViewController) {
+        dismiss(animated: true, completion: nil)
     }
 
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DashboardViewController: UIViewController {
+class DashboardViewController: UIViewController, AddOrderDelegate {
     
     // =================================================
     // ALL THE OUTLET AND CONTROLLER VARIABLE
@@ -53,8 +53,6 @@ class DashboardViewController: UIViewController {
             print("Logged Out")
             performSegue(withIdentifier: "signOutSegue", sender: sender)
         }
-        
-        
     }
     
     @IBAction func addNewOrderButtonPressed(_ sender: UIBarButtonItem) {
@@ -89,6 +87,20 @@ class DashboardViewController: UIViewController {
         refreshControl.endRefreshing()
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addNewOrderSegueFromDashboard" {
+            let navController = segue.destination as! UINavigationController
+            let controller = navController.topViewController as! SelectCompanyTableViewController
+            controller.delegate = self
+        }
+    }
+    
+    func cancelButtonPressed(controller: SelectCompanyTableViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
  
 }
 

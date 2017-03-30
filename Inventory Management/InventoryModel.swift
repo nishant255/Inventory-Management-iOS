@@ -68,7 +68,7 @@ class InventoryModel{
     func getAllProducts(completionHandler: @escaping (([NSDictionary]) -> Void)){
         let url = URL(string: urlHost + "products/forSale")
         let session = URLSession.shared
-        var products = [String]()
+        // var products = [String]()
         let task = session.dataTask(with: url!, completionHandler: {
             
             data, response, error in

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CompaniesTableViewController: UITableViewController {
+class CompaniesTableViewController: UITableViewController, AddOrderDelegate {
     
     //=================================================================
     //                     VARIABLES AND OUTLETS
@@ -65,6 +65,18 @@ class CompaniesTableViewController: UITableViewController {
             controller.company = company
         }
         
+        if segue.identifier == "addNewOrderSegueFromCompanies" {
+            let navController = segue.destination as! UINavigationController
+            let controller = navController.topViewController as! SelectCompanyTableViewController
+            controller.delegate = self
+        }
+        
+        
+    }
+    
+    
+    func cancelButtonPressed(controller: SelectCompanyTableViewController) {
+        dismiss(animated: true, completion: nil)
     }
     
     //=================================================================
