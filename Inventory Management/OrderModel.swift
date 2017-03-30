@@ -34,6 +34,34 @@ class OrderModel {
         })
         task.resume()
     }
+    func createOrder(order: NSDictionary, completionHandler: @escaping ((Bool, String) -> Void)) {
+        if let jsonData = try? JSONSerialization.data(withJSONObject: order, options: []) {
+            let createOrderURL = NSURL(string: "\(urlHost)orders")!
+            let request = NSMutableURLRequest(url: createOrderURL as URL)
+            request.httpMethod = "POST"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpBody = jsonData
+            let task = URLSession.shared.dataTask(with: request as URLRequest){ data,response,error in
+                do {
+                    if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
+                        print(jsonResult)
+                        if jsonResult["success"] as! Bool {
+                            DispatchQueue.main.async {
+                                completionHandler(true, jsonResult["message"] as! String)
+                            }
+                        } else {
+                            print("error")
+                            completionHandler(false, jsonResult["message"] as! String)
+                        }
+                    }
+                } catch {
+                    print(error)
+                    completionHandler(false, "There was a error creating order")
+                }
+            }
+            task.resume()
+        }
+    }
     
     func recieveOrder(order: NSDictionary, completionHandler: @escaping ((Bool, String) -> Void)) {
         let cduser = UM.getCoreDataUser()

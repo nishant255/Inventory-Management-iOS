@@ -11,7 +11,7 @@ import UIKit
 class EnterOrderViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var orderTableView: UITableView!
-    
+    var company: NSDictionary = [:]
     
     
     var productsSelected = [NSDictionary]()
@@ -117,6 +117,7 @@ class EnterOrderViewController: UIViewController, UITextFieldDelegate {
             let controller = segue.destination as! ConfirmOrderViewController
             controller.productWithBuyPrice = newProdData
             controller.shippingAddress = shippingAddress
+            controller.company = company
         }
     }
 

@@ -34,13 +34,14 @@ class DashboardViewController: UIViewController {
     // On View Load and Memeory Warning
     override func viewDidLoad() {
         super.viewDidLoad()        
-//        if !LM.checkLogin() {
-//            print("Not Logged In")
-//            performSegue(withIdentifier: "signOutSegue", sender: nil)
-//        }
+        if !LM.checkLogin() {
+            print("Not Logged In")
+            performSegue(withIdentifier: "signOutSegue", sender: nil)
+        }
         refreshControl.addTarget(self, action: #selector(DashboardViewController.refreshControlMethod), for: .valueChanged)
         self.dashboardTableView.addSubview(refreshControl)
         fetchDataFromServer()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -125,6 +126,7 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
         if dashboardSectionArray[indexPath.section].heading == "Incoming Shipments" {
             if dashboardSectionArray[indexPath.section].items.count == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "noIncomingShipmentCell", for: indexPath)
+                cell.selectionStyle = UITableViewCellSelectionStyle.none
                 return cell
             }
         }
@@ -147,6 +149,7 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
                 let orderDate = dateFormatter.date(from: splitDate[0])
                 cell.orderDateLabel.text = dateFormatter.string(from: orderDate!)
             }
+            cell.selectionStyle = UITableViewCellSelectionStyle.default
             return cell
         }
         
@@ -155,11 +158,13 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
         if dashboardSectionArray[indexPath.section].items[indexPath.row] is String {
             let cell = tableView.dequeueReusableCell(withIdentifier: "currentInventoryProductCell", for: indexPath) as! CurrentInventoryTableViewCell
             cell.productLabel.text = dashboardSectionArray[indexPath.section].items[indexPath.row] as? String
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
             return cell
         }
         
         // MARK -> if None of the Condition Pass
         let cell = tableView.dequeueReusableCell(withIdentifier: "noIncomingShipmentCell", for: indexPath)
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         return cell
     }
     
