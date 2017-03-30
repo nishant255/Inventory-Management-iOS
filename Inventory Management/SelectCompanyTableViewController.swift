@@ -13,6 +13,7 @@ class SelectCompanyTableViewController: UITableViewController {
     @IBOutlet weak var companyNameLabel: UILabel!
     var companies = [NSDictionary]()
     var CM = CompanyModel()
+    weak var delegate: AddOrderDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,9 @@ class SelectCompanyTableViewController: UITableViewController {
         }
     }
     
+    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+        delegate?.cancelButtonPressed(controller: self)
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "selectProductsForCompanySegue" {
             let controller = segue.destination as! SelectProductsViewController

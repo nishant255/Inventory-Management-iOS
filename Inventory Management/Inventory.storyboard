@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gxJ-0j-YA2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E183b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gxJ-0j-YA2">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -21,8 +21,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AHW-Vr-wPh">
-                                <rect key="frame" x="0.0" y="60" width="375" height="554"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AHW-Vr-wPh">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="InventoryCell" rowHeight="50" id="zmf-Rv-tQk" customClass="InventoryItemCustomCell" customModule="Inventory_Management" customModuleProvider="target">
@@ -105,7 +105,7 @@
                     <navigationItem key="navigationItem" id="isQ-ZX-BVl">
                         <barButtonItem key="leftBarButtonItem" title="Add Order" id="xxC-2c-uPN">
                             <connections>
-                                <segue destination="jYZ-AT-YeL" kind="show" id="tij-BD-vMs"/>
+                                <segue destination="jYZ-AT-YeL" kind="presentation" identifier="addNewOrderSegueFromInventory" id="tij-BD-vMs"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Sign Out" id="nut-3S-pz9">
@@ -116,7 +116,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="inventoryTableView" destination="AHW-Vr-wPh" id="JbE-oo-fQJ"/>
-                        <segue destination="6PA-oB-pLj" kind="showDetail" identifier="signOutSegue" id="oYi-i5-Jd8"/>
+                        <segue destination="6PA-oB-pLj" kind="presentation" identifier="signOutSegue" id="oYi-i5-Jd8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WW0-iq-Tj1" userLabel="First Responder" sceneMemberID="firstResponder"/>

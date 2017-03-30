@@ -26,10 +26,7 @@ class UserViewController: UIViewController {
     @IBOutlet weak var adminLabel: UILabel!
     @IBOutlet weak var changeAdminButton: UIButton!
 
-    @IBAction func changeAdminButtonPressed(_ sender: Any) {
-        print("pressed changeAdminButton")
-        print("user id is ",id!)
-        var message = "hahaha"
+    @IBAction func changeAdminButtonPressed(_ sender: Any) {        
         if admin == "User" {
             print("User admin status is User, lets change it to admin now")
             UM.makeAdmin(userId: id!) { (user) in
@@ -70,7 +67,7 @@ class UserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("UserViewController loaded with name: \(name), email: \(email), phone: \(phone), and admin: \(admin)")
+        // print("UserViewController loaded with name: \(name), email: \(email), phone: \(phone), and admin: \(admin)")
         nameLabel.text = "Name: \(name!)"
         emailLabel.text = "Email: \(email!)"
         phoneLabel.text = "Phone: \(phone!)"

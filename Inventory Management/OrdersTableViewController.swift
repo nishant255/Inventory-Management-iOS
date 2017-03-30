@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class OrdersTableViewController: UITableViewController {
+class OrdersTableViewController: UITableViewController, AddOrderDelegate {
     
     
     //=================================================================
@@ -71,6 +71,10 @@ class OrdersTableViewController: UITableViewController {
             self.tableView.reloadData()
         }
 
+    }
+    
+    func cancelButtonPressed(controller: SelectCompanyTableViewController) {
+        dismiss(animated: true, completion: nil)
     }
 
     
@@ -229,6 +233,14 @@ class OrdersTableViewController: UITableViewController {
             controller.receivedOn = receivedOn
             controller.products = products
         }
+        
+        
+        if segue.identifier == "addNewOrderSegueFromOrders" {
+            let navController = segue.destination as! UINavigationController
+            let controller = navController.topViewController as! SelectCompanyTableViewController
+            controller.delegate = self
+        }
+        
     }
     
     //=================================================================

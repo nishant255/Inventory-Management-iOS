@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="H6E-RB-6Pe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E183b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="H6E-RB-6Pe">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -114,7 +114,7 @@
                     <navigationItem key="navigationItem" id="ExD-fy-T1l">
                         <barButtonItem key="leftBarButtonItem" title="Add Order" id="3Hs-fN-txh">
                             <connections>
-                                <segue destination="4ji-F1-B2m" kind="show" id="iBm-Vo-aJR"/>
+                                <segue destination="4ji-F1-B2m" kind="presentation" identifier="addNewOrderSegueFromOrders" id="iBm-Vo-aJR"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Sign Out" id="OFZ-cw-mBo">

@@ -28,7 +28,7 @@ class OrderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("OrderViewController loaded with order Number: \(orderNumber!), company: \(company!), placedOn: \(placedOn!), receivedOn: \(receivedOn!), and products: \(products!), and order: \(order) ")
+        print("OrderViewController loaded with order Number: \(orderNumber!), company: \(company!), placedOn: \(placedOn!), receivedOn: \(receivedOn!), and products: \(products!), and order: \(String(describing: order)) ")
         productsTableView.dataSource = self
         productsTableView.delegate = self
         let dateFormatter = DateFormatter()
@@ -56,6 +56,7 @@ class OrderViewController: UIViewController {
         companyLabel.text = "Company: \(company!)"
         
     }
+    
 }
 
 extension OrderViewController: UITableViewDataSource, UITableViewDelegate {

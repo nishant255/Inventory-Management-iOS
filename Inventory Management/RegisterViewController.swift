@@ -140,7 +140,7 @@ class RegisterViewController: UIViewController {
                                 }
                             
                         } else {
-                            print("registration not successfull \(jsonResult["error_messages"])")
+                            print("registration not successfull \(String(describing: jsonResult["error_messages"]))")
                         }
                     }
 
