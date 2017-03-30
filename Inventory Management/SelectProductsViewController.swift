@@ -42,6 +42,7 @@ class SelectProductsViewController: UIViewController {
                 print(segue.destination)
                 let controller = segue.destination as! EnterOrderViewController
                 controller.productsSelected = self.productsSelected
+                controller.company = self.company!
             }
         }
     }
