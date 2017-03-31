@@ -44,6 +44,8 @@
 		969715C71E874F3200BD3BDE /* CurrentInventoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969715C61E874F3200BD3BDE /* CurrentInventoryTableViewCell.swift */; };
 		96AACF391E8CA30D00B43CCE /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AACF381E8CA30C00B43CCE /* ProductTableViewCell.swift */; };
 		96AACF3B1E8D7D2A00B43CCE /* AddOrderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AACF3A1E8D7D2A00B43CCE /* AddOrderDelegate.swift */; };
+		96AACF3D1E8DED7500B43CCE /* AddNewCompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AACF3C1E8DED7500B43CCE /* AddNewCompanyViewController.swift */; };
+		96AACF3F1E8DEE3900B43CCE /* AddNewCompanyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AACF3E1E8DEE3900B43CCE /* AddNewCompanyDelegate.swift */; };
 		96CC06911E8B0274008844A3 /* SelectProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CC06901E8B0274008844A3 /* SelectProductsViewController.swift */; };
 		96CC06931E8B0CDC008844A3 /* OrderDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CC06921E8B0CDC008844A3 /* OrderDetailsTableViewCell.swift */; };
 		96EE7BB11E845D450077057D /* DashboardSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EE7BB01E845D450077057D /* DashboardSections.swift */; };
@@ -132,6 +134,8 @@
 		969715C61E874F3200BD3BDE /* CurrentInventoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentInventoryTableViewCell.swift; sourceTree = "<group>"; };
 		96AACF381E8CA30C00B43CCE /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		96AACF3A1E8D7D2A00B43CCE /* AddOrderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOrderDelegate.swift; sourceTree = "<group>"; };
+		96AACF3C1E8DED7500B43CCE /* AddNewCompanyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewCompanyViewController.swift; sourceTree = "<group>"; };
+		96AACF3E1E8DEE3900B43CCE /* AddNewCompanyDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewCompanyDelegate.swift; sourceTree = "<group>"; };
 		96CC06901E8B0274008844A3 /* SelectProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectProductsViewController.swift; sourceTree = "<group>"; };
 		96CC06921E8B0CDC008844A3 /* OrderDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		96EE7BB01E845D450077057D /* DashboardSections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardSections.swift; sourceTree = "<group>"; };
@@ -240,6 +244,8 @@
 			isa = PBXGroup;
 			children = (
 				9671720E1E89A65400B9234B /* AddOrder.storyboard */,
+				96AACF3E1E8DEE3900B43CCE /* AddNewCompanyDelegate.swift */,
+				96AACF3C1E8DED7500B43CCE /* AddNewCompanyViewController.swift */,
 				96AACF3A1E8D7D2A00B43CCE /* AddOrderDelegate.swift */,
 				9613A3501E8A1C7400061DDC /* SelectCompanyTableViewController.swift */,
 				9613A3581E8A21B600061DDC /* SelectCompanyTableViewCell.swift */,
@@ -527,11 +533,13 @@
 				9613A3511E8A1C7400061DDC /* SelectCompanyTableViewController.swift in Sources */,
 				9613A34F1E8A1A9500061DDC /* DashboardViewController.swift in Sources */,
 				9613A3551E8A1CAE00061DDC /* EnterOrderViewController.swift in Sources */,
+				96AACF3F1E8DEE3900B43CCE /* AddNewCompanyDelegate.swift in Sources */,
 				9D6CA00C1E83217700B3C939 /* UsersCustomCell.swift in Sources */,
 				9DB7ACCF1E89CE87006F72E6 /* Company_Model.swift in Sources */,
 				9D06ECA11E83983A005D5CDC /* User+CoreDataClass.swift in Sources */,
 				96AACF391E8CA30D00B43CCE /* ProductTableViewCell.swift in Sources */,
 				9613A35B1E8A24A100061DDC /* SelectProductsTableViewCell.swift in Sources */,
+				96AACF3D1E8DED7500B43CCE /* AddNewCompanyViewController.swift in Sources */,
 				9D6CA0141E832C2E00B3C939 /* InventoryViewController.swift in Sources */,
 				9DDE8EFF1E8AFD7A00872B93 /* OrdersSection.swift in Sources */,
 				9D6CA0061E8316B700B3C939 /* CompaniesTableViewController.swift in Sources */,

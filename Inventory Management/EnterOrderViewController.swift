@@ -151,8 +151,8 @@ extension EnterOrderViewController: UITableViewDataSource, UITableViewDelegate {
         let product = productsSelected[indexPath.row]
         cell.productNameLabel.text = product["name"] as? String
         let newProduct = newProdData[indexPath.row]
-        cell.productsBuyPrice.text = newProduct.value(forKey: "buyPrice") as! String
-        cell.productQuantity.text = newProduct.value(forKey: "quantity") as! String
+        cell.productsBuyPrice.text = newProduct.value(forKey: "buyPrice") as? String
+        cell.productQuantity.text = newProduct.value(forKey: "quantity") as? String
         cell.productQuantity.tag = Int("2\(indexPath.row)")!
         cell.productsBuyPrice.tag = Int("1\(indexPath.row)")!
         cell.productQuantity.delegate = self
