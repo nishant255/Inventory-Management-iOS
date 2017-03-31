@@ -16,7 +16,7 @@ class SelectProductsViewController: UIViewController {
     var newProduct: NSMutableDictionary = [:]
     let IM = InventoryModel()
 
-    @IBOutlet weak var productsTableView: UITableView!    
+    @IBOutlet weak var productsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ class SelectProductsViewController: UIViewController {
     }
 
     @IBAction func addNewProductButtonPressed(_ sender: Any) {
-        let alertController = UIAlertController(title: "Add Shipping Address", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Add New Product", message: nil, preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
@@ -50,9 +50,10 @@ class SelectProductsViewController: UIViewController {
                     "_company": self.company!,
                     "received": false
                 ]
-                self.IM.createNewProduct(newProduct: self.newProduct, completionHandler: { (success, message) in
+                self.IM.createNewProduct(newProduct: self.newProduct, completionHandler: { (success, message, product) in
                     if success {
                         self.errorAlert(title: message, message: nil)
+                        self.productsForSelectCompany.append(product!)
                         self.productsTableView.reloadData()
                     } else {
                         self.errorAlert(title: "Product Error", message: message)

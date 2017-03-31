@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DashboardViewController: UIViewController, AddOrderDelegate {
+class DashboardViewController: UIViewController, AddOrderDelegate, BackButtonDelegate {
     
     // =================================================
     // ALL THE OUTLET AND CONTROLLER VARIABLE
@@ -33,10 +33,15 @@ class DashboardViewController: UIViewController, AddOrderDelegate {
     
     // On View Load and Memeory Warning
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
         if !LM.checkLogin() {
             print("Not Logged In")
             performSegue(withIdentifier: "signOutSegue", sender: nil)
+        }
+        if UM.getCoreDataUser()?.admin == 0 {
+            self.title = "Boss Dashboard"
+        }else if UM.getCoreDataUser()?.admin == 1 {
+            self.title = "Admin Dashboard"
         }
         refreshControl.addTarget(self, action: #selector(DashboardViewController.refreshControlMethod), for: .valueChanged)
         self.dashboardTableView.addSubview(refreshControl)
@@ -92,11 +97,50 @@ class DashboardViewController: UIViewController, AddOrderDelegate {
             let controller = navController.topViewController as! SelectCompanyTableViewController
             controller.delegate = self
         }
+        
+        if segue.identifier == "ViewOrder" {
+            let indexPath = sender as! IndexPath
+            print("clicked section: \(indexPath.section), row: \(indexPath.row)")
+            
+            let order = dashboardSectionArray[indexPath.section].items[indexPath.row] as! NSDictionary
+            print("order is: ",order)
+            let recipient = order["recipient"] as! NSDictionary
+            let receiverName = "\(String(describing: recipient["first_name"]!)) \(String(describing: recipient["last_name"]!))"
+            let orderNumber = order["_id"] as! String
+            let orderSender = order["sender"] as! NSDictionary
+            let company = orderSender["name"] as! String
+            let placedOn = order["createdAt"] as! String
+            let receivedOn = order["updatedAt"] as! String
+            let products = order["products"] as! [NSDictionary]
+            
+            let nav = segue.destination as! UINavigationController
+            
+            let controller = nav.topViewController as! OrderViewController
+            controller.order = order
+            controller.orderNumber = orderNumber
+            controller.company = company
+            controller.placedOn = placedOn
+            controller.receivedOn = receivedOn
+            controller.products = products
+            controller.placedBy = receiverName
+            controller.backDelegate = self
+        }
+
     }
     
     func cancelButtonPressed(controller: SelectCompanyTableViewController) {
         dismiss(animated: true, completion: nil)
     }
+    
+    //=================================================================
+    //                    BACK BUTTON
+    //=================================================================
+    
+    
+    func backButtonPressed(controller: UIViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+
     
     
  
@@ -151,8 +195,9 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "incomingShipmentCell", for: indexPath) as! IncomingShipmentTableViewCell
                 let order = dashboardSectionArray[indexPath.section].items[indexPath.row] as! NSDictionary
                 print("order is: ")
-                let reciepient = order.value(forKey: "recipient") as! NSDictionary
-                cell.orderTitleLabel.text = reciepient.value(forKey: "email") as? String
+                let sender = order.value(forKey: "sender") as! NSDictionary
+                print(sender)
+                cell.orderTitleLabel.text = sender.value(forKey: "name") as? String
                 let dateString = String(describing: (order).value(forKey: "createdAt")!)
                 let dateFormatter = DateFormatter()
                 let splitDate = dateString.components(separatedBy: "T")
@@ -220,4 +265,14 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
             }
         }
     }
+    
+    //=================================================================
+    //                    ACCESSORY BUTTON TAPPED
+    //=================================================================
+    
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        print("going to try to segue ViewOrder")
+        performSegue(withIdentifier: "ViewOrder", sender: indexPath)
+    }
+
 }

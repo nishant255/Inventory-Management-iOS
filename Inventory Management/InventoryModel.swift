@@ -12,7 +12,7 @@ class InventoryModel{
     
     let UM = UserModel()
     
-    func createNewProduct(newProduct: NSDictionary, completionHandler: @escaping ((Bool, String) -> Void )) {
+    func createNewProduct(newProduct: NSDictionary, completionHandler: @escaping ((Bool, String, NSDictionary?) -> Void )) {
         
         if let jsonData = try? JSONSerialization.data(withJSONObject: newProduct, options: []) {
             let createCompanyURL = NSURL(string: "\(urlHost)products")!
@@ -26,17 +26,17 @@ class InventoryModel{
                         print(jsonResult)
                         if jsonResult["success"] as! Bool {
                             DispatchQueue.main.async {
-                                completionHandler(true, jsonResult["message"] as! String)
+                                completionHandler(true, jsonResult["message"] as! String, jsonResult["result"] as! NSDictionary)
                             }
                         } else {
                             print("error")
                             let jsonerror = jsonResult["error"] as! NSDictionary
-                            completionHandler(false, jsonerror["message"] as! String)
+                            completionHandler(false, jsonerror["message"] as! String, nil)
                         }
                     }
                 } catch {
                     print(error)
-                    completionHandler(false, "There was a error creating Product")
+                    completionHandler(false, "There was a error creating Product", nil)
                 }
             }
             task.resume()

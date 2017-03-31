@@ -55,7 +55,8 @@ class SelectCompanyTableViewController: UITableViewController, AddNewCompanyDele
     }
     
     func saveButtonPressed(controller: AddNewCompanyViewController, newCompany: NSDictionary) {
-        self.tableView.reloadData()
+        self.companies = [NSDictionary]()
+        fetchAllCompanyFromServer()
         dismiss(animated: true, completion: nil)
     }
     
