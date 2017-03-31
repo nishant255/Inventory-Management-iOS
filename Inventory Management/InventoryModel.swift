@@ -22,7 +22,7 @@ class InventoryModel{
             
             do {
                 if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray {
-                    print("json result is ",jsonResult)
+                    print("Sending Inventory")
                     for product in jsonResult {
                         let productDict = product as! NSDictionary
                         products.append(productDict.value(forKey: "name") as! String)
