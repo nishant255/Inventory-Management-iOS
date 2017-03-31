@@ -60,7 +60,7 @@ class DashboardViewController: UIViewController, AddOrderDelegate {
     }
     
     func fetchDataFromServer() {
-        OM.getPendingOrders { (orders) in
+        OM.getPendingOrders { (orders) in            
             let incomingShipment = DashboardSection(title: "Incoming Shipments", objects: orders)
             if self.dashboardSectionArray.count == 0 {
                 self.dashboardSectionArray.append(incomingShipment)
@@ -70,8 +70,6 @@ class DashboardViewController: UIViewController, AddOrderDelegate {
                 self.dashboardSectionArray[0] = self.dashboardSectionArray[1]
                 self.dashboardSectionArray[1] = temp
             }
-            
-            
             self.dashboardTableView.reloadData()
         }
         IM.getAllProductsforDashboard { (products) in
@@ -134,44 +132,47 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // MARK -> If No Incoming Shipments
+        if indexPath.section < dashboardSectionArray.count {
+            
         
-        if dashboardSectionArray[indexPath.section].heading == "Incoming Shipments" {
-            if dashboardSectionArray[indexPath.section].items.count == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "noIncomingShipmentCell", for: indexPath)
+            if dashboardSectionArray[indexPath.section].heading == "Incoming Shipments" {
+                if dashboardSectionArray[indexPath.section].items.count == 0 {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "noIncomingShipmentCell", for: indexPath)
+                    cell.selectionStyle = UITableViewCellSelectionStyle.none
+                    return cell
+                }
+            }
+            
+            // MARK -> Data for Incoming Shipments Cell
+            
+            if dashboardSectionArray[indexPath.section].items[indexPath.row] is NSDictionary {
+                print("there should be some pending orders!")
+                print("heading is: ",dashboardSectionArray[indexPath.section].heading)
+                let cell = tableView.dequeueReusableCell(withIdentifier: "incomingShipmentCell", for: indexPath) as! IncomingShipmentTableViewCell
+                let order = dashboardSectionArray[indexPath.section].items[indexPath.row] as! NSDictionary
+                print("order is: ")
+                let reciepient = order.value(forKey: "recipient") as! NSDictionary
+                cell.orderTitleLabel.text = reciepient.value(forKey: "email") as? String
+                let dateString = String(describing: (order).value(forKey: "createdAt")!)
+                let dateFormatter = DateFormatter()
+                let splitDate = dateString.components(separatedBy: "T")
+                if splitDate.count > 0 {
+                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                    let orderDate = dateFormatter.date(from: splitDate[0])
+                    cell.orderDateLabel.text = dateFormatter.string(from: orderDate!)
+                }
+                cell.selectionStyle = UITableViewCellSelectionStyle.default
+                return cell
+            }
+            
+            // MARK -> Data for Current Inventory Cell
+            
+            if dashboardSectionArray[indexPath.section].items[indexPath.row] is String {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "currentInventoryProductCell", for: indexPath) as! CurrentInventoryTableViewCell
+                cell.productLabel.text = dashboardSectionArray[indexPath.section].items[indexPath.row] as? String
                 cell.selectionStyle = UITableViewCellSelectionStyle.none
                 return cell
             }
-        }
-        
-        // MARK -> Data for Incoming Shipments Cell
-        
-        if dashboardSectionArray[indexPath.section].items[indexPath.row] is NSDictionary {
-            print("there should be some pending orders!")
-            print("heading is: ",dashboardSectionArray[indexPath.section].heading)
-            let cell = tableView.dequeueReusableCell(withIdentifier: "incomingShipmentCell", for: indexPath) as! IncomingShipmentTableViewCell
-            let order = dashboardSectionArray[indexPath.section].items[indexPath.row] as! NSDictionary
-            print("order is: ",order)
-            let reciepient = order.value(forKey: "recipient") as! NSDictionary
-            cell.orderTitleLabel.text = reciepient.value(forKey: "email") as? String
-            let dateString = String(describing: (order).value(forKey: "createdAt")!)
-            let dateFormatter = DateFormatter()
-            let splitDate = dateString.components(separatedBy: "T")
-            if splitDate.count > 0 {
-                dateFormatter.dateFormat = "yyyy-MM-dd"
-                let orderDate = dateFormatter.date(from: splitDate[0])
-                cell.orderDateLabel.text = dateFormatter.string(from: orderDate!)
-            }
-            cell.selectionStyle = UITableViewCellSelectionStyle.default
-            return cell
-        }
-        
-        // MARK -> Data for Current Inventory Cell
-        
-        if dashboardSectionArray[indexPath.section].items[indexPath.row] is String {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "currentInventoryProductCell", for: indexPath) as! CurrentInventoryTableViewCell
-            cell.productLabel.text = dashboardSectionArray[indexPath.section].items[indexPath.row] as? String
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
-            return cell
         }
         
         // MARK -> if None of the Condition Pass

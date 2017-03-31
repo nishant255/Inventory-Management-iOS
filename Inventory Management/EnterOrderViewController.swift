@@ -48,10 +48,10 @@ class EnterOrderViewController: UIViewController, UITextFieldDelegate {
     @IBAction func viewOrderButtonPressed(_ sender: UIButton) {
         
         for prod in newProdData {
-            if String(describing: prod.value(forKey: "quantity")!) == "" || String(describing: prod.value(forKey: "buyPrice")!) == "" {
+            if (Int(prod.value(forKey: "quantity") as! String) == nil) || (Int(prod.value(forKey: "buyPrice") as! String) == nil) {
                 self.errorAlert(title: "Order Error!", message: "Buy Price and Quantity Required for All Products")
             }
-            if Int(prod.value(forKey: "quantity") as! String)! <= 0 || Int(prod.value(forKey: "buyPrice") as! String)! <= 0 {
+            else if Int(prod.value(forKey: "quantity") as! String)! <= 0 || Int(prod.value(forKey: "buyPrice") as! String)! <= 0 {
                 self.errorAlert(title: "Order Error!", message: "Buy Price and Quantity Should be more than 0.")
             }
         }
@@ -71,7 +71,11 @@ class EnterOrderViewController: UIViewController, UITextFieldDelegate {
             
             if name.text! == "" || street.text! == "" || city.text! == "" || state.text! == "" || zipcode.text! == "" {
                 self.errorAlert(title: "Shipping Address Error!", message: "All the fields are required")
-            } else {
+            }
+            else if zipcode.text!.characters.count != 5 {
+                self.errorAlert(title: "Shipping Address Error!", message: "All the fields are required")
+            }
+            else {
                 self.shippingAddress = [
                     "city": city.text!,
                     "name": name.text!,
@@ -147,8 +151,8 @@ extension EnterOrderViewController: UITableViewDataSource, UITableViewDelegate {
         let product = productsSelected[indexPath.row]
         cell.productNameLabel.text = product["name"] as? String
         let newProduct = newProdData[indexPath.row]
-        cell.productsBuyPrice.text = newProduct.value(forKey: "buyPrice") as? String
-        cell.productQuantity.text = newProduct.value(forKey: "quantity") as? String
+        cell.productsBuyPrice.text = newProduct.value(forKey: "buyPrice") as! String
+        cell.productQuantity.text = newProduct.value(forKey: "quantity") as! String
         cell.productQuantity.tag = Int("2\(indexPath.row)")!
         cell.productsBuyPrice.tag = Int("1\(indexPath.row)")!
         cell.productQuantity.delegate = self
