@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="X9l-w1-GCJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E183b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="X9l-w1-GCJ">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,11 +10,143 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Add New Company View Controller-->
+        <scene sceneID="iQj-qE-GWC">
+            <objects>
+                <viewController id="wvi-Xz-XkI" customClass="AddNewCompanyViewController" customModule="Inventory_Management" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="duo-jE-cM9"/>
+                        <viewControllerLayoutGuide type="bottom" id="Q2v-yy-HIS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EX8-bj-8jw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Company Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NNa-cX-j5e">
+                                <rect key="frame" x="28" y="80" width="358" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4zC-bk-44B">
+                                <rect key="frame" x="28" y="126" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="BP3-xq-Xoj"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Street" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vyw-8g-RFT">
+                                <rect key="frame" x="28" y="209" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="7OF-kl-tns"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="IlS-zu-XH2"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zxU-gR-4VF">
+                                <rect key="frame" x="28" y="255" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="5dg-RM-2iQ"/>
+                                    <constraint firstAttribute="width" constant="150" id="bKD-J8-6iv"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="zw0-1V-5E5"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BcH-3K-UAg">
+                                <rect key="frame" x="236" y="126" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="eHI-d3-9bU"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company Address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ihv-TY-WN2">
+                                <rect key="frame" x="28" y="172" width="358" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BiD-qZ-SoU">
+                                <rect key="frame" x="236" y="209" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="ImH-ud-7fp"/>
+                                    <constraint firstAttribute="width" constant="150" id="knu-AB-NaX"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Zip Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V2H-IK-Ekg">
+                                <rect key="frame" x="236" y="255" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="16i-Ip-EWr"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="THY-86-hf6"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ihv-TY-WN2" firstAttribute="top" secondItem="4zC-bk-44B" secondAttribute="bottom" constant="16" id="ACv-Ld-rHW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NNa-cX-j5e" secondAttribute="trailing" constant="8" id="Big-Jg-Q1n"/>
+                            <constraint firstItem="zxU-gR-4VF" firstAttribute="leading" secondItem="EX8-bj-8jw" secondAttribute="leadingMargin" constant="8" id="EPT-dd-s2N"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="V2H-IK-Ekg" secondAttribute="trailing" constant="8" id="I0a-bg-GCX"/>
+                            <constraint firstItem="NNa-cX-j5e" firstAttribute="leading" secondItem="EX8-bj-8jw" secondAttribute="leadingMargin" constant="8" id="Kun-ej-Ub4"/>
+                            <constraint firstItem="NNa-cX-j5e" firstAttribute="top" secondItem="duo-jE-cM9" secondAttribute="bottom" constant="16" id="MXn-YT-iel"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BcH-3K-UAg" secondAttribute="trailing" constant="8" id="Mjb-tt-8Zl"/>
+                            <constraint firstItem="4zC-bk-44B" firstAttribute="leading" secondItem="EX8-bj-8jw" secondAttribute="leadingMargin" constant="8" id="Nwj-Cx-Grg"/>
+                            <constraint firstItem="Ihv-TY-WN2" firstAttribute="leading" secondItem="EX8-bj-8jw" secondAttribute="leadingMargin" constant="8" id="OsL-WT-Cbe"/>
+                            <constraint firstItem="V2H-IK-Ekg" firstAttribute="top" secondItem="BiD-qZ-SoU" secondAttribute="bottom" constant="16" id="W6W-4W-f6g"/>
+                            <constraint firstItem="4zC-bk-44B" firstAttribute="top" secondItem="NNa-cX-j5e" secondAttribute="bottom" constant="16" id="XOn-K4-7DC"/>
+                            <constraint firstItem="vyw-8g-RFT" firstAttribute="leading" secondItem="EX8-bj-8jw" secondAttribute="leadingMargin" constant="8" id="ado-oG-S12"/>
+                            <constraint firstItem="BcH-3K-UAg" firstAttribute="top" secondItem="NNa-cX-j5e" secondAttribute="bottom" constant="16" id="bjB-5f-nTp"/>
+                            <constraint firstItem="BiD-qZ-SoU" firstAttribute="top" secondItem="Ihv-TY-WN2" secondAttribute="bottom" constant="16" id="dir-qp-633"/>
+                            <constraint firstItem="zxU-gR-4VF" firstAttribute="top" secondItem="vyw-8g-RFT" secondAttribute="bottom" constant="16" id="fym-Zt-3Ll"/>
+                            <constraint firstItem="vyw-8g-RFT" firstAttribute="top" secondItem="Ihv-TY-WN2" secondAttribute="bottom" constant="16" id="iQI-lK-CIW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BiD-qZ-SoU" secondAttribute="trailing" constant="8" id="yYC-of-1dp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ihv-TY-WN2" secondAttribute="trailing" constant="8" id="zAA-hy-Kvd"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="dO6-Ak-a7L">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="srC-r9-v0F">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="wvi-Xz-XkI" id="Bzi-Mm-LKe"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="Apo-8p-45L">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="wvi-Xz-XkI" id="HPk-Mo-tgd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="city" destination="BiD-qZ-SoU" id="ybm-nv-BOu"/>
+                        <outlet property="companyName" destination="NNa-cX-j5e" id="v9c-5W-KfH"/>
+                        <outlet property="email" destination="4zC-bk-44B" id="Ixl-7B-b8z"/>
+                        <outlet property="phoneNumber" destination="BcH-3K-UAg" id="G7H-6g-IqU"/>
+                        <outlet property="state" destination="zxU-gR-4VF" id="xqb-qH-nTN"/>
+                        <outlet property="street" destination="vyw-8g-RFT" id="JTc-M3-WVo"/>
+                        <outlet property="zipCode" destination="V2H-IK-Ekg" id="3it-y3-RUl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SqT-Q3-d64" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1454" y="2378"/>
+        </scene>
         <!--Select Company for Order-->
         <scene sceneID="WPo-Kv-g2M">
             <objects>
                 <tableViewController title="Select Company for Order" id="Q3L-DV-KkS" customClass="SelectCompanyTableViewController" customModule="Inventory_Management" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Gu7-Ee-TsT">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Gu7-Ee-TsT">
                         <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -28,7 +160,11 @@
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAv-4u-uEp">
                                             <rect key="frame" x="8" y="6" width="398" height="32"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <state key="normal" title="Add New Company"/>
+                                            <connections>
+                                                <action selector="addNewCompanyButtonPressed:" destination="Q3L-DV-KkS" eventType="touchUpInside" id="VHH-Gq-gK1"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -76,6 +212,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="CBf-em-ofW" kind="show" identifier="selectProductsForCompanySegue" id="OXv-D3-p5T"/>
+                        <segue destination="fQ4-c3-v5I" kind="presentation" identifier="addCompanySegue" id="s2s-N8-PTQ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lkh-vZ-EHo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -90,7 +227,7 @@
                         <viewControllerLayoutGuide type="top" id="dsv-mx-p20"/>
                         <viewControllerLayoutGuide type="bottom" id="k4Y-by-Pdn"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="Qr4-Cl-Uey">
+                    <view key="view" contentMode="scaleToFill" id="Qr4-Cl-Uey">
                         <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -203,7 +340,7 @@
                         <viewControllerLayoutGuide type="top" id="vr4-SA-tVM"/>
                         <viewControllerLayoutGuide type="bottom" id="Ywj-A0-Wcz"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="XoH-WV-GSr">
+                    <view key="view" contentMode="scaleToFill" id="XoH-WV-GSr">
                         <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -448,7 +585,7 @@
                         <viewControllerLayoutGuide type="top" id="3q1-5f-BGg"/>
                         <viewControllerLayoutGuide type="bottom" id="EOF-2v-1jp"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="ZD4-tI-FtT">
+                    <view key="view" contentMode="scaleToFill" id="ZD4-tI-FtT">
                         <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -467,6 +604,9 @@
                                                     <rect key="frame" x="8" y="6" width="398" height="32"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <state key="normal" title="Add New Product"/>
+                                                    <connections>
+                                                        <action selector="addNewProductButtonPressed:" destination="CBf-em-ofW" eventType="touchUpInside" id="qca-mg-1nE"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -562,7 +702,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X9l-w1-GCJ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="pGL-ul-iuu">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="pGL-ul-iuu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -578,6 +718,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WRX-vf-xQk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-7" y="3082"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oxc-Dt-IJw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fQ4-c3-v5I" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jCH-JQ-J1U">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="wvi-Xz-XkI" kind="relationship" relationship="rootViewController" id="71Y-0b-JuB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="syl-Zq-Tex" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="821.73913043478262" y="2377.989130434783"/>
         </scene>
     </scenes>
 </document>

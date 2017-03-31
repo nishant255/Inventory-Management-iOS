@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectCompanyTableViewController: UITableViewController {
+class SelectCompanyTableViewController: UITableViewController, AddNewCompanyDelegate {
     
     @IBOutlet weak var companyNameLabel: UILabel!
     var companies = [NSDictionary]()
@@ -31,6 +31,9 @@ class SelectCompanyTableViewController: UITableViewController {
         }
     }
     
+    @IBAction func addNewCompanyButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "addCompanySegue", sender: sender)
+    }
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
         delegate?.cancelButtonPressed(controller: self)
     }
@@ -42,6 +45,22 @@ class SelectCompanyTableViewController: UITableViewController {
             controller.title = "Select Product(s) for \(company["name"]!)"
             controller.productsForSelectCompany = company["products"] as! [NSDictionary]
         }
+        
+        if segue.identifier == "addCompanySegue" {
+            let navController = segue.destination as! UINavigationController
+            let controller = navController.topViewController as! AddNewCompanyViewController
+            controller.delegate = self
+            controller.title = "Add New Company"
+        }
+    }
+    
+    func saveButtonPressed(controller: AddNewCompanyViewController, newCompany: NSDictionary) {
+        self.tableView.reloadData()
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func cancelButtonPressed(controller: AddNewCompanyViewController) {
+        dismiss(animated: true, completion: nil)
     }
 
 }

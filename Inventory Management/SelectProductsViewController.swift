@@ -13,8 +13,10 @@ class SelectProductsViewController: UIViewController {
     var productsForSelectCompany = [NSDictionary]()
     var company: NSDictionary? = nil
     var productsSelected = [NSDictionary]()
+    var newProduct: NSMutableDictionary = [:]
+    let IM = InventoryModel()
 
-    @IBOutlet weak var productsTableView: UITableView!
+    @IBOutlet weak var productsTableView: UITableView!    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +28,49 @@ class SelectProductsViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
+    @IBAction func addNewProductButtonPressed(_ sender: Any) {
+        let alertController = UIAlertController(title: "Add Shipping Address", message: nil, preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        
+        let saveAction = UIAlertAction(title: "Save", style: .destructive, handler: {
+            alert -> Void in
+            let name = alertController.textFields![0] as UITextField
+            
+            if name.text! == "" {
+                self.errorAlert(title: "Product Name Error", message: "Product Name is required.")
+            }
+            else if name.text!.characters.count < 2 {
+                self.errorAlert(title: "Product Name Error", message: "Product Name Should be 2 or more Characters.")
+            }
+            else {
+                self.newProduct = [
+                    "name": name.text!,
+                    "_company": self.company!,
+                    "received": false
+                ]
+                self.IM.createNewProduct(newProduct: self.newProduct, completionHandler: { (success, message) in
+                    if success {
+                        self.errorAlert(title: message, message: nil)
+                        self.productsTableView.reloadData()
+                    } else {
+                        self.errorAlert(title: "Product Error", message: message)
+                    }
+                })
+            }
+        })
+        
+        alertController.addTextField { (textField : UITextField!) in
+            
+            textField.placeholder = "Enter Product Name"
+        }
+        
+        alertController.addAction(saveAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
     @IBAction func addToOrderButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "addToOrderSegue", sender: productsSelected)
     }
@@ -45,6 +90,14 @@ class SelectProductsViewController: UIViewController {
                 controller.company = self.company!
             }
         }
+    }
+    
+    func errorAlert(title: String, message: String?) {
+        let alertForOrder = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive) { action in
+        }
+        alertForOrder.addAction(OKAction)
+        self.present(alertForOrder, animated: true, completion: nil)
     }
 }
 
@@ -73,6 +126,9 @@ extension SelectProductsViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            addNewProductButtonPressed(self)
+        }
         let product = productsForSelectCompany[indexPath.row - 1]
         if productsSelected.contains(product){
             let toggle = productsSelected.index(of: product)
